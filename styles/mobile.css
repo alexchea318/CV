@@ -4,27 +4,28 @@
     }
 
     h1{
-        font-size: 7vw;
+        font-size: 10vw;
     }
     
     h2{
-        font-size: 6vw;
+        font-size: 8vw;
     }
     
     h3{
-        font-size: 4vw;
+        font-size: 6vw;
     }
 
     .stack h3, .contacts h3{
-        font-size: 4vw;
+        font-size: 5.3vw;
     }
 
     p{
-        font-size: 3vw;
+        font-size: 5vw;
     }
 
     #hero{
-        padding: 0rem 3rem;
+        padding: 3rem;
+        height: 100%;
     }
 
     body{
@@ -40,18 +41,19 @@
     }
 
     #intro lottie-player{
-        margin: 6vh auto;
         width:calc(100vw - 4rem);
         height:calc(100vw - 4rem); 
+        margin-bottom: 3rem;
+        margin-top: 1rem;
+        margin-left: 0rem;
     }
 
     #left_intro{
         margin-right: auto;
-        margin-top: 5vh;
     }
 
     .mouse lottie-player{
-        padding-top: 4rem; 
+        display: none;
     }
 
     .sect{
@@ -82,15 +84,20 @@
     }
 
     .project_cell{
-        padding: 40px;
+        padding: 40px 40px 20px 40px;
     }
 
     .project_cell iframe, .project_cell img{
-        width: 100%;
+        border-top-left-radius: 25px !important;
+        border-top-right-radius: 25px !important;
+        border: none !important;
+        width: calc(100% + 80px);
+        margin: -40px;
+        margin-bottom: 0px;
     }
     
     .project_cell iframe{
-        height: 20vh;
+        height: 25vh;
     }
 
     .stack, .contacts{
