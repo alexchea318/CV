@@ -101,6 +101,10 @@
         padding-top: 2rem; 
     }
 
+    #about h2{
+        margin-bottom: 0px;
+    }
+
     .block{
         width:100%;
         flex-direction: column;
@@ -159,6 +163,10 @@
 
     .contacts h3, .projects h3{
         text-decoration: underline;
+    }
+
+    footer span{
+        width:calc(100vw - 4rem);
     }
     
 }

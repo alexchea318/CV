@@ -121,6 +121,10 @@ h3{
     color:#fff;
 }
 
+#about h2{
+    margin-bottom: 1rem;
+}
+
 .sect{
     margin: auto;
     width: var(--main_width);
@@ -224,6 +228,19 @@ h3{
     width: 50px;
     height: 50px;
     display: none;
+}
+
+footer{
+    width: 100%;
+    background: rgb(27, 27, 27);
+    color: #fff;
+    padding: 1.5rem 0rem;
+}
+
+footer span{
+    display: flex;
+    width: var(--main_width);
+    margin: auto;
 }
 
 @keyframes base{
