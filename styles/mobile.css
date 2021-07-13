@@ -1,0 +1,114 @@
+@media (max-width:1200px){
+    h1, h2, h3{
+        word-wrap: break-word;
+    }
+
+    h1{
+        font-size: 7vw;
+    }
+    
+    h2{
+        font-size: 6vw;
+    }
+    
+    h3{
+        font-size: 4vw;
+    }
+
+    .stack h3, .contacts h3{
+        font-size: 4vw;
+    }
+
+    p{
+        font-size: 3vw;
+    }
+
+    #hero{
+        padding: 0rem 3rem;
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+
+    #intro{
+        display: flex;
+        flex-direction: column;
+        padding-top: 0px;
+        width: 100%;
+        align-items: center;
+    }
+
+    #intro lottie-player{
+        margin: 6vh auto;
+        width:calc(100vw - 4rem);
+        height:calc(100vw - 4rem); 
+    }
+
+    #left_intro{
+        margin-right: auto;
+        margin-top: 5vh;
+    }
+
+    .mouse lottie-player{
+        padding-top: 4rem; 
+    }
+
+    .sect{
+        width:calc(100vw - 4rem);
+        padding: 0rem 2rem;
+        padding-top: 2rem; 
+    }
+
+    .block{
+        width:100%;
+        flex-direction: column;
+    }
+
+    .block div{
+        margin-right: 0px;
+    }
+
+    .block img{
+        margin-top: 2rem;
+        width:calc(100vw - 4rem);
+        height:calc(100vw - 4rem);
+        border-radius: 50% 25%;
+    }
+
+    .projects{
+        margin-top: 2rem;
+        width:100%;
+    }
+
+    .project_cell{
+        padding: 40px;
+    }
+
+    .project_cell iframe, .project_cell img{
+        width: 100%;
+    }
+    
+    .project_cell iframe{
+        height: 20vh;
+    }
+
+    .stack, .contacts{
+        width:100%;
+        grid-template-columns:calc(100%);
+    }
+
+    .stack, .contacts, .projects{
+        row-gap:2rem;
+    }
+
+    .stack, .contacts{
+        margin: 2rem 0px 3rem 0px;
+    }
+
+    #to_top{
+        width: 30px;
+        height: 30px;
+    }
+    
+}

@@ -2,8 +2,10 @@
 <html>
  <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Frontend разработчик Александра Чеченева</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/mobile.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap" rel="stylesheet">
@@ -11,18 +13,19 @@
  </head>
 
  <body>
+
   <section id="hero">
     <div id="intro">
         <div id="left_intro">
           <h1>Frontend разработчик</h1>
           <h2>Чеченев Александр</h2>
         </div>
-        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_1LhsaB.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_1LhsaB.json"  background="transparent"  speed="1"  loop  autoplay></lottie-player>
     </div>
     <a class="mouse" href="#about"><lottie-player src="https://assets10.lottiefiles.com/packages/lf20_66CQcm.json" 
       background="transparent"  speed="1"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player></a>
   </section>
-  
+
   <section class="sect" id="about">
     <h2>Обо мне</h2>
     <div class="block">
@@ -36,7 +39,7 @@
            Владею основными алгоритмами, структурами данных, регулярными выражениями и разделами математики, связанными с программированием: матанализом, дискретной, матлогикой и статистикой.</p>
         <p>Незаисимо от языка программирования, всегда пишу эффективный код: выношу инварианты, оцениваю сложность алгоритмов, не сортирую пузырьком =).</p>
         </div>
-        <img src="img/Chechenev Alexander.jpg" width="420px" height="420px" alt="Моя фотка"> 
+        <img src="img/Chechenev Alexander.jpg" alt="Моя фотка"> 
     </div>
   </section> 
   
@@ -45,7 +48,7 @@
     <div class="projects">
         <a href="https://findly.info/">
           <div class="project_cell">
-            <iframe id="iframe" width="1100" height="600" style="border-radius: 5px;" src="https://www.youtube.com/embed/uiTfmFCLXPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="iframe" style="border-radius: 5px;" src="https://www.youtube.com/embed/uiTfmFCLXPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <h3>Новостной сервис Findly</h3>
             <p>Findly - прогрессивное приложение (работает на всех платформах), которое ищет интересные новости и факты из них в режиме реального времени.
               Ежедневные подобрки размещаются на сайте, а для пользователей всегда доступен бот, который работает как поисковая система - достаточно ввести любой запрос и получить краткую информацию.</p>
@@ -54,7 +57,7 @@
 
         <a href="https://alexchea318.github.io/vk_test_task/">
           <div class="project_cell">
-            <img style="border: 1px solid #fff" width="1100" src="img/pc.png">
+            <img style="border: 1px solid #fff" src="img/pc.png">
             <h3>Тестовое задание для ВКонтакте</h3>
             <p>Адаптивный чат, полностью копирующий дизайн ВКонтакте с возможностью вставки эмодзи и отправки сообщений. Также необходимо было реализовать подсветку почт, хештегов и упоминаний в поисковой строке.</p>
           </div>
@@ -62,14 +65,14 @@
 
         <a href="https://difmedia.ru/">
           <div class="project_cell">
-            <img style="border-radius: 5px;" width="1100" src="img/dif.png">
+            <img style="border-radius: 5px;" src="img/dif.png">
             <h3>Студия Difmedia</h3>
             <p>Сайт для собственной студии Difmedia, которая занимается созданием сайтов под ключ.</p>
           </div>
         </a>
     </div>
   </section>
-
+ 
   <section class="sect">
     <h2>Cтек технологий</h2>
     <div class="stack">
