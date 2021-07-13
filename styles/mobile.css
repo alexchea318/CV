@@ -159,6 +159,8 @@
     #to_top{
         width: 30px;
         height: 30px;
+        bottom: 25px;
+        right: 25px;
     }
 
     .contacts h3, .projects h3{
