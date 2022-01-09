@@ -63,6 +63,9 @@
   <section class="sect" id="projects">
     <h2>Проекты</h2>
     <div class="projects">
+     <?php
+       echo sqlite_libversion();
+      ?>
         <a href="https://findly.info/">
           <div class="project_cell">
             <iframe id="iframe" style="border-radius: 5px;" src="https://www.youtube.com/embed/uiTfmFCLXPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
