@@ -1,7 +1,6 @@
 var state="close";
 
 function open_menu(){
-    var menu_selector=document.querySelector("#menu_selector");
     var menu_list=document.querySelector("#menu_list");
     var selector_1=document.querySelector("#selector_1");
     var selector_2=document.querySelector("#selector_2");
@@ -25,7 +24,7 @@ function open_menu(){
 
 
 var listener = function (event) {
-    if(pageYOffset>300){
+    if(scrollY>300){
         var top_btn = document.querySelector('#to_top');
         top_btn.style.display='block';
 

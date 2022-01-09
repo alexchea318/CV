@@ -19,7 +19,7 @@ a{
 }
 
 p{
-    font-size: 19px;
+    font-size:  min(5vw, 1.2rem);
 }
 
 h1, h2, h3{
@@ -29,15 +29,15 @@ h1, h2, h3{
 }
 
 h1{
-    font-size: 4rem;
+    font-size: min(10vw, 4rem);
 }
 
 h2{
-    font-size: 3rem;
+    font-size: min(8vw, 3rem);
 }
 
 h3{
-    font-size: 2rem;
+    font-size: min(8vw, 2rem);
 }
 
 #hero{
@@ -107,8 +107,8 @@ h3{
 
 #intro lottie-player{
     margin-left:auto;
-    width: 300px;
-    height: 300px;
+    width:min(calc(100vw - 4rem), 300px);
+    height:min(calc(100vw - 4rem), 300px); 
 }
 
 .mouse lottie-player{
@@ -128,7 +128,7 @@ h3{
 .sect{
     margin: auto;
     width: var(--main_width);
-    padding-top: 3rem; 
+    padding-top: 2.5rem; 
 }
 
 .block{
@@ -140,8 +140,9 @@ h3{
 
 .block img{
     border-radius: 50% 25%;
-    width: 400px;
-    height: 400px
+    width:min(calc(100vw - 4rem), 400px);
+    height:min(calc(100vw - 4rem), 400px);
+    animation: shadow 3s infinite linear;
 }
 
 .block div{
@@ -149,12 +150,11 @@ h3{
 }
 
 .big_button{
-    margin-top: 3rem;
-    width: var(--main_width);
+    margin-top: 1rem;
     border-radius: 25px;
     background: linear-gradient(to top left, #2787f5, #ba1cf7);
     border:none;
-    padding: 14px;
+    padding: 14px 50px;
     font-family: 'Raleway', sans-serif;
     box-shadow: none;
     font-size: 19px;
@@ -163,6 +163,7 @@ h3{
 }
 
 .big_button:hover{
+    background: linear-gradient(to top left, #ba1cf7, #2787f5);
     box-shadow:0px 16px 23px -14px #e340fc;
     transition: 0.6s;
     position:relative;
@@ -187,7 +188,7 @@ h3{
 }
 
 .cell h3{
-    font-size: 1.6rem;
+    font-size: min(5.3vw, 1.6rem);
 }
 
 .projects{
@@ -258,6 +259,24 @@ footer span{
     }
     100%{
         top:-5px;
+    }
+}
+
+@keyframes shadow{
+    0%{
+        box-shadow: #2787f5 10px 0px 20px -5px;
+    }
+    25%{
+        box-shadow: #ba1cf7 0px 10px 20px -5px;
+    }
+    50%{
+        box-shadow: #2787f5 -10px 0px 20px -5px;
+    }
+    75%{
+        box-shadow: #ba1cf7 0px -10px 20px -5px;
+    }
+    100%{
+        box-shadow: #2787f5 10px 0px 20px -5px;
     }
 }
 

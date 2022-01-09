@@ -3,26 +3,6 @@
         word-wrap: break-word;
     }
 
-    h1{
-        font-size: 10vw;
-    }
-    
-    h2{
-        font-size: 8vw;
-    }
-    
-    h3{
-        font-size: 6vw;
-    }
-
-    .stack h3, .contacts h3{
-        font-size: 5.3vw;
-    }
-
-    p{
-        font-size: 5vw;
-    }
-
     #hero{
         padding: 3rem;
         height: 100%;
@@ -80,8 +60,6 @@
     }
 
     #intro lottie-player{
-        width:calc(100vw - 4rem);
-        height:calc(100vw - 4rem); 
         margin-bottom: 3rem;
         margin-top: 1rem;
         margin-left: 0rem;
@@ -116,9 +94,11 @@
 
     .block img{
         margin-top: 2rem;
-        width:calc(100vw - 4rem);
-        height:calc(100vw - 4rem);
-        border-radius: 50% 25%;
+    }
+
+    .big_button{
+        margin-top: 3rem;
+        width: 100%;
     }
 
     .projects{
