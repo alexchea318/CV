@@ -123,9 +123,17 @@
         height: 25vh;
     }
 
-    .stack, .contacts{
+    .stack, .contacts, .aw_block{
         width:100%;
-        grid-template-columns:calc(100%);
+        grid-template-columns: 100%;
+    }
+
+    .aw_block.first{
+        margin-top: 40px ;
+    }
+
+    .aw_block:last-child{
+        margin-bottom: -1rem ;
     }
 
     .stack, .contacts, #project_list{

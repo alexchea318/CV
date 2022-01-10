@@ -138,10 +138,13 @@ h3{
     margin: auto;
 }
 
-.block img{
-    border-radius: 50% 25%;
+.auto_img{
     width:min(calc(100vw - 4rem), 400px);
     height:min(calc(100vw - 4rem), 400px);
+}
+
+.block img{
+    border-radius: 50% 25%;
     animation: shadow 3s infinite linear;
 }
 
@@ -166,6 +169,24 @@ h3{
     animation: shadow 4s infinite linear;
     transition: 0.6s;
     position:relative;
+}
+
+.aw_block{
+    width: calc(var(--main_width) - 30px);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    column-gap: 30px;
+    row-gap: 10px;
+    margin-bottom: 4rem;
+}
+
+.aw_block:last-child{
+    margin-bottom: 0rem ;
+}
+
+.aw_img{
+    border-radius: 25% 50%;
 }
 
 .stack, .contacts{
