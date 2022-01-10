@@ -1,2 +1,2 @@
 # Frontend разрабочтик Чеченев Александр
-[Сайт-резюме](alexchea318.github.io/cv/)
+[Сайт-резюме](https://alexchea318.github.io/CV/)
