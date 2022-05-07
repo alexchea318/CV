@@ -1,10 +1,15 @@
+/*Base*/
 :root {
-    --main_width: 1300px;
+    --main-width: 1300px;
     --main-color: rgb(59, 59, 59);
+    --card-radius: 25px;
+    --accent: #2787f5;
+    --accent2: #ba1cf7;
+    --card-back: rgba(228, 228, 228, 0.596);
 }
 
 body{
-    margin:0px;
+    margin: 0px;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 19px;
     color: var(--main-color);
@@ -22,7 +27,7 @@ p{
     font-size:  min(5vw, 1.2rem);
 }
 
-h1, h2, h3{
+h1, h2, h3, h4{
     line-height: 1.4em;
     font-family: 'Raleway', sans-serif;
     animation: base 0.5s;
@@ -40,8 +45,13 @@ h3{
     font-size: min(6vw, 2rem);
 }
 
+h4{
+    font-size: min(5vw, 1.5rem);
+}
+
+/*Top sections*/
 #hero{
-    background: linear-gradient(to top right, #2787f5, #ba1cf7); 
+    background: linear-gradient(to top right, var(--accent), var(--accent2)); 
     height:100vh; 
 }
 
@@ -53,7 +63,7 @@ h3{
 #menu_content{
     display: flex;
     align-items: center;
-    width: var(--main_width);
+    width: var(--main-width);
     margin: auto;
 }
 
@@ -96,7 +106,7 @@ h3{
     flex-direction: row;
     margin: auto;
     padding-top: 22vh;
-    width: var(--main_width);
+    width: var(--main-width);
     align-items: center;
 }
 
@@ -121,13 +131,14 @@ h3{
     color:#fff;
 }
 
+/*Abount section*/
 #about h2{
     margin-bottom: 1rem;
 }
 
 .sect{
     margin: auto;
-    width: var(--main_width);
+    width: var(--main-width);
     padding-top: 2rem; 
 }
 
@@ -139,8 +150,8 @@ h3{
 }
 
 .auto_img{
-    width:min(calc(100vw - 4rem), 400px);
-    height:min(calc(100vw - 4rem), 400px);
+    width: min(calc(100vw - 4rem), 400px);
+    height: min(calc(100vw - 4rem), 400px);
 }
 
 .block img{
@@ -154,8 +165,8 @@ h3{
 
 .big_button{
     margin-top: 1rem;
-    border-radius: 25px;
-    background: linear-gradient(to top left, #2787f5, #ba1cf7);
+    border-radius: var(--card-radius);
+    background: linear-gradient(to top left, var(--accent), var(--accent2));
     border:none;
     padding: 14px 50px;
     font-family: 'Raleway', sans-serif;
@@ -165,18 +176,22 @@ h3{
     cursor: pointer; 
 }
 
+.big_button > a{
+    color: #fff;
+}
+
 .big_button:hover{
     animation: shadow 4s infinite linear;
     transition: 0.6s;
     position:relative;
 }
 
+/*Awards*/
 .aw_block{
-    width: calc(var(--main_width) - 30px);
+    width: var(--main-width);
     display: grid;
     align-items: center;
-    grid-template-columns: 50% 50%;
-    column-gap: 30px;
+    grid-template-columns: 1fr 1fr;
     row-gap: 10px;
     margin-bottom: 4rem;
 }
@@ -189,39 +204,56 @@ h3{
     border-radius: 25% 50%;
 }
 
-.stack, .contacts{
-    width: calc(var(--main_width) - 6rem);
-    margin: 3rem 0rem;
+/*Experience*/
+#experience_list{
     display: grid;
-    grid-template-columns:33.3% 33.3% 33.3%;
-    column-gap:3rem;
-    row-gap:3rem;
+    grid-template-columns: auto auto;
+    row-gap: 3rem;
+    column-gap: 3rem;
 }
 
-.cell{
-    border-radius: 25px;
-    padding: 20px 40px;
-    background: linear-gradient(to top right, #2787f5, #ba1cf7);
-    color: #fff;
+.experience_cell{
+    border: 1px solid lightgray;
+    padding: 25px 30px 10px 30px;
+    border-radius: var(--card-radius);
 }
 
-.cell h3{
-    font-size: min(5.3vw, 1.6rem);
+.experience_cell > time{
+    background: var(--card-back);
+    padding: 5px 15px;
+    display: block;
+    width: fit-content;
+    width: -webkit-fit-content;
+    border-radius: var(--card-radius);
+    margin-bottom: 2rem;
 }
 
+.experience_cell h4{
+    margin: -1em 0px -0.5em 0px;
+}
+
+.experience_cell img{
+    width: 70%;
+    height: 200px;
+    display: flex;
+    margin: auto;
+    object-fit: contain;
+}
+
+/*Projects*/
 #project_list{
     display: grid;
     row-gap: 3rem;
 }
 
 .project_cell{
-    border-radius: 25px;
+    border-radius: var(--card-radius);
     padding: 50px;
-    background: rgba(228, 228, 228, 0.596);
+    background: var(--card-back);
     color: var(--main-color);
 }
 
-.project_cell iframe, .project_cell img{
+.project_cell > iframe, .project_cell > img{
     width: 1100px;
     border-radius: 5px;
     border: 1px solid #fff;
@@ -231,8 +263,35 @@ h3{
     height: 600px;
 }
 
+.project_cell h3{
+    margin-bottom: 0px;
+}
+
 #more_btn{
     margin-top: 2rem;
+}
+
+/*Stack and contacts cards*/
+.stack, .contacts{
+    width: var(--main_width);
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    column-gap:3rem;
+    row-gap:3rem;
+}
+
+.cell{
+    border-radius:  var(--card-radius);
+    padding: 20px 40px;
+    background: linear-gradient(to top right, var(--accent), var(--accent2));
+    color: #fff;
+    scroll-snap-align: start;
+}
+
+.cell h3{
+    font-size: min(5.3vw, 1.6rem);
+    margin-bottom: 0em;
 }
 
 .contacts a{
@@ -244,29 +303,39 @@ h3{
     animation: shadow 5s infinite linear;
 }
 
-#to_top{
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    text-align: right;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: none;
-}
-
+/*Footer*/
 footer{
     margin-top: 70px;
     width: 100%;
     background: rgb(27, 27, 27);
     color: #fff;
     padding: 1.5rem 0rem;
+    display: flex;
 }
 
-footer span{
+footer > section{
     display: flex;
-    width: var(--main_width);
+    width: var(--main-width);
+    justify-content: space-between;
     margin: auto;
+}
+
+.footer_link{
+    color: #fff;
+    text-decoration: underline;
+}
+
+/*Animations and fixed elements*/
+#to_top{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: none;
+    background: #fff;
+    padding: 10px;
 }
 
 @keyframes base{
@@ -289,24 +358,25 @@ footer span{
 
 @keyframes shadow{
     0%{
-        box-shadow: #2787f5 10px 0px 20px -5px;
+        box-shadow: var(--accent) 10px 0px 20px -5px;
     }
     25%{
-        box-shadow: #ba1cf7 0px 10px 20px -5px;
+        box-shadow: var(--accent2) 0px 10px 20px -5px;
     }
     50%{
-        box-shadow: #2787f5 -10px 0px 20px -5px;
+        box-shadow: var(--accent) -10px 0px 20px -5px;
     }
     75%{
-        box-shadow: #ba1cf7 0px -10px 20px -5px;
+        box-shadow: var(--accent2) 0px -10px 20px -5px;
     }
     100%{
-        box-shadow: #2787f5 10px 0px 20px -5px;
+        box-shadow: var(--accent) 10px 0px 20px -5px;
     }
 }
 
 ::-webkit-scrollbar {
     width: 8px;
+    height: 10px;
     background-color: #fff;
     border-radius: 10px;
 }
@@ -315,9 +385,4 @@ footer span{
     background: rgb(56, 56, 56);
 }
   
-::-webkit-scrollbar-track {
-    box-shadow: none;
-    border-radius: 10px;
-    background-color: #f9f9fd;
-}
 

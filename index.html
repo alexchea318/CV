@@ -3,7 +3,7 @@
  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Frontend разработчик Александр Чеченев</title>
+    <title>Full-stack developer Александр Чеченев</title>
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/mobile.css">
@@ -14,7 +14,6 @@
  </head>
 
  <body>
-
   <section id="hero">
     <header id="menu">
       <nav id="menu_content">
@@ -22,11 +21,12 @@
         <ul id="menu_list">
           <li><a href="#about">Обо мне</a></li>
           <li><a href="#awards">Награды</a></li>
+          <li><a href="#experience">Опыт работы</a></li>
           <li><a href="#projects">Проекты</a></li>
           <li><a href="#stack">Стек</a></li>
           <li><a href="#contacts">Контакты</a></li>
         </ul>
-        <div id="menu_selector" onclick="open_menu();">
+        <div id="menu_selector" onclick="openMenu();">
           <div id="selector_1"></div>
           <div id="selector_2"></div>
           <div id="selector_3"></div>
@@ -36,12 +36,12 @@
 
     <div id="intro">
         <div id="left_intro">
-          <h1>Frontend разработчик</h1>
-          <h2>Чеченев Александр</h2>
+          <h1>Full-stack developer</h1>
+          <h2>Александр Чеченев</h2>
         </div>
-        <lottie-player src="js/prog.json"  background="transparent"  speed="1"  loop  autoplay></lottie-player>
+        <lottie-player src="json/prog.json"  background="transparent"  speed="1"  loop  autoplay></lottie-player>
     </div>
-    <a class="mouse" href="#about"><lottie-player src="js/mouse.json" 
+    <a class="mouse" href="#about"><lottie-player src="json/mouse.json" 
       background="transparent"  speed="1"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player></a>
   </section>
 
@@ -49,17 +49,17 @@
     <h2>Обо мне</h2>
     <div class="block">
         <div>
-        <p>Меня зовут Чеченев Александр. Возраст: 20 лет, живу в Санкт-Петербурге, студент третьего курса Политеха (СПБПУ), учусь на специальности "Информационно-аналитические системы безопасности."</p>
-        <p>Обожаю дизайн, веб-разработку и проектировать интерфейсы. Ценю минимализм, простоту и удобство.</p>
-        <p>Моя специальность, в основном, связана с низкоуровневым программированием, 
-            но также хорошо я владею современным стеком веб-разбработки, работая фронтендером на фрилансе (создаю сайты под ключ).</p>
-        <p>В повседневной жизни пишу на C/C++ и Python.
-           Владею основными алгоритмами, структурами данных, регулярными выражениями и разделами математики, связанными с программированием: матанализом, дискретной, матлогикой и статистикой.</p>
-        <p>Незаисимо от языка программирования, всегда пишу эффективный код: выношу инварианты, оцениваю сложность алгоритмов, не сортирую пузырьком =).</p>
+          <p>Меня зовут Александр Чеченев. Возраст: 20 лет, живу в Санкт-Петербурге, студент третьего курса Политеха (СПБПУ), учусь на специальности "Информационно-аналитические системы безопасности."</p>
+          <p>Моя специальность, в основном, связана с низкоуровневым программированием, 
+              но также хорошо я владею современным стеком веб-разбработки, работая в этой области с 2019 года.</p>
+          <p>Моя страсть — это проектирование интерфейсов для сервисов. Акцент на типографике, понятная визуальная иерархия, броские цветовые акценты, а также минимализм, простота и удобство — основные паттерны для моего дизайна.</p>
+          <p>В повседневной жизни пишу на C/C++ и Python.
+            Владею основными алгоритмами, структурами данных, регулярными выражениями и разделами математики, связанными с программированием: матанализом, дискретной, матлогикой и статистикой.</p>
+          <p>Независимо от языка программирования, всегда стараюсь писать читаемый, производительный и легко поддерживаемый код. Выношу инварианты, оцениваю сложность алгоритмов и не сортирую пузырьком =).</p>
         </div>
         <img src="img/Chechenev Alexander.jpg" class="auto_img" alt="Моя фотка"> 
     </div>
-    <a href="https://github.com/alexchea318" target="blank" class="button_a"><button class="big_button" ><img src="img/git.png" height="15" style="filter: invert(100%); margin-right: 1rem;">Профиль на GitHub</button></a>
+    <button class="big_button"><a href="https://github.com/alexchea318" target="blank" class="button_a"><img src="img/git.png" height="15" style="filter: invert(100%); margin-right: 1rem;">Профиль на GitHub</a></button>
   </section> 
   
   <section class="sect" id="awards">
@@ -76,6 +76,21 @@
     </div>
   </section>
 
+  <section class="sect" id="experience">
+    <h2>Опыт работы</h2>
+    <div id="experience_list">
+      <template id="post">
+        <div class="experience_cell">
+          <time></time>
+          <img src="">
+          <h3></h3>
+          <h4></h3>
+          <p></p>
+        </div>
+      </template>
+    </div>
+  </section>
+
   <section class="sect" id="projects">
     <h2>Проекты</h2>
     <div id="project_list">
@@ -89,23 +104,22 @@
         </a>
       </template>
     </div>
-    <button class="big_button" id="more_btn" onclick="show_projects(2);"><img src="img/re.png" height="15" style="filter: invert(100%); margin-right: 1rem;">Загрузить еще</button>
+    <button class="big_button" id="more_btn" onclick="showProjects(2);"><img src="img/re.png" height="15" style="filter: invert(100%); margin-right: 1rem;">Загрузить еще</button>
   </section>
  
   <section class="sect" id="stack">
     <h2>Cтек технологий</h2>
     <div class="stack">
-        <div class="cell"><h3>Дизайн</h3><p>Figma, Photoshop, Illustrator</p></div>
-        <div class="cell"><h3>Вёрстка</h3><p>HTML, CSS, React</p></div>
-        <div class="cell"><h3>Программирование</h3><p>JS, Python, C/C++, PHP, Assembler</p></div>
+        <div class="cell"><h3>Frontend</h3><p>Figma, Illustrator, HTML, CSS, React, Redux, Tailwind</p></div>
+        <div class="cell"><h3>Backend</h3><p>Go, Postgres, Node.js</p></div>
+        <div class="cell"><h3>Для проектов по учебе</h3><p>Python, C/C++, Assembler</p></div>
     </div>
-    <p>Есть опыт работы с Git, Node.js, Wordpress, Tilda, Apache, базами данных и разработки под Linux.</p>
   </section>
   
-  <section class="sect" id="contacts" style="margin-top:-20px;">
+  <section class="sect" id="contacts">
     <h2>Контакты</h2>
     <div class="contacts">
-        <a href="tel:+79312023110"><div class="cell"><h3>+7 (931) 202 31 10</h3><p>Телефон</p></div></a>
+        <a href="https://t.me/alexchea318"><div class="cell"><h3>@alexchea318</h3><p>Telegram</p></div></a>
         <a href="mailto:alexchea319@gmail.com"><div class="cell"><h3>alexchea319@gmail.com</h3><p>Почта</p></div></a>
         <a href="https://vk.me/schechenev"><div class="cell"><h3>@schechenev</h3><p>ВКонтакте</p></div></a>
     </div>
@@ -120,7 +134,10 @@
   </a>
 
   <footer>
-    <span>© Чеченев Александр Дмитриевич, 2021 год</span>
+    <section>
+      <span>© Чеченев Александр Дмитриевич, 2021 год</span>
+      <a href="https://github.com/alexchea318/CV" class="footer_link">Исходные коды этого сайта на GitHub</a>
+    </section>
   </footer>
  </body>
 </html>

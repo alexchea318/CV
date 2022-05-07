@@ -1,0 +1,18 @@
+{
+    "experience":[
+         {
+            "title": "НеоБИТ",
+            "subtitle": "Full-stack разработчик",
+            "time": "Фераль 2022 - сейчас",
+            "text": "Разрабатываю веб-приложения (UX/UI + React + Redux + Go + PostgreSQL) ",
+            "img":"neo.jpg"
+        },
+        {
+            "title": "LG Electronics Russia R&D Lab",
+            "subtitle": "Стажировка в отделе Data Science",
+            "time": "Июнь 2021 - Июль 2021",
+            "text": "Проводил исследование методов опитимизации градиентного спуска",
+            "img":"LG.jpg"
+        }
+    ]
+}
