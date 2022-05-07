@@ -202,7 +202,13 @@
     #to_top > svg{
         transform: translateY(-3px);
     }
-    
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 0px;
+        background-color: #fff;
+        border-radius: 10px;
+    }    
 }
 
 /*Menu animations*/
