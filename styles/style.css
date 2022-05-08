@@ -176,10 +176,6 @@ h4{
     cursor: pointer; 
 }
 
-.big_button > a{
-    color: #fff;
-}
-
 .big_button:hover{
     animation: shadow 4s infinite linear;
     transition: 0.6s;

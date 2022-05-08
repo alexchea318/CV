@@ -165,7 +165,7 @@
 
     /*Stack and contacts cards*/
     .stack, .contacts{
-        grid-template-columns: 87% 100% 100%;
+        grid-template-columns: 87% 87% 87%;
         width: calc(100% + 2rem);
         overflow-x: auto;
         padding-bottom: 5px;
@@ -174,7 +174,11 @@
         column-gap: 2rem;
     }
 
-    .stack > .cell:last-child, .contacts > .cell:last-child{
+    .contacts h3{
+        word-wrap: normal;
+    }
+
+    .stack > .cell:last-child, .contacts > a:last-child{
         margin-right: 2rem;
     }
 
