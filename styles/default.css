@@ -13,14 +13,14 @@
 
 @font-face {
     font-family: "Gilroy";
-    src: url("/styles/fonts/Gilroy400.ttf") format("truetype");
+    src: url("/fonts/Gilroy400.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Raleway";
-    src: url("/styles/fonts/Raleway400.ttf") format("truetype");
+    src: url("/fonts/Raleway400.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
