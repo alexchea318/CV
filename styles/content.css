@@ -1,0 +1,348 @@
+/*Top sections*/
+#hero{
+    background: linear-gradient(to top right, var(--accent), var(--accent2)); 
+    height:100vh; 
+}
+
+#menu{
+    background: rgba(255, 255, 255, 0.329);
+    backdrop-filter: blur(10px);
+}
+
+#menu_content{
+    display: flex;
+    align-items: center;
+    width: var(--main-width);
+    margin: auto;
+}
+
+#menu img{
+    width: 40px;
+}
+
+#menu_list{
+    display: flex;
+    list-style-type: none;
+    margin-left: auto;
+}
+
+#menu_list a:hover{
+   text-decoration: underline;
+}
+
+
+#menu_list a{
+    margin-left: 20px;
+    color: #fff;
+    font-family: var(--h-font);
+    font-size: 22px;
+}
+
+#menu_selector{
+    margin-bottom: -5px;
+    display: none;
+}
+
+#menu_selector div{
+    background: white;
+    width: 30px;
+    height: 3px;
+    margin-bottom: 7px;
+}
+
+#intro{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding-top: 22vh;
+    width: var(--main-width);
+    align-items: center;
+}
+
+#left_intro h2{
+    color: #fff;
+    margin-top: 0px;
+}
+
+#intro lottie-player{
+    margin-left:auto;
+    width:min(calc(100vw - 4rem), 300px);
+    height:min(calc(100vw - 4rem), 300px); 
+}
+
+.mouse lottie-player{
+    display: flex;
+    margin:auto;
+    padding-top: 10rem; 
+}
+
+#intro h1{
+    color:#fff;
+}
+
+/*Abount section*/
+#about h2{
+    margin-bottom: 1rem;
+}
+
+.sect{
+    margin: auto;
+    width: var(--main-width);
+    padding-top: 2rem; 
+}
+
+.block{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+}
+
+.auto_img{
+    width: min(calc(100vw - 4rem), 400px);
+    height: min(calc(100vw - 4rem), 400px);
+}
+
+.block img{
+    border-radius: 50% 25%;
+    animation: shadow 3s infinite linear;
+}
+
+.block div{
+    margin-right: 5rem;
+}
+
+.big_button{
+    margin-top: 1rem;
+    border-radius: var(--card-radius);
+    background: linear-gradient(to top left, var(--accent), var(--accent2));
+    border:none;
+    padding: 14px 50px;
+    font-family: 'Raleway', sans-serif;
+    box-shadow: none;
+    font-size: 19px;
+    color: #fff;
+    cursor: pointer; 
+}
+
+.big_button:hover{
+    animation: shadow 4s infinite linear;
+    transition: 0.6s;
+    position:relative;
+}
+
+/*Awards*/
+.aw_block{
+    width: var(--main-width);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    margin-bottom: 4rem;
+}
+
+.aw_block:last-child{
+    margin-bottom: 0rem ;
+}
+
+.aw_img{
+    border-radius: 25% 50%;
+}
+
+/*Experience*/
+#experience_list{
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 3rem;
+    column-gap: 3rem;
+}
+
+.experience_cell{
+    border: var(--border);
+    padding: 25px 30px 10px 30px;
+    border-radius: var(--card-radius);
+}
+
+.experience_cell > time{
+    background: var(--card-back);
+    padding: 5px 15px;
+    display: block;
+    width: fit-content;
+    width: -webkit-fit-content;
+    border-radius: var(--card-radius);
+    margin-bottom: 2rem;
+}
+
+.experience_cell h4{
+    margin: -1em 0px -0.5em 0px;
+}
+
+.experience_cell img{
+    width: 70%;
+    height: 200px;
+    display: flex;
+    margin: auto;
+    object-fit: contain;
+}
+
+/*Projects*/
+#project_list{
+    display: grid;
+    row-gap: 3rem;
+}
+
+.project_cell{
+    border-radius: var(--card-radius);
+    padding: 50px 50px 35px 50px;
+    background: var(--card-back);
+    color: var(--main-color);
+}
+
+.project_cell > iframe, .project_cell > img{
+    width: 100%;
+    max-height: 750px;
+    object-fit: contain;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    transition: all 0.5s ease-in-out;
+}
+
+.project_cell > img:hover{
+   transform: scale(1.4);
+   border-radius: 15px;
+   box-shadow: 0px 0px 200px rgba(0,0,0,0.2);
+}
+
+
+
+.project_cell h3{
+    margin-bottom: 0px;
+}
+
+#more_btn{
+    margin-top: 2rem;
+}
+
+/*Stack and contacts cards*/
+.stack, .contacts{
+    width: var(--main_width);
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    column-gap:3rem;
+    row-gap:3rem;
+}
+
+.cell{
+    border-radius:  var(--card-radius);
+    padding: 20px 40px;
+    background: linear-gradient(to top right, var(--accent), var(--accent2));
+    color: #fff;
+    scroll-snap-align: start;
+}
+
+.cell:hover{
+    animation: shadow 5s infinite linear;
+}
+
+.stack > .cell{
+    background: #fff;
+    border: var(--border);
+    color: inherit;
+}
+
+.stack > .cell:hover{
+    animation: none;
+}
+
+.cell h3{
+    font-size: min(5.3vw, 1.6rem);
+    margin-bottom: 0em;
+}
+
+.contacts a{
+    color: #fff;
+    cursor: pointer; 
+}
+
+/*Footer*/
+footer{
+    margin-top: 70px;
+    width: 100%;
+    background: rgb(27, 27, 27);
+    color: #fff;
+    padding: 1.5rem 0rem;
+    display: flex;
+}
+
+footer > section{
+    display: flex;
+    width: var(--main-width);
+    justify-content: space-between;
+    margin: auto;
+}
+
+.footer_link{
+    color: #fff;
+    text-decoration: underline;
+}
+
+/*Animations and fixed elements*/
+#to_top{
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    width: 50px;
+    display: none;
+    transform: rotate(180deg);
+    filter: drop-shadow(0px 0px 3px #fff);
+}
+
+@keyframes base{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes top{
+    0%{
+       top: 0px;
+    }
+    100%{
+        top:-5px;
+    }
+}
+
+@keyframes shadow{
+    0%{
+        box-shadow: var(--accent) 10px 0px 20px -5px;
+    }
+    25%{
+        box-shadow: var(--accent2) 0px 10px 20px -5px;
+    }
+    50%{
+        box-shadow: var(--accent) -10px 0px 20px -5px;
+    }
+    75%{
+        box-shadow: var(--accent2) 0px -10px 20px -5px;
+    }
+    100%{
+        box-shadow: var(--accent) 10px 0px 20px -5px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: rgb(56, 56, 56);
+}
+  
+

@@ -155,6 +155,8 @@
         border-top-right-radius: 25px !important;
         border: none !important;
         width: calc(100% + 78px);
+        object-fit: cover;
+        min-height: 225px;
         margin: -39px;
         margin-bottom: 0px;
     }
@@ -196,15 +198,9 @@
     
     /*Fixed objects*/
     #to_top{
-        width: 30px;
-        height: 30px;
-        bottom: 25px;
-        right: 25px;
-        padding: 8px;
-    }
-
-    #to_top > svg{
-        transform: translateY(-3px);
+        width: 40px;
+        bottom: 20px;
+        right: 20px;
     }
 
     ::-webkit-scrollbar {
