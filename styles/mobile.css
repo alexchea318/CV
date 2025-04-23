@@ -138,6 +138,7 @@
 
     .experience_cell > time{
        margin: 0px auto 2rem auto;
+        text-align: center;
     }
 
     /*Projects*/
@@ -166,29 +167,15 @@
     }
 
     /*Stack and contacts cards*/
-    .vertical_stack {
+    .vertical_stack, .stack, .contacts, #project_list {
         gap: 2rem;
-    }
-    .stack, .contacts{
-        grid-template-columns: 87% 87% 87%;
-        width: calc(100% + 2rem);
-        overflow-x: auto;
-        padding-bottom: 5px;
-        scroll-snap-type: x mandatory;
-        margin: 2rem -2rem 0rem 0px;
         column-gap: 2rem;
+        row-gap: 2rem;
+        grid-template-columns: 1fr;
     }
 
     .contacts h3{
         word-wrap: normal;
-    }
-
-    .stack > .cell:last-child, .contacts > a:last-child{
-        margin-right: 2rem;
-    }
-
-    .stack, .contacts, #project_list{
-        row-gap: 2rem;
     }
 
     /*Footer*/

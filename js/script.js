@@ -88,7 +88,7 @@ function getContent(){
 
 function setCurrentYear() {
     const currentYear = new Date().getFullYear()
-    document.getElementById('year').textContent = year;
+    document.getElementById('year').textContent = currentYear;
     document.getElementById('age').textContent = currentYear - 2001;
 }
 
