@@ -1,18 +1,25 @@
 {
-    "experience":[
-         {
-            "title": "НеоБИТ",
-            "subtitle": "Full-stack разработчик",
-            "time": "Февраль 2022 - сейчас",
-            "text": "Разрабатываю веб-приложения (UX/UI + React + Redux + Go + PostgreSQL) ",
-            "img":"neo.jpg"
-        },
-        {
-            "title": "LG Electronics Russia R&D Lab",
-            "subtitle": "Стажировка в отделе Data Science",
-            "time": "Июнь 2021 - Июль 2021",
-            "text": "Проводил исследование методов опитимизации градиентного спуска",
-            "img":"LG.jpg"
-        }
-    ]
+  "experience": [
+    {
+      "title": "Just AI",
+      "subtitle": "Frontend разработчик",
+      "time": "Апрель 24 — Сейчас",
+      "text": "Отвечаю за разработку, тестирование и интерфейсы веб-приложений, которые взаимодействуют с большими языковыми моделями (TS, Vite, React, Playwright, Figma)",
+      "img": "just-ai-vb.png"
+    },
+    {
+      "title": "НеоБИТ",
+      "subtitle": "Full-stack разработчик",
+      "time": "Февраль 2022 — Апрель 2024",
+      "text": "Разрабатывал веб-приложения (Figma, React, Redux, Go, PostgreSQL) ",
+      "img": "neo.jpg"
+    },
+    {
+      "title": "LG Electronics Russia R&D Lab",
+      "subtitle": "Стажировка в отделе Data Science",
+      "time": "Июнь 2021 — Июль 2021",
+      "text": "Проводил исследование методов оптимизации градиентного спуска",
+      "img": "LG.jpg"
+    }
+  ]
 }

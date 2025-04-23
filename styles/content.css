@@ -224,6 +224,12 @@
 }
 
 /*Stack and contacts cards*/
+.vertical_stack {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
 .stack, .contacts{
     width: var(--main_width);
     margin-top: 1.5rem;
@@ -245,13 +251,13 @@
     animation: shadow 5s infinite linear;
 }
 
-.stack > .cell{
+.cell_white{
     background: #fff;
     border: var(--border);
     color: inherit;
 }
 
-.stack > .cell:hover{
+.cell_white:hover{
     animation: none;
 }
 

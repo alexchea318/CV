@@ -86,8 +86,19 @@ function getContent(){
     }
 }
 
+function setCurrentYear() {
+    const currentYear = new Date().getFullYear()
+    document.getElementById('year').textContent = year;
+    document.getElementById('age').textContent = currentYear - 2001;
+}
+
+function init() {
+    getContent();
+    setCurrentYear();
+}
+
 //Entry point
-document.addEventListener("DOMContentLoaded", getContent)
+document.addEventListener("DOMContentLoaded", init)
 
 // Scroll to top button visible
 window.addEventListener("scroll", ()=>{

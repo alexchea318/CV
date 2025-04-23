@@ -166,6 +166,9 @@
     }
 
     /*Stack and contacts cards*/
+    .vertical_stack {
+        gap: 2rem;
+    }
     .stack, .contacts{
         grid-template-columns: 87% 87% 87%;
         width: calc(100% + 2rem);
