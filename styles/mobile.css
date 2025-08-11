@@ -127,7 +127,8 @@
     }
 
     .aw_block:last-child{
-        margin-bottom: -1rem ;
+        display: flex;
+        flex-direction: column-reverse;
     }
 
     /*Experience*/
