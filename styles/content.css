@@ -149,6 +149,15 @@
     border-radius: 25% 50%;
 }
 
+.aw_container > time{
+    background: var(--card-back);
+    padding: 5px 15px;
+    display: flex;
+    width: fit-content;
+    border-radius: var(--card-radius);
+    margin: -1rem 0 1rem 0;
+}
+
 /*Experience*/
 #experience_list{
     display: grid;
@@ -168,7 +177,6 @@
     padding: 5px 15px;
     display: block;
     width: fit-content;
-    width: -webkit-fit-content;
     border-radius: var(--card-radius);
     margin-bottom: 2rem;
 }

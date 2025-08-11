@@ -11,20 +11,6 @@
     --mobile-width: calc(100% - 4rem);
 }
 
-/*@font-face {
-    font-family: "Gilroy";
-    src: url("/styles/fonts/Gilroy400.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Raleway";
-    src: url("/styles/fonts/Raleway400.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-}*/
-
 body{
     margin: 0px;
     font-family: 'Raleway', sans-serif;
@@ -65,4 +51,9 @@ h3{
 
 h4{
     font-size: min(5vw, 1.5rem);
+}
+
+.flex {
+    display: flex;
+    gap: 8px
 }
