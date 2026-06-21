@@ -408,8 +408,8 @@ export const experience = {
       ],
     },
     {
-      period: { ru: "2021", en: "2021" },
-      dateRange: { ru: "Февраль 2021 — Сентябрь 2021", en: "February 2021 — September 2021" },
+      period: { ru: "2022", en: "2022" },
+      dateRange: { ru: "Февраль 2022 — Сентябрь 2022", en: "February 2022 — September 2022" },
       title: { ru: "Fullstack Developer (Junior)", en: "Fullstack Developer (Junior)" },
       company: "НеоБИТ",
       blurb: { ru: "Разработка SPA веб-приложений.", en: "Building SPA web applications." },
@@ -483,7 +483,7 @@ export const contact = {
 ============================================================ */
 export const footer = {
   left: {
-    ru: "© 2026 Александр Чеченев — Full-Stack / AI Engineer (RAG)",
-    en: "© 2026 Alexander Chechenev — Full-Stack / AI Engineer (RAG)",
+    ru: "Александр Чеченев — Full-Stack / AI Engineer (RAG)",
+    en: "Alexander Chechenev — Full-Stack / AI Engineer (RAG)",
   } satisfies I18n,
 };
