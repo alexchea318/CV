@@ -33,7 +33,7 @@ const jsonLd = {
   url: `${SITE_URL}/`,
   email: links.email,
   address: { "@type": "PostalAddress", addressLocality: "Saint Petersburg", addressCountry: "RU" },
-  sameAs: [links.github, links.telegram, links.vk],
+  sameAs: [links.github, links.linkedin, links.telegram, links.vk],
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

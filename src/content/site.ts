@@ -132,7 +132,7 @@ export const achievements = {
     {
       year: "2025",
       color: "violet",
-      img: "/img/elagin.jpg",
+      img: "/img/elagin.png",
       kicker: { ru: "Выступление · Елагин Pro", en: "Public talk · Elagin Pro" },
       title: {
         ru: "Лекция «Свой ChatGPT в 2021 по цене парсера анекдотов»",
@@ -147,7 +147,7 @@ export const achievements = {
     {
       year: "2021",
       color: "grad",
-      img: "/img/best.jpg",
+      img: "/img/best.png",
       kicker: { ru: "Премия Правительства · Findly", en: "Government award · Findly" },
       title: {
         ru: "«Лучший молодёжный проект Санкт-Петербурга»",
@@ -472,6 +472,7 @@ export const contact = {
     { kind: "email", value: links.email, href: `mailto:${links.email}` },
     { kind: "Telegram", value: "Telegram", href: links.telegram },
     { kind: "GitHub", value: "GitHub", href: links.github },
+    { kind: "LinkedIn", value: "LinkedIn", href: links.linkedin },
     { kind: "VK", value: "VK", href: links.vk },
     { kind: "hh.ru", value: "Резюме на hh.ru", href: links.hh },
   ],
