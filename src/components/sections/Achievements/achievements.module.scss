@@ -1,0 +1,207 @@
+@use 'mixins' as m;
+@use 'breakpoints' as bp;
+
+.ach {
+  @include m.gutter;
+  position: relative;
+  z-index: 2;
+  padding-block: 15vh;
+  background: #17150f;
+  color: #f3ebdd;
+  overflow: hidden;
+}
+
+.ach__head {
+  @include m.mono;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(243, 235, 221, 0.5);
+}
+.ach__rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(243, 235, 221, 0.16);
+  @include bp.mobile { display: none; }
+}
+.ach__hint { @include bp.mobile { display: none; } }
+
+.ach__showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 48px 72px;
+  align-items: center;
+  margin-top: 56px;
+  @include bp.mobile { display: none; }
+}
+
+.ach__stage {
+  position: relative;
+  width: 100%;
+  height: clamp(360px, 44vw, 560px);
+}
+.ach__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+.ach__img--active { opacity: 1; }
+
+.ach__list { display: flex; flex-direction: column; }
+
+.ach-row {
+  position: relative;
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  border-top: 1px solid rgba(243, 235, 221, 0.18);
+  padding: 30px 0 30px 24px;
+  opacity: 0.42;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+.ach-row--active { opacity: 1; }
+.ach-row--last { border-bottom: 1px solid rgba(243, 235, 221, 0.18); }
+
+.ach-row__bar {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  bottom: 30px;
+  width: 3px;
+  border-radius: 2px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s var(--ease);
+}
+.ach-row--active .ach-row__bar { transform: scaleY(1); }
+.ach-row__bar--violet { background: #a78bfa; }
+.ach-row__bar--grad { background: linear-gradient(#d21306, #ff7543); }
+
+.ach-row__year {
+  @include m.display;
+  font-weight: 800;
+  font-size: clamp(26px, 2.4vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  flex: 0 0 auto;
+}
+.ach-row__year--violet { color: #a78bfa; }
+.ach-row__year--grad { @include m.grad-text-static; }
+
+.ach-row__body { flex: 1; }
+.ach-row__kicker {
+  @include m.mono;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243, 235, 221, 0.5);
+  margin-bottom: 9px;
+}
+.ach-row__title {
+  @include m.display;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  font-size: clamp(21px, 2.5vw, 36px);
+}
+.ach-row__desc {
+  margin-top: 18px;
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 0.45s ease, transform 0.55s var(--ease);
+}
+.ach-row--active .ach-row__desc {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.ach-row__text {
+  margin: 0;
+  max-width: 520px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(243, 235, 221, 0.64);
+}
+.ach-row__cta {
+  @include m.mono;
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: #ff7543;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.ach__cards {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @include bp.desktop { display: none; }
+}
+.ach-card__img {
+  width: 100%;
+  height: clamp(220px, 56vw, 360px);
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(243, 235, 221, 0.14);
+}
+.ach-card__head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-top: 20px;
+}
+.ach-card__year {
+  @include m.display;
+  font-weight: 800;
+  font-size: clamp(30px, 11vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.ach-card__year--violet { color: #a78bfa; }
+.ach-card__year--grad { @include m.grad-text-static; }
+.ach-card__kicker {
+  @include m.mono;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243, 235, 221, 0.5);
+}
+.ach-card__title {
+  @include m.display;
+  margin: 12px 0 0;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-size: clamp(22px, 6.5vw, 32px);
+}
+.ach-card__text {
+  margin: 16px 0 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: rgba(243, 235, 221, 0.64);
+}
+.ach-card__cta {
+  @include m.mono;
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: #ff7543;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
