@@ -1,1 +1,7 @@
 .idea
+docs/
+.superpowers/
+node_modules/
+.next/
+out/
+*.tsbuildinfo
