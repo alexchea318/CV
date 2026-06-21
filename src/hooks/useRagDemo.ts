@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useLang } from "@/components/lang";
+import { useLang } from "@/components/primitives/T";
 import { ragDemo } from "@/content/site";
 
 export type RagChip = { text: string; shown: boolean };
