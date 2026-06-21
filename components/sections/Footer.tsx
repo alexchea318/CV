@@ -25,7 +25,6 @@ export function Footer() {
       }}
     >
       <span>{t(footer.left)}</span>
-      <span>{t(footer.right)}</span>
     </footer>
   );
 }

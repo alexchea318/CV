@@ -7,10 +7,11 @@ const NB = " "; // non-breaking space
    NAV
 ============================================================ */
 export const nav = {
-  brand: "А.Ч.",
+  brand: "АЧ",
+  // Order matches the on-page section order (achievements precedes work).
   links: [
-    { href: "#work", label: { ru: "РАБОТЫ", en: "WORK" } },
     { href: "#achievements", label: { ru: "ДОСТИЖЕНИЯ", en: "AWARDS" } },
+    { href: "#work", label: { ru: "РАБОТЫ", en: "WORK" } },
     { href: "#experience", label: { ru: "ОПЫТ", en: "CAREER" } },
     { href: "#contact", label: { ru: "КОНТАКТ", en: "CONTACT" } },
   ] satisfies { href: string; label: I18n }[],
@@ -20,8 +21,10 @@ export const nav = {
    HERO  (tenure number is injected dynamically — see lib/tenure)
 ============================================================ */
 export const hero = {
-  location: { ru: "Санкт-Петербург", en: "St. Petersburg" },
-  tenureSuffix: { ru: "в продакшене", en: "in production" },
+  // Typewriter eyebrow: openStatus — location — <tenure phrase> suffix
+  openStatus: { ru: "Открыт к предложениям", en: "Open to work" },
+  location: { ru: "Санкт-Петербург / Удаленно", en: "St. Petersburg / Remote" },
+  tenureSuffix: { ru: "опыт", en: "experience" },
   firstName: { ru: "Александр", en: "Alexander" },
   lastName: { ru: "Чеченев", en: "Chechenev" },
   role: { ru: `Full-Stack / AI${NB}Engineer`, en: "Full-Stack / AI Engineer" },
@@ -32,11 +35,41 @@ export const hero = {
     ru: "Довожу RAG-системы до продакшена и отвечаю за весь путь — бэкенд, фронт, инфраструктуру и качество генерации.",
     en: "I take RAG systems to production and own the whole path — backend, frontend, infrastructure and generation quality.",
   } satisfies I18n,
-  status: {
-    ru: `Открыт к предложениям · удалённо · от 400${NB}000${NB}₽`,
-    en: "Open to work · remote · from 400k ₽",
-  } satisfies I18n,
   scroll: { ru: "ПРОКРУТКА", en: "SCROLL" },
+};
+
+/* ============================================================
+   HERO — animated RAG live-demo chat
+============================================================ */
+export const ragDemo = {
+  liveLabel: "RAG · LIVE DEMO",
+  retrieving: { ru: "извлекаю источники…", en: "retrieving sources…" },
+  items: [
+    {
+      q: { ru: "Где в коде обрабатываются платежи?", en: "Where are payments handled in the code?" },
+      src: ["payments.ts", "billing.py"],
+      a: {
+        ru: "Платежи идут через PaymentService и Stripe-webhook, статусы пишутся в PostgreSQL.",
+        en: "Payments go through PaymentService and a Stripe webhook; statuses are stored in PostgreSQL.",
+      },
+    },
+    {
+      q: { ru: "Как устроен retrieval?", en: "How does retrieval work?" },
+      src: ["index.py", "ranker.py"],
+      a: {
+        ru: "Запрос эмбеддится, ищем в Elasticsearch, затем реранк по релевантности.",
+        en: "The query is embedded, searched in Elasticsearch, then reranked by relevance.",
+      },
+    },
+    {
+      q: { ru: "Что мониторим в проде?", en: "What do we monitor in prod?" },
+      src: ["observability.md"],
+      a: {
+        ru: "Graylog, Grafana и Sentry — ловим деградацию качества RAG раньше пользователей.",
+        en: "Graylog, Grafana and Sentry — we catch RAG quality drift before users do.",
+      },
+    },
+  ] satisfies { q: I18n; src: string[]; a: I18n }[],
 };
 
 /* ============================================================
@@ -49,16 +82,16 @@ export const about = {
   statement: {
     leadA: { ru: "За ", en: "Over " },
     leadB: {
-      ru: ` я вырос от Senior${NB}Frontend и Team${NB}Lead до Full-Stack / AI-инженера. Сегодня строю production-системы на стыке `,
-      en: " I grew from Senior Frontend and Team Lead into a Full-Stack / AI Engineer. Today I build production systems at the intersection of ",
+      ru: ` я вырос до Full-Stack / AI-инженера. Сегодня строю Enterprise production-системы на стыке `,
+      en: " I grew into a Full-Stack / AI Engineer. Today I build Enterprise production systems at the intersection of ",
     },
     accent: { ru: "RAG, LLM", en: "RAG, LLM" },
-    tail: { ru: ` и классической веб-разработки в Just${NB}AI.`, en: " and classic web engineering at Just AI." },
+    tail: { ru: ` и классической Fullstack-разработки.`, en: " and classic Fullstack engineering at." },
   } satisfies Record<"leadA" | "leadB" | "accent" | "tail", I18n>,
   // First stat (years in production) is rendered dynamically; these follow it.
   stats: [
-    { value: "ИБ", label: { ru: "высшее образование · СПбПУ", en: "higher degree · SPbPU" } },
-    { value: "B2", label: { ru: "английский · средне-продвинутый", en: "English · upper-intermediate" } },
+    { value: "ИБ СПбПУ", label: { ru: "высшее образование", en: "higher degree" } },
+    { value: "B2", label: { ru: "английский", en: "English" } },
   ] satisfies { value: string; label: I18n }[],
   capsHeading: { ru: "Полный цикл — всё в одних руках", en: "Full cycle — all in one pair of hands" },
   caps: [
@@ -320,5 +353,4 @@ export const footer = {
     ru: "© 2026 Александр Чеченев — Full-Stack / AI Engineer (RAG)",
     en: "© 2026 Alexander Chechenev — Full-Stack / AI Engineer (RAG)",
   } satisfies I18n,
-  right: { ru: `Удалённо · от 400${NB}000${NB}₽`, en: "Remote · from 400 000 ₽" } satisfies I18n,
 };

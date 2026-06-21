@@ -58,29 +58,6 @@ export function Portfolio({ initialLang }: { initialLang: Locale }) {
           }}
         />
 
-        {/* parallax watermark */}
-        <div
-          data-parallax="0.18"
-          aria-hidden="true"
-          className="display"
-          style={{
-            position: "absolute",
-            top: "78vh",
-            left: "-2vw",
-            fontWeight: 800,
-            fontSize: "34vw",
-            lineHeight: 0.8,
-            letterSpacing: "-.04em",
-            color: "transparent",
-            WebkitTextStroke: "1.5px rgba(23,21,15,.07)",
-            pointerEvents: "none",
-            zIndex: 0,
-            whiteSpace: "nowrap",
-          }}
-        >
-          RAG
-        </div>
-
         <Nav />
         <main>
           <Hero />

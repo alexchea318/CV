@@ -15,12 +15,11 @@ export function About() {
   const [active, setActive] = useState(0);
 
   const s = about.statement;
-  const yearsLabel = lang === "ru" ? `${tenureUnit(lang)} в продакшене` : "years in production";
 
   return (
     <section
       className="gutter"
-      style={{ position: "relative", zIndex: 2, paddingBlock: "16vh", borderTop: `1px solid ${inkMuted(0.1)}` }}
+      style={{ position: "relative", zIndex: 2, paddingBlock: "16vh" }}
     >
       <Reveal className="mono" style={{ fontSize: 12, letterSpacing: ".14em", color: inkMuted(0.45), marginBottom: 54 }}>
         {about.index} <span>{t(about.label)}</span>
@@ -50,12 +49,6 @@ export function About() {
               paddingTop: 38,
             }}
           >
-            <div style={{ flex: "0 0 auto" }}>
-              <div className="display" style={statNumber}>
-                <CountUp />
-              </div>
-              <div className="mono" style={statLabel}>{yearsLabel}</div>
-            </div>
             {about.stats.map((st) => (
               <div key={st.value} style={{ flex: "0 0 auto" }}>
                 <div className="display" style={statNumber}>{st.value}</div>
@@ -77,6 +70,7 @@ export function About() {
               <div
                 key={i}
                 data-cursor
+                className="cap-row"
                 onMouseEnter={() => setActive(i)}
                 onClick={() => setActive(i)}
                 style={{
@@ -110,7 +104,7 @@ export function About() {
                     {t(cap.name)}
                   </div>
                   <div
-                    className="mono"
+                    className="mono cap-stack"
                     style={{
                       fontSize: 12.5,
                       letterSpacing: ".03em",

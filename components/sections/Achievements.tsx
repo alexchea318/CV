@@ -18,25 +18,17 @@ export function Achievements() {
       className="gutter"
       style={{ position: "relative", zIndex: 2, paddingBlock: "15vh", background: "#17150f", color: "#f3ebdd", overflow: "hidden" }}
     >
-      <Reveal
-        className="mono"
-        style={{ display: "flex", alignItems: "baseline", gap: 18, fontSize: 12, letterSpacing: ".14em", color: cream(0.5) }}
-      >
+      <Reveal className="mono" style={{ display: "flex", alignItems: "baseline", gap: 18, fontSize: 12, letterSpacing: ".14em", color: cream(0.5) }}>
         {achievements.index} <span>{t(achievements.label)}</span>
-        <span style={{ flex: 1, height: 1, background: cream(0.16) }} />
-        <span>{t(achievements.hint)}</span>
+        <span className="dt-only" style={{ flex: 1, height: 1, background: cream(0.16) }} />
+        <span className="dt-only">{t(achievements.hint)}</span>
       </Reveal>
 
+      {/* desktop: interactive showcase */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(330px,1fr))",
-          gap: "48px 72px",
-          alignItems: "center",
-          marginTop: 56,
-        }}
+        className="dt-only"
+        style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(330px,1fr))", gap: "48px 72px", alignItems: "center", marginTop: 56 }}
       >
-        {/* image stage */}
         <Reveal delay={40} style={{ position: "relative", width: "100%", height: "clamp(360px,44vw,560px)" }}>
           <div
             aria-hidden="true"
@@ -78,7 +70,6 @@ export function Achievements() {
           ))}
         </Reveal>
 
-        {/* rows */}
         <Reveal delay={120} style={{ display: "flex", flexDirection: "column" }}>
           {items.map((item, i) => {
             const on = i === active;
@@ -118,28 +109,15 @@ export function Achievements() {
                 />
                 <span
                   className={item.color === "grad" ? "display grad-text-static" : "display"}
-                  style={{
-                    fontWeight: 800,
-                    fontSize: "clamp(26px,2.4vw,40px)",
-                    lineHeight: 1,
-                    letterSpacing: "-.03em",
-                    flex: "0 0 auto",
-                    ...(item.color === "violet" ? { color: "#a78bfa" } : {}),
-                  }}
+                  style={{ fontWeight: 800, fontSize: "clamp(26px,2.4vw,40px)", lineHeight: 1, letterSpacing: "-.03em", flex: "0 0 auto", ...(item.color === "violet" ? { color: "#a78bfa" } : {}) }}
                 >
                   {item.year}
                 </span>
                 <div style={{ flex: 1 }}>
-                  <div
-                    className="mono"
-                    style={{ fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: cream(0.5), marginBottom: 9 }}
-                  >
+                  <div className="mono" style={{ fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: cream(0.5), marginBottom: 9 }}>
                     {t(item.kicker)}
                   </div>
-                  <h3
-                    className="display"
-                    style={{ margin: 0, fontWeight: 700, lineHeight: 1.06, letterSpacing: "-.02em", fontSize: "clamp(21px,2.5vw,36px)" }}
-                  >
+                  <h3 className="display" style={{ margin: 0, fontWeight: 700, lineHeight: 1.06, letterSpacing: "-.02em", fontSize: "clamp(21px,2.5vw,36px)" }}>
                     {t(item.title)}
                   </h3>
                   <div
@@ -151,18 +129,9 @@ export function Achievements() {
                       transition: "max-height .55s cubic-bezier(.16,1,.3,1), opacity .5s ease, margin .5s ease",
                     }}
                   >
-                    <p style={{ margin: 0, maxWidth: 520, fontSize: 15.5, lineHeight: 1.6, color: cream(0.64) }}>
-                      {t(item.text)}
-                    </p>
+                    <p style={{ margin: 0, maxWidth: 520, fontSize: 15.5, lineHeight: 1.6, color: cream(0.64) }}>{t(item.text)}</p>
                     {item.cta && (
-                      <a
-                        href={item.cta.href || "#"}
-                        target="_blank"
-                        rel="noopener"
-                        data-cursor
-                        className="mono"
-                        style={{ marginTop: 16, fontSize: 13, letterSpacing: ".03em", color: "#FF7543", display: "inline-flex", alignItems: "center", gap: 9 }}
-                      >
+                      <a href={item.cta.href || "#"} target="_blank" rel="noopener" data-cursor className="mono" style={{ marginTop: 16, fontSize: 13, letterSpacing: ".03em", color: "#FF7543", display: "inline-flex", alignItems: "center", gap: 9 }}>
                         {t(item.cta.label)}
                       </a>
                     )}
@@ -172,6 +141,38 @@ export function Achievements() {
             );
           })}
         </Reveal>
+      </div>
+
+      {/* mobile: full cards, no hover */}
+      <div className="mb-only" style={{ marginTop: 40, display: "flex", flexDirection: "column", gap: 40 }}>
+        {items.map((item) => (
+          <div key={item.year}>
+            <img
+              src={item.img}
+              alt={t(item.title)}
+              loading="lazy"
+              style={{ width: "100%", height: "clamp(220px,56vw,360px)", objectFit: "cover", borderRadius: 16, boxShadow: "0 24px 50px rgba(0,0,0,.45)", border: `1px solid ${cream(0.14)}` }}
+            />
+            <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginTop: 20 }}>
+              <span
+                className={item.color === "grad" ? "display grad-text-static" : "display"}
+                style={{ fontWeight: 800, fontSize: "clamp(30px,11vw,46px)", lineHeight: 1, letterSpacing: "-.03em", ...(item.color === "violet" ? { color: "#a78bfa" } : {}) }}
+              >
+                {item.year}
+              </span>
+              <span className="mono" style={{ fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: cream(0.5) }}>{t(item.kicker)}</span>
+            </div>
+            <h3 className="display" style={{ margin: "12px 0 0", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-.02em", fontSize: "clamp(22px,6.5vw,32px)" }}>
+              {t(item.title)}
+            </h3>
+            <p style={{ margin: "16px 0 0", fontSize: 15.5, lineHeight: 1.6, color: cream(0.64) }}>{t(item.text)}</p>
+            {item.cta && (
+              <a href={item.cta.href || "#"} target="_blank" rel="noopener" className="mono" style={{ marginTop: 16, fontSize: 13, letterSpacing: ".03em", color: "#FF7543", display: "inline-flex", alignItems: "center", gap: 9 }}>
+                {t(item.cta.label)}
+              </a>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );
