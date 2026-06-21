@@ -1,5 +1,14 @@
-/** Canonical production origin. Update to the deployed Vercel domain. */
-export const SITE_URL = "https://alexchea.vercel.app";
+/**
+ * Canonical production origin, baked into SEO meta, JSON-LD, sitemap and robots
+ * at build time (static export — there is no server to infer the host).
+ *
+ * On Vercel it is derived automatically from the project's production domain,
+ * so nothing needs editing. The fallback is used for local builds and only
+ * matters if you later attach a custom domain — then set it here.
+ */
+export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "https://alexchea.vercel.app";
 
 export const links = {
   email: "alexchea319@gmail.com",

@@ -56,16 +56,13 @@ title: { ru: "Заголовок на русском", en: "English title" }
 
 ---
 
-## Изменить канонический URL
+## Канонический URL
 
-После подключения домена обнови одну строку:
-
-```ts
-// src/lib/config.ts
-export const SITE_URL = "https://your-domain.com";
-```
-
-Используется в SEO-мета-тегах, JSON-LD и `sitemap.xml`.
+Статический экспорт «запекает» абсолютные URL (canonical, Open Graph, JSON-LD,
+`sitemap.xml`, `robots.txt`) на этапе сборки. На Vercel домен подхватывается
+автоматически из `VERCEL_PROJECT_PRODUCTION_URL` — **руками ничего менять не
+нужно**. Менять `SITE_URL` в `src/lib/config.ts` нужно только если позже
+подключишь собственный домен.
 
 ---
 
@@ -79,7 +76,7 @@ export const SITE_URL = "https://your-domain.com";
    ```json
    { "buildCommand": "next build", "outputDirectory": "out", "framework": "nextjs" }
    ```
-4. После деплоя обновить `SITE_URL` в `src/lib/config.ts` на выданный домен.
+4. Канонический домен подхватится автоматически — править ничего не нужно.
 
 ### GitHub Pages
 
