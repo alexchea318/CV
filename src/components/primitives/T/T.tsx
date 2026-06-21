@@ -4,11 +4,11 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useState,
   type ReactNode,
 } from "react";
 import type { I18n, Locale } from "@/lib/i18n";
+import { useSyncLangUrl } from "@/hooks/useSyncLangUrl";
 
 type LangCtx = {
   lang: Locale;
@@ -25,17 +25,7 @@ export function LangProvider({
   children: ReactNode;
 }) {
   const [lang, setLangState] = useState<Locale>(initial);
-
-  // Keep <html lang> and the shareable URL in sync without a reload, so a
-  // deep link like /en/ opens in English and the toggle stays bookmarkable.
-  useEffect(() => {
-    document.documentElement.lang = lang;
-    const path = lang === "en" ? "/en/" : "/";
-    if (window.location.pathname !== path) {
-      window.history.replaceState(null, "", path + window.location.hash);
-    }
-  }, [lang]);
-
+  useSyncLangUrl(lang);
   const setLang = useCallback((l: Locale) => setLangState(l), []);
 
   return <Ctx.Provider value={{ lang, setLang }}>{children}</Ctx.Provider>;

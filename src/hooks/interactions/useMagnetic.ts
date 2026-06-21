@@ -1,7 +1,6 @@
 "use client";
 import { useEffect } from "react";
-
-const EASE = "cubic-bezier(.16,1,.3,1)";
+import { EASE } from "./ease";
 
 /** Magnetic pull on [data-magnet] elements toward the cursor (fine pointer only). */
 export function useMagnetic() {

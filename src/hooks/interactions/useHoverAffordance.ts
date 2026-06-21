@@ -1,8 +1,6 @@
 "use client";
 import { useEffect } from "react";
-
-// Easing for JS-driven transitions (not expressible via CSS var in inline style).
-const EASE = "cubic-bezier(.16,1,.3,1)";
+import { EASE } from "./ease";
 
 /** Case-row hover slide (title only) + generic link underline affordance. */
 export function useHoverAffordance() {
