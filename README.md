@@ -1,7 +1,8 @@
-# Портфолио — FullStack AI Engineer Александр Чеченев
+# Портфолио — Full-Stack / AI Engineer Александр Чеченев
 
-Статически экспортируемый двуязычный (RU/EN) сайт-портфолио в тёмно-кинематографическом стиле.
-Живой адрес обновляется в `lib/config.ts` (см. ниже).
+Статически экспортируемый двуязычный (RU/EN) сайт-резюме в editorial-кинетическом
+стиле (тёплая бумага + кинетика, акцентные тёмные секции). Канонический адрес
+задаётся в `src/lib/config.ts` (см. ниже).
 
 ---
 
@@ -9,83 +10,62 @@
 
 | Слой | Инструмент |
 |---|---|
-| Фреймворк | Next.js 15 (App Router, `output: 'export'`) |
+| Фреймворк | Next.js 15 (App Router, `output: 'export'` — статический SSG) |
 | Язык | TypeScript |
-| Стили | Tailwind CSS v4 |
-| Анимации | Motion (Framer Motion v12) + Lenis (плавный скролл) |
-| Шрифты | Unbounded + Geist — самохостинг, внешних запросов нет |
-| Тесты | Vitest |
+| Стили | **SCSS Modules + БЭМ** (Tailwind v4 — только для тривиального, ≤3 утилиты) |
+| Анимации | Чистые CSS `@keyframes` + лёгкие хуки (`useReveal`, `useCountUp`, кастомный курсор, magnetic, parallax) |
+| Шрифты | Manrope + JetBrains Mono (Google Fonts, `@import` в `globals.css`) |
 | Деплой | Vercel (основной) / GitHub Pages (`out/`) |
+
+Правила кодовой базы — в [`CLAUDE.md`](./CLAUDE.md).
 
 ---
 
 ## Команды
 
 ```bash
-# Разработка
-npm run dev        # http://localhost:3000
-
-# Сборка
-npm run build      # → артефакты в out/
-
-# Предпросмотр собранного
-npm run start      # npx serve out
-
-# Тесты
-npm test           # vitest run (включая perf-budget)
-
-# Линтинг
-npm run lint
+npm run dev        # разработка — http://localhost:3000
+npm run build      # статический экспорт → out/ (включает проверку типов)
+npm run start      # предпросмотр собранного (npx serve out)
+npm run lint       # next lint (ESLint в проекте не настроен)
 ```
+
+> Тестов нет; гейтом служит проверка типов внутри `npm run build`.
 
 ---
 
 ## Редактирование контента
 
-Весь контент живёт в `content/*.ts`. Каждое поле с переводом — объект `{ ru: "...", en: "..." }`.
-
-```
-content/
-  profile.ts       — имя, должность, bio
-  capabilities.ts  — AI-возможности (centerpiece)
-  experience.ts    — опыт работы
-  projects.ts      — проекты
-  awards.ts        — награды и сертификаты
-  contacts.ts      — контакты (Telegram, Email, GitHub, LinkedIn, VK)
-```
-
-Пример двуязычного поля:
+Весь двуязычный контент — в одном файле `src/content/site.ts`. Каждое
+переводимое поле — объект `{ ru: "...", en: "..." }`.
 
 ```ts
 title: { ru: "Заголовок на русском", en: "English title" }
 ```
 
----
+Разделы в `site.ts`: `nav`, `hero`, `ragDemo`, `about`, `achievements`,
+`work`, `marquee`, `experience`, `skills`, `contact`, `footer`.
 
-## Добавить LinkedIn
+**Опыт считается автоматически.** Число лет в Hero и «О себе» вычисляется из
+`TENURE_START` в `src/lib/tenure.ts` (с корректным склонением: `5 → «5 лет»`,
+`4.5 → «4,5 года»`). Год в футере берётся из `getCurrentYear()`
+(`src/lib/date.ts`). Хардкодить эти значения не нужно.
 
-В файле `content/contacts.ts` найди запись LinkedIn и замени `href` на реальный URL, убери `placeholder: true`:
-
-```ts
-// было:
-{ label: "LinkedIn", value: "Скоро / Soon", href: "#", placeholder: true },
-
-// стало:
-{ label: "LinkedIn", value: "alexander-chechenev", href: "https://www.linkedin.com/in/alexander-chechenev" },
-```
+**Контакты и ссылки** (email, Telegram, GitHub, LinkedIn, VK, hh.ru) — в
+`src/lib/config.ts` (`links`), порядок и подписи — в `contact.links` в `site.ts`.
 
 ---
 
 ## Изменить канонический URL
 
-После подключения домена на Vercel или GitHub Pages обнови одну строку:
+После подключения домена обнови одну строку:
 
 ```ts
-// lib/config.ts
+// src/lib/config.ts
 export const SITE_URL = "https://your-domain.com";
 ```
 
-Это значение используется в SEO-мета-тегах, JSON-LD и `sitemap.xml`.
+Используется в SEO-мета-тегах, JSON-LD и `sitemap.xml`.
 
 ---
 
@@ -95,46 +75,43 @@ export const SITE_URL = "https://your-domain.com";
 
 1. Запушить ветку в GitHub.
 2. В Vercel: **Add New Project → Import** репозиторий.
-3. Vercel автоматически прочитает `vercel.json`:
+3. Vercel прочитает `vercel.json`:
    ```json
    { "buildCommand": "next build", "outputDirectory": "out", "framework": "nextjs" }
    ```
-4. После деплоя обновить `SITE_URL` в `lib/config.ts` на выданный Vercel домен.
+4. После деплоя обновить `SITE_URL` в `src/lib/config.ts` на выданный домен.
 
 ### GitHub Pages
 
-1. Выполнить `npm run build` — появится `out/`.
-2. Запушить содержимое `out/` в ветку `gh-pages` (или настроить GitHub Actions).
-3. Включить Pages в Settings → Pages → Source: `gh-pages / root`.
-
----
-
-## Lighthouse (ручная проверка)
-
-После `npm run build` запустить:
-
-```bash
-npm run start   # поднимет out/ на http://localhost:3000
-```
-
-Открыть Chrome DevTools → Lighthouse → Mobile → `http://localhost:3000/ru/`.
-Целевые показатели: Performance ≥ 90, без render-blocking внешних запросов.
+1. `npm run build` → появится `out/`.
+2. Запушить содержимое `out/` в ветку `gh-pages` (или через GitHub Actions).
+3. Settings → Pages → Source: `gh-pages / root`.
 
 ---
 
 ## Структура проекта
 
 ```
-app/
-  [locale]/        — страницы RU и EN
-components/        — UI-компоненты (Hero, Capabilities, Experience, ...)
-content/           — весь контент (bilingual .ts файлы)
-lib/
-  config.ts        — SITE_URL
-  i18n.ts          — хелперы локализации
-public/
-  fonts/           — самохостинг Unbounded + Geist
-tests/             — Vitest тесты (включая perf-budget)
-out/               — статический экспорт (git-ignored)
-vercel.json        — конфиг деплоя
+src/
+  app/                 — роуты: / (RU), /en/ (EN), not-found, sitemap, robots
+    globals.css        — Tailwind import + @theme токены + reset + keyframes
+    layout.tsx         — метаданные, JSON-LD
+  components/
+    Portfolio/         — сборка страницы (+ useInteractions)
+    Cursor/            — кастомный курсор (desktop)
+    primitives/        — T/LangProvider (i18n), Reveal, CountUp
+    sections/          — Nav, Hero, About, Achievements, Work, Marquee,
+                         Experience, Skills, Contact, Footer
+                         (сложные секции дробятся в parts/)
+  hooks/               — поведение: useMediaQuery, useReveal, useCountUp,
+                         useMobileMenu, useRagDemo, useSyncLangUrl, interactions/*
+  lib/                 — i18n, config (SITE_URL, links), tenure, date, cx
+  content/site.ts      — весь двуязычный контент
+  styles/              — _tokens, _mixins, _breakpoints (SCSS-фундамент)
+public/img/            — изображения
+out/                   — статический экспорт (git-ignored)
+vercel.json            — конфиг деплоя
 ```
+
+Каждый компонент — своя папка (`Name.tsx` + `name.module.scss` + `index.ts`),
+вся behavior-логика — в `src/hooks/`. Подробнее — в [`CLAUDE.md`](./CLAUDE.md).
