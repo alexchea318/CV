@@ -12,17 +12,21 @@
 @mixin gutter { padding-inline: var(--gutter); }
 
 @mixin grad-text {
-  background: linear-gradient(110deg, var(--color-red), var(--color-orange), var(--color-violet));
+  // Hex from tokens, not var(--color-*): Tailwind v4 @theme tree-shakes unused
+  // theme vars, so var(--color-red) is empty at runtime.
+  background: linear-gradient(110deg, t.$red, t.$orange, t.$violet);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  // Consumer module must define @keyframes axc-pan locally — CSS Modules scopes
+  // the animation name, so the keyframes must be co-scoped in the same file.
   animation: axc-pan 9s linear infinite;
   @media (prefers-reduced-motion: reduce) { animation: none; }
 }
 @mixin grad-text-static {
-  background: linear-gradient(110deg, var(--color-red), var(--color-orange));
+  background: linear-gradient(110deg, t.$red, t.$orange);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

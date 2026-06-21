@@ -1,6 +1,12 @@
 @use 'mixins' as m;
 @use 'breakpoints' as bp;
 
+// Local copies of shared keyframes: CSS Modules scopes animation names, so the
+// keyframes must live in the same module file as the references to match.
+@keyframes axc-pan { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+@keyframes axc-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes axc-cue { 0% { transform: translateY(0); opacity: .9; } 60% { opacity: .15; } 100% { transform: translateY(16px); opacity: 0; } }
+
 .hero {
   position: relative;
   z-index: 2;

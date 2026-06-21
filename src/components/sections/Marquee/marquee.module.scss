@@ -1,6 +1,9 @@
 @use 'mixins' as m;
 @use 'breakpoints' as bp;
 
+// Co-scoped with the animation reference below (CSS Modules scopes the name).
+@keyframes axc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
 .marquee {
   position: relative;
   z-index: 2;

@@ -1,6 +1,9 @@
 @use 'mixins' as m;
 @use 'breakpoints' as bp;
 
+// Co-scoped with the .menu reveal animation (CSS Modules scopes the name).
+@keyframes axc-reveal { from { opacity: 0; transform: translateY(42px); } to { opacity: 1; transform: translateY(0); } }
+
 .nav {
   position: fixed;
   top: 0;

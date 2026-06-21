@@ -1,5 +1,8 @@
 @use 'mixins' as m;
 
+// Co-scoped with the animation reference below (CSS Modules scopes the name).
+@keyframes axc-pulse { 0%, 100% { opacity: .35; transform: scale(1); } 50% { opacity: 1; transform: scale(1.25); } }
+
 .rag {
   flex: 0 1 410px;
   width: 100%;
