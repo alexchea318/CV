@@ -1,0 +1,48 @@
+@use 'mixins' as m;
+
+.contact {
+  position: relative;
+  z-index: 2;
+  padding: 18vh 6vw 8vh;
+}
+
+.contact__head {
+  @include m.mono;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(23, 21, 15, 0.45);
+  margin-bottom: 34px;
+}
+
+.contact__headline {
+  @include m.display;
+  display: inline-block;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-size: clamp(46px, 11vw, 180px);
+  background: linear-gradient(110deg, #17150f 60%, #8e4ec6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 44px;
+  margin-top: 64px;
+  border-top: 1px solid rgba(23, 21, 15, 0.14);
+  padding-top: 40px;
+}
+
+.contact__link {
+  @include m.mono;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.contact__arrow { color: rgba(23, 21, 15, 0.4); }

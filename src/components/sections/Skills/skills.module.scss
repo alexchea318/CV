@@ -1,0 +1,49 @@
+@use 'mixins' as m;
+
+.skills {
+  @include m.gutter;
+  position: relative;
+  z-index: 2;
+  padding-block: 14vh;
+  background: #17150f;
+  color: #f3ebdd;
+}
+
+.skills__head {
+  @include m.mono;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(243, 235, 221, 0.5);
+  margin-bottom: 54px;
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 48px 56px;
+}
+
+.skills__title {
+  @include m.mono;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: #ff7543;
+  margin-bottom: 18px;
+}
+
+.skills__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.skills__cell { display: contents; }
+
+.skills__item {
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(243, 235, 221, 0.85);
+}
+
+.skills__sep { opacity: 0.3; }
