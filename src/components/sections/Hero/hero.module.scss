@@ -1,0 +1,131 @@
+@use 'mixins' as m;
+@use 'breakpoints' as bp;
+
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 108px 6vw 48px;
+}
+
+.hero__eyebrow { margin-bottom: 18px; }
+.hero__status {
+  @include m.mono;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(23, 21, 15, 0.6);
+  line-height: 1.7;
+}
+.hero__pulse {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #30a46c;
+  margin-right: 11px;
+  vertical-align: middle;
+  animation: axc-blink 1.3s step-end infinite;
+  @include bp.reduced-motion { animation: none; }
+}
+.hero__status-text { vertical-align: middle; }
+
+.hero__title {
+  @include m.display;
+  margin: 0;
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  font-size: clamp(58px, 15.5vw, 250px);
+}
+.hero__line { display: block; overflow: hidden; }
+.hero__word { display: block; }
+.hero__word--grad {
+  @include m.grad-text;
+  display: block;
+}
+
+.hero__role-row { margin-top: 30px; }
+.hero__role-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 18px;
+}
+.hero__role {
+  @include m.display;
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 42px);
+  letter-spacing: -0.025em;
+}
+.hero__spec {
+  @include m.mono;
+  font-size: clamp(12px, 1.1vw, 15px);
+  letter-spacing: 0.04em;
+  color: rgba(23, 21, 15, 0.5);
+  padding-bottom: 5px;
+}
+.hero__background {
+  @include m.mono;
+  margin-top: 15px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: rgba(23, 21, 15, 0.55);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+.hero__bg-role { color: #8e4ec6; font-weight: 600; }
+.hero__bg-sep { opacity: 0.4; }
+
+.hero__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px 56px;
+  margin-top: 44px;
+}
+.hero__tagline-wrap { max-width: 500px; }
+.hero__tagline {
+  margin: 0;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.5;
+  color: rgba(23, 21, 15, 0.72);
+}
+
+.hero__scroll {
+  @include m.mono;
+  position: absolute;
+  bottom: 34px;
+  left: 6vw;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(23, 21, 15, 0.45);
+  @include bp.mobile { display: none; }
+}
+.hero__mouse {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 26px;
+  border: 1px solid rgba(23, 21, 15, 0.35);
+  border-radius: 9px;
+}
+.hero__cue {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 2px;
+  height: 6px;
+  background: rgba(23, 21, 15, 0.6);
+  transform: translateX(-50%);
+  animation: axc-cue 1.8s ease-in-out infinite;
+}

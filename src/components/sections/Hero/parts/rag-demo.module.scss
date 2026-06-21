@@ -1,0 +1,112 @@
+@use 'mixins' as m;
+
+.rag {
+  flex: 0 1 410px;
+  width: 100%;
+  max-width: 430px;
+  background: rgba(255, 253, 247, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(23, 21, 15, 0.12);
+  border-radius: 16px;
+  padding: 16px 16px 18px;
+  box-shadow: 0 24px 60px rgba(23, 21, 15, 0.1);
+}
+
+.rag__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(23, 21, 15, 0.08);
+  margin-bottom: 14px;
+}
+.rag__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #30a46c;
+}
+.rag__live {
+  @include m.mono;
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  color: rgba(23, 21, 15, 0.5);
+}
+.rag__src {
+  @include m.mono;
+  margin-left: auto;
+  font-size: 10.5px;
+  color: rgba(23, 21, 15, 0.32);
+}
+
+.rag__thread {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  min-height: 196px;
+}
+
+.msg--user {
+  align-self: flex-end;
+  max-width: 86%;
+  background: #17150f;
+  color: #f3ebdd;
+  border-radius: 14px 14px 4px 14px;
+  padding: 9px 13px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.msg--bot {
+  align-self: flex-start;
+  max-width: 92%;
+  background: rgba(23, 21, 15, 0.05);
+  color: #17150f;
+  border-radius: 14px 14px 14px 4px;
+  padding: 9px 13px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.rag__retrieving {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  color: rgba(23, 21, 15, 0.45);
+}
+.rag__pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8e4ec6;
+  animation: axc-pulse 1s ease-in-out infinite;
+}
+
+.rag__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-self: flex-start;
+}
+.rag__chip {
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px;
+  color: #8e4ec6;
+  background: rgba(142, 78, 198, 0.1);
+  border: 1px solid rgba(142, 78, 198, 0.28);
+  border-radius: 6px;
+  padding: 2px 8px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease);
+}
+.rag__chip--shown {
+  opacity: 1;
+  transform: translateY(0);
+}
