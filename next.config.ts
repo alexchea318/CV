@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  images: { unoptimized: true }, // required for static export
+  // No `output: 'export'` — Vercel hosts Next.js natively and prerenders these
+  // static pages itself. Forcing export only causes Output Directory / routes-
+  // manifest conflicts on Vercel.
   trailingSlash: true,
   sassOptions: { includePaths: ["src/styles"] },
 };

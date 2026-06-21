@@ -10,7 +10,7 @@
 
 | Слой | Инструмент |
 |---|---|
-| Фреймворк | Next.js 15 (App Router, `output: 'export'` — статический SSG) |
+| Фреймворк | Next.js 15 (App Router, SSG — страницы пререндерятся на сборке) |
 | Язык | TypeScript |
 | Стили | **SCSS Modules + БЭМ** (Tailwind v4 — только для тривиального, ≤3 утилиты) |
 | Анимации | Чистые CSS `@keyframes` + лёгкие хуки (`useReveal`, `useCountUp`, кастомный курсор, magnetic, parallax) |
@@ -25,8 +25,8 @@
 
 ```bash
 npm run dev        # разработка — http://localhost:3000
-npm run build      # статический экспорт → out/ (включает проверку типов)
-npm run start      # предпросмотр собранного (npx serve out)
+npm run build      # прод-сборка в .next (включает проверку типов)
+npm run start      # запуск прод-сборки локально (next start, после build)
 npm run lint       # next lint (ESLint в проекте не настроен)
 ```
 
@@ -58,8 +58,8 @@ title: { ru: "Заголовок на русском", en: "English title" }
 
 ## Канонический URL
 
-Статический экспорт «запекает» абсолютные URL (canonical, Open Graph, JSON-LD,
-`sitemap.xml`, `robots.txt`) на этапе сборки. На Vercel домен подхватывается
+Сборка «запекает» абсолютные URL (canonical, Open Graph, JSON-LD,
+`sitemap.xml`, `robots.txt`) на этапе пререндера. На Vercel домен подхватывается
 автоматически из `VERCEL_PROJECT_PRODUCTION_URL` — **руками ничего менять не
 нужно**. Менять `SITE_URL` в `src/lib/config.ts` нужно только если позже
 подключишь собственный домен.
@@ -71,14 +71,16 @@ title: { ru: "Заголовок на русском", en: "English title" }
 1. Запушить репозиторий в GitHub.
 2. В Vercel: **Add New → Project → Import** репозиторий → **Deploy**.
 
-Никакого `vercel.json` не нужно: Vercel сам определяет Next.js и статический
-экспорт (`output: 'export'` в `next.config.ts`) и отдаёт `out/`. Канонический
-домен подхватывается из build-окружения Vercel. Каждый push в продакшен-ветку
-передеплоивает сайт.
+Никакого `vercel.json` и никаких ручных настроек сборки не нужно — Vercel сам
+определяет Next.js, собирает и хостит (страницы пререндерятся в статику).
+Канонический домен подхватывается из build-окружения Vercel. Каждый push в
+продакшен-ветку передеплоивает сайт.
 
-> Важно: не задавай вручную «Output Directory» в настройках проекта Vercel при
-> framework = Next.js — для export это вызывает ошибку поиска `routes-manifest.json`.
-> Оставь zero-config.
+> **Важно (иначе `routes-manifest.json couldn't be found`):** не переопределяй
+> **Output Directory** в Project → Settings → Build and Deployment — должен быть
+> дефолт (`.next`). Если там остался override `out` от ранних экспериментов —
+> выключи (Override → off) и сделай Redeploy. См.
+> [доку Vercel](https://github.com/vercel/vercel/blob/main/errors/now-next-routes-manifest.md).
 
 ---
 
@@ -102,8 +104,7 @@ src/
   content/site.ts      — весь двуязычный контент
   styles/              — _tokens, _mixins, _breakpoints (SCSS-фундамент)
 public/img/            — изображения
-out/                   — статический экспорт (git-ignored)
-vercel.json            — конфиг деплоя
+.next/                 — прод-сборка (git-ignored)
 ```
 
 Каждый компонент — своя папка (`Name.tsx` + `name.module.scss` + `index.ts`),
