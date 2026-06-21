@@ -1,0 +1,5 @@
+// Desktop/mobile swap point — matches the original 820/821px boundary.
+@mixin desktop { @media (min-width: 821px) { @content; } }
+@mixin mobile  { @media (max-width: 820px) { @content; } }
+@mixin no-hover { @media (hover: none), (pointer: coarse) { @content; } }
+@mixin reduced-motion { @media (prefers-reduced-motion: reduce) { @content; } }

@@ -1,0 +1,12 @@
+// Compile-time mirror of the @theme tokens in globals.css.
+// Prefer runtime var(--*) in modules; use these only in maps/calc.
+$ink: #17150f;
+$bg: #f3ebdd;
+$panel: #ece2d0;
+$red: #d21306;
+$orange: #ff7543;
+$violet: #8e4ec6;
+$green: #30a46c;
+$ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+@function ink-a($a) { @return rgba($ink, $a); }

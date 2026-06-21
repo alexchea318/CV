@@ -1,0 +1,39 @@
+@use 'tokens' as t;
+
+@mixin mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+@mixin display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+@mixin gutter { padding-inline: var(--gutter); }
+
+@mixin grad-text {
+  background: linear-gradient(110deg, var(--color-red), var(--color-orange), var(--color-violet));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: axc-pan 9s linear infinite;
+  @media (prefers-reduced-motion: reduce) { animation: none; }
+}
+@mixin grad-text-static {
+  background: linear-gradient(110deg, var(--color-red), var(--color-orange));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+// Frosted backdrop behind nav logo / links / menu.
+@mixin nav-pill {
+  background: rgba(243, 235, 221, 0.72);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  border: 1px solid rgba(23, 21, 15, 0.08);
+  box-shadow: 0 6px 24px rgba(23, 21, 15, 0.07);
+}
