@@ -1,4 +1,3 @@
-// @vitest-environment node
 import { existsSync, readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
 
