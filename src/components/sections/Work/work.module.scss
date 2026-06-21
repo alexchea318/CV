@@ -1,0 +1,111 @@
+@use 'mixins' as m;
+@use 'breakpoints' as bp;
+
+.work {
+  @include m.gutter;
+  position: relative;
+  z-index: 2;
+  padding-block: 16vh;
+}
+
+.work__head {
+  @include m.mono;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(23, 21, 15, 0.45);
+  margin-bottom: 54px;
+}
+
+.case {
+  display: block;
+  border-top: 1px solid rgba(23, 21, 15, 0.16);
+  padding: 44px 0;
+}
+.case--last { border-bottom: 1px solid rgba(23, 21, 15, 0.16); }
+
+.case__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 28px;
+}
+
+.case__main { flex: 1 1 420px; }
+
+.case__meta {
+  @include m.mono;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: rgba(23, 21, 15, 0.5);
+  margin-bottom: 16px;
+}
+.case__meta-sep { opacity: 0.4; }
+
+.case__title {
+  @include m.display;
+  display: block;
+  margin: 0 0 16px;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-size: clamp(30px, 4.6vw, 66px);
+  color: var(--ink);
+}
+
+.case__text {
+  margin: 0;
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(23, 21, 15, 0.62);
+}
+
+.case__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 300px;
+}
+
+.case__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.case__tag {
+  @include m.mono;
+  font-size: 11.5px;
+  border: 1px solid rgba(23, 21, 15, 0.2);
+  border-radius: 9999px;
+  padding: 5px 12px;
+}
+
+.case__btn {
+  @include m.mono;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  border: 1px solid rgba(23, 21, 15, 0.25);
+  border-radius: 9999px;
+  padding: 9px 18px;
+  white-space: nowrap;
+}
+.case__btn--mobile {
+  display: inline-flex;
+  margin-top: 24px;
+  @include bp.desktop { display: none; }
+}
+.case__btn--desktop {
+  display: inline-flex;
+  @include bp.mobile { display: none; }
+}
