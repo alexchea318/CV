@@ -1,13 +1,14 @@
-export const locales = ["ru", "en"] as const;
-export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "ru";
+export type Locale = "ru" | "en";
+
+export const LOCALES: Locale[] = ["ru", "en"];
+
+export type I18n<T = string> = { ru: T; en: T };
 
 export function isLocale(x: string): x is Locale {
-  return (locales as readonly string[]).includes(x);
+  return x === "ru" || x === "en";
 }
 
-export type I18n<T> = { ru: T; en: T };
-
-export function pick<T>(field: I18n<T>, lang: Locale): T {
-  return field[lang];
+/** Pull the value for a locale out of an I18n bag. */
+export function pick<T>(bag: I18n<T>, locale: Locale): T {
+  return bag[locale];
 }
