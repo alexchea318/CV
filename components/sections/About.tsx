@@ -61,10 +61,13 @@ export function About() {
               paddingTop: 38,
             }}
           >
-            {about.stats.map((st) => (
-              <div key={st.value} style={{ flex: "0 0 auto" }}>
-                <div className="display" style={statNumber}>{st.value}</div>
-                <div className="mono" style={statLabel}>{t(st.label)}</div>
+            {about.stats.map((st, i) => (
+              <div key={i} style={{ flex: "0 0 auto" }}>
+                <div className="display" style={statNumber}>{t(st.value)}</div>
+                <div className="mono" style={{ ...statLabel, display: "inline-flex", alignItems: "center", gap: 7 }}>
+                  {t(st.label)}
+                  {st.hint && <StatHint text={t(st.hint)} />}
+                </div>
               </div>
             ))}
           </div>
@@ -137,6 +140,65 @@ export function About() {
         </Reveal>
       </div>
     </section>
+  );
+}
+
+/** Small "?" badge that reveals the full degree name on hover (desktop) or
+ *  tap (mobile). */
+function StatHint({ text }: { text: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <span style={{ position: "relative", display: "inline-flex" }}>
+      <button
+        type="button"
+        aria-label={text}
+        data-cursor
+        onMouseEnter={() => setOpen(true)}
+        onMouseLeave={() => setOpen(false)}
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          width: 17,
+          height: 17,
+          borderRadius: "50%",
+          border: `1px solid ${inkMuted(0.3)}`,
+          background: "transparent",
+          color: inkMuted(0.55),
+          font: "inherit",
+          fontSize: 10.5,
+          lineHeight: 1,
+          cursor: "pointer",
+          display: "inline-grid",
+          placeItems: "center",
+          padding: 0,
+        }}
+      >
+        ?
+      </button>
+      {open && (
+        <span
+          role="tooltip"
+          style={{
+            position: "absolute",
+            bottom: "calc(100% + 9px)",
+            left: 0,
+            zIndex: 50,
+            width: "max-content",
+            maxWidth: 280,
+            padding: "10px 13px",
+            borderRadius: 10,
+            background: "#17150f",
+            color: "#f3ebdd",
+            fontFamily: "var(--font-sans)",
+            fontSize: 12.5,
+            lineHeight: 1.45,
+            letterSpacing: 0,
+            boxShadow: "0 14px 34px rgba(23,21,15,.28)",
+          }}
+        >
+          {text}
+        </span>
+      )}
+    </span>
   );
 }
 

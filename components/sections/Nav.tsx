@@ -96,7 +96,7 @@ export function Nav() {
           borderRadius: 9999,
         }}
       >
-        {nav.brand}
+        <T v={nav.brand} />
       </a>
 
       {/* desktop links */}

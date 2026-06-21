@@ -131,9 +131,16 @@ function PanelBody({
       )}
       <p style={{ margin: compact ? "0 0 20px" : "18px 0 26px", maxWidth: 560, fontSize: 15.5, lineHeight: 1.55, color: inkMuted(0.62) }}>{t(role.blurb)}</p>
       {role.groups.map((g, gi) => (
-        <div key={gi} style={{ display: "flex", flexWrap: "wrap", gap: "6px 18px", borderTop: `1px solid ${inkMuted(0.12)}`, padding: "13px 0" }}>
-          <span className="mono" style={{ fontSize: 11, letterSpacing: ".08em", color: "#8e4ec6", flex: "0 0 132px" }}>{g.label}</span>
-          <span style={{ flex: "1 1 220px", fontSize: 14, lineHeight: 1.5, color: inkMuted(0.7) }}>{t(g.value)}</span>
+        <div key={gi} style={{ display: "flex", flexWrap: "wrap", gap: "8px 18px", borderTop: `1px solid ${inkMuted(0.12)}`, padding: "14px 0" }}>
+          <span className="mono" style={{ fontSize: 11, letterSpacing: ".08em", color: "#8e4ec6", flex: "0 0 132px", paddingTop: 3 }}>{g.label}</span>
+          <ul style={{ flex: "1 1 220px", minWidth: 220, margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
+            {g.items.map((it, ii) => (
+              <li key={ii} style={{ position: "relative", paddingLeft: 18, fontSize: 14, lineHeight: 1.5, color: inkMuted(0.72) }}>
+                <span aria-hidden="true" style={{ position: "absolute", left: 2, top: 8, width: 5, height: 5, borderRadius: "50%", background: "#8e4ec6", opacity: 0.6 }} />
+                {t(it)}
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </>

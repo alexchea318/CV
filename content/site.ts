@@ -7,7 +7,7 @@ const NB = " "; // non-breaking space
    NAV
 ============================================================ */
 export const nav = {
-  brand: "АЧ",
+  brand: { ru: "АЧ", en: "AC" } satisfies I18n,
   // Order matches the on-page section order (achievements precedes work).
   links: [
     { href: "#achievements", label: { ru: "ДОСТИЖЕНИЯ", en: "AWARDS" } },
@@ -90,10 +90,17 @@ export const about = {
   } satisfies Record<"leadA" | "leadB" | "accent" | "tail", I18n>,
   // First stat (years in production) is rendered dynamically; these follow it.
   stats: [
-    { value: "ИБ СПбПУ", label: { ru: "высшее образование", en: "higher education" } },
-    { value: "B2", label: { ru: "английский", en: "English" } },
-  ] satisfies { value: string; label: I18n }[],
-  capsHeading: { ru: "Полный цикл разработки", en: "//TODO" },
+    {
+      value: { ru: "ИБ в СПбПУ", en: "InfoSec, SPbPU" },
+      label: { ru: "высшее образование", en: "higher education" },
+      hint: {
+        ru: "Специалитет «Информационно-аналитические системы безопасности», Санкт-Петербургский политехнический университет Петра Великого (СПбПУ)",
+        en: "Specialist’s degree, “Information-Analytical Security Systems”, Peter the Great St. Petersburg Polytechnic University (SPbPU)",
+      },
+    },
+    { value: { ru: "B2", en: "B2" }, label: { ru: "английский", en: "English" } },
+  ] satisfies { value: I18n; label: I18n; hint?: I18n }[],
+  capsHeading: { ru: "Полный цикл разработки", en: "Full development cycle" },
   caps: [
     { name: { ru: "Системный анализ", en: "System analysis" }, stack: { ru: "Требования · формализация · UX", en: "Requirements · analysis · UX" } },
     { name: { ru: "Прототипирование", en: "Prototyping" }, stack: { ru: "Figma · Claude Design · Google Stitch", en: "Figma · Claude Design · Google Stitch" } },
@@ -213,7 +220,7 @@ export const marquee = [
    EXPERIENCE (04) — timeline + detail panels.
    Add a new job by prepending one Role; everything else follows.
 ============================================================ */
-export type ExpGroup = { label: string; value: I18n };
+export type ExpGroup = { label: string; items: I18n[] };
 export type Role = {
   period: I18n; // short label for the timeline row
   dateRange: I18n; // full range for the detail panel
@@ -238,11 +245,43 @@ export const experience = {
         en: "Full-cycle development and rollout of production systems, including RAG.",
       },
       groups: [
-        { label: "CORE", value: { ru: "Полный цикл · системный анализ · Figma · Java / Spring · Python · Elasticsearch · PostgreSQL · lakeFS · React / TS", en: "Full cycle · system analysis · Figma · Java / Spring · Python · Elasticsearch · PostgreSQL · lakeFS · React / TS" } },
-        { label: "TESTS", value: { ru: "pytest · Spring Test · Jest · Playwright", en: "pytest · Spring Test · Jest · Playwright" } },
-        { label: "OBSERVABILITY", value: { ru: "Graylog · Grafana · Sentry · контроль деградации RAG / LLM", en: "Graylog · Grafana · Sentry · RAG / LLM quality monitoring" } },
-        { label: "DEVOPS", value: { ru: "Docker · Jenkins · CI/CD · dev / stage / prod", en: "Docker · Jenkins · CI/CD · dev / stage / prod" } },
-        { label: "AI", value: { ru: "AI-агенты (Claude Code) · skills · MCP-серверы", en: "AI agents (Claude Code) · skills · MCP servers" } },
+        {
+          label: "CORE",
+          items: [
+            { ru: "Полный цикл: системный анализ, прототипирование (Figma), разработка, деплой", en: "Full cycle: system analysis, prototyping (Figma), development, deploy" },
+            { ru: "Backend: Java / Spring, Python", en: "Backend: Java / Spring, Python" },
+            { ru: "Данные: Elasticsearch, PostgreSQL, версионирование через lakeFS", en: "Data: Elasticsearch, PostgreSQL, versioning via lakeFS" },
+            { ru: "Frontend: React, TypeScript", en: "Frontend: React, TypeScript" },
+          ],
+        },
+        {
+          label: "TESTS",
+          items: [
+            { ru: "Backend: pytest, Spring Test", en: "Backend: pytest, Spring Test" },
+            { ru: "Frontend: Jest, Playwright", en: "Frontend: Jest, Playwright" },
+          ],
+        },
+        {
+          label: "OBSERVABILITY",
+          items: [
+            { ru: "Graylog, Grafana, Sentry", en: "Graylog, Grafana, Sentry" },
+            { ru: "Контроль деградации качества RAG / LLM", en: "Monitoring RAG / LLM quality drift" },
+          ],
+        },
+        {
+          label: "DEVOPS",
+          items: [
+            { ru: "Docker, Jenkins, CI/CD", en: "Docker, Jenkins, CI/CD" },
+            { ru: "Окружения dev / stage / prod", en: "dev / stage / prod environments" },
+          ],
+        },
+        {
+          label: "AI",
+          items: [
+            { ru: "AI-агенты (Claude Code)", en: "AI agents (Claude Code)" },
+            { ru: "Skills и MCP-серверы", en: "Skills and MCP servers" },
+          ],
+        },
       ],
     },
     {
@@ -251,15 +290,47 @@ export const experience = {
       title: { ru: "Frontend Developer (Senior)", en: "Frontend Developer (Senior)" },
       company: "Just AI",
       blurb: {
-        ru: "Frontend-архитектура enterprise AI-продукта — just-ai.com/ai-baza-znaniy.",
-        en: "Frontend architecture of an enterprise AI product — just-ai.com/ai-baza-znaniy.",
+        ru: "Enterprise веб-приложение для взаимодействия с AI.",
+        en: "Enterprise web application for interacting with AI.",
       },
       groups: [
-        { label: "CORE", value: { ru: "React · TypeScript · монорепо · контракты с backend · перформанс · архитектура · code review · CI/CD", en: "React · TypeScript · monorepo · backend contracts · performance · architecture · code review · CI/CD" } },
-        { label: "CROSS-TEAM", value: { ru: "Frontend guild · единые стандарты · менторинг · архитектурные ревью", en: "Frontend guild · shared standards · mentoring · architecture reviews" } },
-        { label: "RELIABILITY", value: { ru: "Playwright · Cypress · Jest · стабильность релизов · инциденты", en: "Playwright · Cypress · Jest · release stability · incidents" } },
-        { label: "ENGINEERING", value: { ru: "npm→pnpm · webpack→Vite · React 16→18 · UI-библиотека (shadcn/ui) · canvas / карты / video", en: "npm→pnpm · webpack→Vite · React 16→18 · UI library (shadcn/ui) · canvas / maps / video" } },
-        { label: "AI", value: { ru: "Агенты для тестов и документации · внедрение AI-инструментов", en: "Agents for tests & docs · adopting AI tooling" } },
+        {
+          label: "CORE",
+          items: [
+            { ru: "Frontend-архитектура (React, TypeScript), развитие UI-части enterprise AI-продукта", en: "Frontend architecture (React, TypeScript); evolving the UI of an enterprise AI product" },
+            { ru: "Монорепозиторий и единые стандарты кодовой базы", en: "Monorepo and unified codebase standards" },
+            { ru: "Интеграция с backend и согласование контрактов взаимодействия", en: "Backend integration and agreeing on interaction contracts" },
+            { ru: "Производительность, стабильность и безопасность frontend-системы", en: "Performance, stability and security of the frontend system" },
+            { ru: "Архитектурные решения и code review", en: "Architecture decisions and code review" },
+            { ru: "CI/CD: Jenkins, Docker", en: "CI/CD: Jenkins, Docker" },
+          ],
+        },
+        {
+          label: "CROSS-TEAM",
+          items: [
+            { ru: "Участие в frontend guild (senior-разработчики разных команд)", en: "Member of the frontend guild (senior developers across teams)" },
+            { ru: "Выработка и поддержка единых инженерных стандартов", en: "Defining and maintaining shared engineering standards" },
+            { ru: "Синхронизация архитектуры и качества между командами", en: "Aligning architecture and quality across teams" },
+            { ru: "Менторинг и архитектурные ревью", en: "Mentoring and architecture reviews" },
+          ],
+        },
+        {
+          label: "RELIABILITY",
+          items: [
+            { ru: "E2E-тестирование: Playwright, Cypress", en: "E2E testing: Playwright, Cypress" },
+            { ru: "Unit-тестирование: Jest", en: "Unit testing: Jest" },
+            { ru: "Поддержка стабильности production-релизов", en: "Keeping production releases stable" },
+            { ru: "Разбор и устранение production-инцидентов", en: "Investigating and resolving production incidents" },
+          ],
+        },
+        {
+          label: "AI & AUTOMATION",
+          items: [
+            { ru: "AI-агенты для автоматизации тестирования и документации", en: "AI agents to automate testing and documentation" },
+            { ru: "Внедрение AI-инструментов в разработку", en: "Adopting AI tools in development" },
+            { ru: "Автоматизация инженерных процессов", en: "Automating engineering processes" },
+          ],
+        },
       ],
     },
     {
@@ -268,13 +339,41 @@ export const experience = {
       title: { ru: "Development Team Lead / PM", en: "Development Team Lead / PM" },
       company: "НеоБИТ",
       blurb: {
-        ru: "Управление командой из 5 человек + роль project-менеджера (AI × соцсети).",
-        en: "Leading a team of 5 + project manager role (AI × social networks).",
+        ru: "Управление командой разработки из 5 человек + роль project-менеджера (AI × соцсети).",
+        en: "Leading a development team of 5 + project manager role (AI × social networks).",
       },
       groups: [
-        { label: "TEAM LEAD", value: { ru: "Спринты · Jira (Kanban / Scrum) · постановка задач · оценка · документация · база знаний · выбор технологий", en: "Sprints · Jira (Kanban / Scrum) · task setting · estimates · docs · knowledge base · tech selection" } },
-        { label: "PROJECT MGMT", value: { ru: "Сроки · демо и бизнес-встречи · бизнес→тех требования · контроль качества", en: "Deadlines · demos & business meetings · business→tech requirements · QA" } },
-        { label: "SECURITY", value: { ru: "Гостайна (3 уровень) · ПИМ", en: "State secrecy (level 3) · acceptance testing" } },
+        {
+          label: "TEAM LEAD",
+          items: [
+            { ru: "Планирование спринтов", en: "Sprint planning" },
+            { ru: "Ведение Kanban- и Scrum-досок в Jira", en: "Running Kanban and Scrum boards in Jira" },
+            { ru: "Постановка задач фронтенду, бэкенду, QA, DevOps и дизайнерам", en: "Writing tasks for frontend, backend, QA, DevOps and designers" },
+            { ru: "Оценка времени и ресурсов под новые функции", en: "Estimating time and resources for new features" },
+            { ru: "Написание документации и поддержка базы знаний", en: "Writing documentation and maintaining the knowledge base" },
+            { ru: "Изучение документации и научных статей для выбора технологий", en: "Researching docs and papers to choose technologies" },
+            { ru: "Оценка сотрудников и синхронизация целей команды", en: "Evaluating team members and aligning team goals" },
+            { ru: "Организация процесса разработки и контроль результатов", en: "Organizing the development process and tracking results" },
+            { ru: "Процесс актуализации и переиспользования кодовой базы", en: "Process for keeping and reusing the codebase" },
+          ],
+        },
+        {
+          label: "PROJECT MGMT",
+          items: [
+            { ru: "Оценка, установка и контроль соблюдения сроков", en: "Estimating, setting and enforcing deadlines" },
+            { ru: "Демонстрация проекта: презентации, бизнес-встречи, созвоны", en: "Demoing the project: presentations, business meetings, calls" },
+            { ru: "Перевод бизнес-требований в технические", en: "Translating business requirements into technical ones" },
+            { ru: "Контроль качества", en: "Quality control" },
+            { ru: "Выстраивание процесса поддержки проекта", en: "Building the project support process" },
+          ],
+        },
+        {
+          label: "SECURITY",
+          items: [
+            { ru: "Работа с гостайной (3 уровень)", en: "Working with state secrets (clearance level 3)" },
+            { ru: "Контроль документации и прохождение ПИМ (программа и методика испытаний)", en: "Documentation control and passing acceptance testing (test program & procedure)" },
+          ],
+        },
       ],
     },
     {
@@ -284,9 +383,28 @@ export const experience = {
       company: "НеоБИТ",
       blurb: { ru: "Руководство React-разработкой в команде.", en: "Leading React development within the team." },
       groups: [
-        { label: "CORE", value: { ru: "Библиотека компонентов · код-ревью · архитектура и код-стайл · постановка задач · контракты с бэком", en: "Component library · code review · architecture & code style · task setting · backend contracts" } },
-        { label: "DESIGN", value: { ru: "Интерфейсы в Figma · пользовательские сценарии", en: "Interfaces in Figma · user scenarios" } },
-        { label: "QA", value: { ru: "End-to-end тестирование · поддержка кодовой базы", en: "End-to-end testing · codebase maintenance" } },
+        {
+          label: "CORE",
+          items: [
+            { ru: "Разработка и развитие библиотеки компонентов", en: "Building and growing a component library" },
+            { ru: "Архитектура и код-стайл, code review", en: "Architecture & code style, code review" },
+            { ru: "Постановка задач и контракты с бэкендом", en: "Task setting and backend contracts" },
+          ],
+        },
+        {
+          label: "DESIGN",
+          items: [
+            { ru: "Интерфейсы в Figma", en: "Interfaces in Figma" },
+            { ru: "Проработка пользовательских сценариев", en: "Working out user scenarios" },
+          ],
+        },
+        {
+          label: "QA",
+          items: [
+            { ru: "End-to-end тестирование", en: "End-to-end testing" },
+            { ru: "Поддержка кодовой базы", en: "Codebase maintenance" },
+          ],
+        },
       ],
     },
     {
@@ -296,7 +414,14 @@ export const experience = {
       company: "НеоБИТ",
       blurb: { ru: "Разработка SPA веб-приложений.", en: "Building SPA web applications." },
       groups: [
-        { label: "STACK", value: { ru: "React (фронт) · Go (бэк) · PostgreSQL (запросы к БД)", en: "React (frontend) · Go (backend) · PostgreSQL (queries)" } },
+        {
+          label: "STACK",
+          items: [
+            { ru: "React (фронтенд)", en: "React (frontend)" },
+            { ru: "Go (бэкенд)", en: "Go (backend)" },
+            { ru: "PostgreSQL (запросы к БД)", en: "PostgreSQL (DB queries)" },
+          ],
+        },
       ],
     },
     {
@@ -306,7 +431,12 @@ export const experience = {
       company: "LG Electronics Russia R&D Lab",
       blurb: { ru: "Стажировка в отделе Data Science.", en: "Internship in the Data Science department." },
       groups: [
-        { label: "RESEARCH", value: { ru: "Исследование методов оптимизации градиентного спуска", en: "Research on gradient-descent optimization methods" } },
+        {
+          label: "RESEARCH",
+          items: [
+            { ru: "Исследование методов оптимизации градиентного спуска", en: "Research on gradient-descent optimization methods" },
+          ],
+        },
       ],
     },
   ] satisfies Role[],
