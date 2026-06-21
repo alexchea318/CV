@@ -38,11 +38,20 @@ export function Interactions() {
 
     /* ---------- case-row hover slide ---------- */
     document.querySelectorAll<HTMLElement>("[data-case]").forEach((el) => {
-      const h = el.querySelector("h3") as HTMLElement | null;
+      const h = el.querySelector("[data-case-title]") as HTMLElement | null;
       if (!h) return;
       h.style.transition = `transform .5s ${EASE}`;
-      const enter = () => (h.style.transform = "translateX(18px)");
-      const leave = () => (h.style.transform = "translateX(0)");
+      // Only the title carries the link affordance — not the chips/meta.
+      const enter = () => {
+        h.style.transform = "translateX(18px)";
+        h.style.textDecoration = "underline";
+        h.style.textUnderlineOffset = "6px";
+        h.style.textDecorationThickness = "2px";
+      };
+      const leave = () => {
+        h.style.transform = "translateX(0)";
+        h.style.textDecoration = "none";
+      };
       el.addEventListener("mouseenter", enter);
       el.addEventListener("mouseleave", leave);
       cleanups.push(() => {
@@ -53,7 +62,9 @@ export function Interactions() {
 
     /* ---------- link underline affordance ---------- */
     document.querySelectorAll<HTMLAnchorElement>("a").forEach((el) => {
-      if (el.hasAttribute("data-magnet")) return;
+      // data-magnet has its own motion; links inside a work case (title + the
+      // project button) are handled by the case hover, not the generic underline.
+      if (el.hasAttribute("data-magnet") || el.closest("[data-case]")) return;
       const enter = () => {
         el.style.textDecoration = "underline";
         el.style.textUnderlineOffset = "4px";

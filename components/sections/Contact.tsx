@@ -1,6 +1,6 @@
 "use client";
 
-import { useT } from "@/components/lang";
+import { useLang, useT } from "@/components/lang";
 import { Reveal } from "@/components/Reveal";
 import { contact } from "@/content/site";
 
@@ -8,6 +8,10 @@ const inkMuted = (a: number) => `rgba(23,21,15,${a})`;
 
 export function Contact() {
   const t = useT();
+  const { lang } = useLang();
+
+  // VK is RU-only — drop it from the English contact row.
+  const contactLinks = contact.links.filter((l) => !(l.kind === "VK" && lang === "en"));
 
   return (
     <section id="contact" className="gutter" style={{ position: "relative", zIndex: 2, padding: "18vh 6vw 8vh" }}>
@@ -16,7 +20,9 @@ export function Contact() {
       </Reveal>
 
       <a
-        href={`mailto:${contact.links[0].value}`}
+        href={contact.headlineHref}
+        target="_blank"
+        rel="noopener"
         data-cursor
         data-magnet
         className="display"
@@ -45,7 +51,7 @@ export function Contact() {
           paddingTop: 40,
         }}
       >
-        {contact.links.map((l) => {
+        {contactLinks.map((l) => {
           const external = l.href.startsWith("http");
           return (
             <a
@@ -60,24 +66,6 @@ export function Contact() {
             </a>
           );
         })}
-        <a
-          href={contact.cvHref}
-          data-cursor
-          data-magnet
-          className="mono"
-          style={{
-            fontSize: 14,
-            letterSpacing: ".03em",
-            display: "flex",
-            alignItems: "center",
-            gap: 9,
-            border: `1px solid ${inkMuted(0.25)}`,
-            borderRadius: 9999,
-            padding: "8px 18px",
-          }}
-        >
-          {t(contact.cv)}
-        </a>
       </div>
     </section>
   );

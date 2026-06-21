@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLang, useT } from "@/components/lang";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -13,6 +13,18 @@ export function About() {
   const { lang } = useLang();
   const t = useT();
   const [active, setActive] = useState(0);
+
+  // The capability list is hover-selectable on desktop only. On mobile every
+  // row is shown statically (see .cap-row/.cap-stack in globals.css) with no
+  // tap-to-select. Starts false so SSR/hydration match, then enables on wide.
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 821px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const s = about.statement;
 
@@ -64,15 +76,15 @@ export function About() {
             {t(about.capsHeading)}
           </div>
           {about.caps.map((cap, i) => {
-            const on = i === active;
+            const on = isDesktop && i === active;
             const last = i === about.caps.length - 1;
             return (
               <div
                 key={i}
-                data-cursor
+                {...(isDesktop ? { "data-cursor": "" } : {})}
                 className="cap-row"
-                onMouseEnter={() => setActive(i)}
-                onClick={() => setActive(i)}
+                onMouseEnter={isDesktop ? () => setActive(i) : undefined}
+                onClick={isDesktop ? () => setActive(i) : undefined}
                 style={{
                   position: "relative",
                   display: "flex",
@@ -83,7 +95,7 @@ export function About() {
                   padding: "19px 0",
                   opacity: on ? 1 : 0.5,
                   transition: "opacity .35s ease",
-                  cursor: "pointer",
+                  cursor: isDesktop ? "pointer" : "default",
                 }}
               >
                 <span className="mono" style={{ fontSize: 12, color: inkMuted(0.4), flex: "0 0 26px" }}>

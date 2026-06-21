@@ -30,25 +30,6 @@ export function Achievements() {
         style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(330px,1fr))", gap: "48px 72px", alignItems: "center", marginTop: 56 }}
       >
         <Reveal delay={40} style={{ position: "relative", width: "100%", height: "clamp(360px,44vw,560px)" }}>
-          <div
-            aria-hidden="true"
-            className="display"
-            style={{
-              position: "absolute",
-              top: "-9vh",
-              left: "-2vw",
-              fontWeight: 800,
-              fontSize: "19vw",
-              lineHeight: 0.8,
-              letterSpacing: "-.04em",
-              color: "transparent",
-              WebkitTextStroke: `1.5px ${cream(0.11)}`,
-              pointerEvents: "none",
-              zIndex: 0,
-            }}
-          >
-            {items[active].year}
-          </div>
           {items.map((item, i) => (
             <img
               key={item.year}
@@ -120,13 +101,17 @@ export function Achievements() {
                   <h3 className="display" style={{ margin: 0, fontWeight: 700, lineHeight: 1.06, letterSpacing: "-.02em", fontSize: "clamp(21px,2.5vw,36px)" }}>
                     {t(item.title)}
                   </h3>
+                  {/* Description height is reserved at all times so switching
+                      rows never reflows the layout (otherwise the collapsing
+                      row above makes the hovered row leap upward). The reveal
+                      is a fade + slide instead of a height expand. */}
                   <div
                     style={{
-                      maxHeight: on ? 360 : 0,
-                      overflow: "hidden",
+                      marginTop: 18,
                       opacity: on ? 1 : 0,
-                      marginTop: on ? 18 : 0,
-                      transition: "max-height .55s cubic-bezier(.16,1,.3,1), opacity .5s ease, margin .5s ease",
+                      transform: on ? "translateY(0)" : "translateY(6px)",
+                      pointerEvents: on ? "auto" : "none",
+                      transition: "opacity .45s ease, transform .55s cubic-bezier(.16,1,.3,1)",
                     }}
                   >
                     <p style={{ margin: 0, maxWidth: 520, fontSize: 15.5, lineHeight: 1.6, color: cream(0.64) }}>{t(item.text)}</p>

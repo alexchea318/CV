@@ -11,9 +11,9 @@ export const nav = {
   // Order matches the on-page section order (achievements precedes work).
   links: [
     { href: "#achievements", label: { ru: "ДОСТИЖЕНИЯ", en: "AWARDS" } },
-    { href: "#work", label: { ru: "РАБОТЫ", en: "WORK" } },
+    { href: "#work", label: { ru: "ПРОЕКТЫ", en: "PROJECTS" } },
     { href: "#experience", label: { ru: "ОПЫТ", en: "CAREER" } },
-    { href: "#contact", label: { ru: "КОНТАКТ", en: "CONTACT" } },
+    { href: "#contact", label: { ru: "КОНТАКТЫ", en: "CONTACTS" } },
   ] satisfies { href: string; label: I18n }[],
 };
 
@@ -86,16 +86,17 @@ export const about = {
       en: " I grew into a Full-Stack / AI Engineer. Today I build Enterprise production systems at the intersection of ",
     },
     accent: { ru: "RAG, LLM", en: "RAG, LLM" },
-    tail: { ru: ` и классической Fullstack-разработки.`, en: " and classic Fullstack engineering at." },
+    tail: { ru: ` и классической Fullstack-разработки.`, en: " and classic Fullstack engineering." },
   } satisfies Record<"leadA" | "leadB" | "accent" | "tail", I18n>,
   // First stat (years in production) is rendered dynamically; these follow it.
   stats: [
-    { value: "ИБ СПбПУ", label: { ru: "высшее образование", en: "higher degree" } },
+    { value: "ИБ СПбПУ", label: { ru: "высшее образование", en: "higher education" } },
     { value: "B2", label: { ru: "английский", en: "English" } },
   ] satisfies { value: string; label: I18n }[],
-  capsHeading: { ru: "Полный цикл — всё в одних руках", en: "Full cycle — all in one pair of hands" },
+  capsHeading: { ru: "Полный цикл разработки", en: "//TODO" },
   caps: [
-    { name: { ru: "Системный анализ", en: "System analysis" }, stack: { ru: "Требования · формализация · Figma · UX", en: "Requirements · analysis · Figma · UX" } },
+    { name: { ru: "Системный анализ", en: "System analysis" }, stack: { ru: "Требования · формализация · UX", en: "Requirements · analysis · UX" } },
+    { name: { ru: "Прототипирование", en: "Prototyping" }, stack: { ru: "Figma · Claude Design · Google Stitch", en: "Figma · Claude Design · Google Stitch" } },
     { name: { ru: "Бэкенд", en: "Backend" }, stack: { ru: "Java · Spring · Python", en: "Java · Spring · Python" } },
     { name: { ru: "Фронтенд", en: "Frontend" }, stack: { ru: "React · TypeScript · Redux", en: "React · TypeScript · Redux" } },
     { name: { ru: "Инфраструктура", en: "Infrastructure" }, stack: { ru: "Docker · Jenkins · CI/CD", en: "Docker · Jenkins · CI/CD" } },
@@ -149,7 +150,7 @@ export const achievements = {
         ru: "Проект Findly получил премию Правительства Санкт-Петербурга (по постановлению Правительства СПб) как лучший молодёжный проект 2021 года. Сразу после победы у меня взяли интервью об устройстве сервиса, пути его создания и дальнейших планах.",
         en: "My project Findly won the award of the Government of St. Petersburg (by official decree) as the best youth project of 2021. Right after the win I was interviewed about the service, how it was built and what came next.",
       },
-      cta: { label: { ru: "Смотреть интервью →", en: "Watch the interview →" }, href: links.interview2021 },
+      cta: { label: { ru: "Читать интервью →", en: "Read the interview →" }, href: links.interview2021 },
     },
   ] satisfies Achievement[],
 };
@@ -159,7 +160,8 @@ export const achievements = {
 ============================================================ */
 export const work = {
   index: "(03)",
-  label: { ru: "ИЗБРАННЫЕ РАБОТЫ", en: "SELECTED WORK" },
+  label: { ru: "ПРОЕКТЫ", en: "PROJECTS" },
+  cta: { ru: "Перейти к проекту →", en: "View project →" },
   cases: [
     {
       company: "Just AI",
@@ -170,7 +172,7 @@ export const work = {
         en: "Full-cycle delivery of production RAG: from requirements and system analysis to deploy and quality monitoring. Backend on Java (Spring) & Python, data on Elasticsearch + PostgreSQL, data versioning with lakeFS.",
       },
       tags: ["Python", "Spring", "Elasticsearch", "lakeFS", "MCP"],
-      href: "#",
+      href: "https://khub.just-ai.com/",
     },
     {
       company: "Just AI",
@@ -192,7 +194,7 @@ export const work = {
         en: "Led a team of 5 (sprint planning, Jira boards, estimates) and acted as project manager on AI-for-social-networks projects: translating business into technical requirements, demos, QA, documentation and state-secrecy clearance (level 3) with formal acceptance testing.",
       },
       tags: [{ ru: "Лидерство", en: "Leadership" }, "Jira", { ru: "Управление", en: "Project Mgmt" }],
-      href: "#",
+      href: "https://neobit.ru/",
     },
   ],
 };
@@ -320,11 +322,11 @@ export const skills = {
     { title: { ru: "BACKEND", en: "BACKEND" }, items: ["Java", "Spring", "Python", "Go"] },
     { title: { ru: "ДАННЫЕ", en: "DATA" }, items: ["Elasticsearch", "PostgreSQL", "lakeFS"] },
     { title: { ru: "FRONTEND", en: "FRONTEND" }, items: ["React", "TypeScript", "Redux", "CSS3"] },
+    { title: { ru: "ПРОТОТИПИРОВАНИЕ", en: "PROTOTYPING" }, items: ["Figma", "Claude Design", "Google Stitch"] },
     { title: { ru: "DEVOPS", en: "DEVOPS" }, items: ["Docker", "Jenkins", "CI/CD", "Vite"] },
     { title: { ru: "OBSERVABILITY", en: "OBSERVABILITY" }, items: ["Graylog", "Grafana", "Sentry"] },
     { title: { ru: "ТЕСТИРОВАНИЕ", en: "TESTING" }, items: ["pytest", "Jest", "Playwright", "Cypress"] },
     { title: { ru: "AI / АВТОМАТИЗАЦИЯ", en: "AI / AUTOMATION" }, items: ["Claude Code", "MCP", { ru: "AI-агенты", en: "AI agents" }, "Skills"] },
-    { title: { ru: "ЯЗЫКИ", en: "LANGUAGES" }, items: [{ ru: "Русский — родной", en: "Russian — native" }, { ru: "Английский — B2", en: "English — B2" }] },
   ],
 };
 
@@ -333,16 +335,16 @@ export const skills = {
 ============================================================ */
 export const contact = {
   index: "(06)",
-  label: { ru: "СВЯЖЕМСЯ", en: "LET'S TALK" },
-  headline: { ru: `Поговорим${NB}→`, en: "Let's talk →" },
+  label: { ru: "КОНТАКТЫ", en: "CONTACTS" },
+  headline: { ru: `Связаться${NB}→`, en: "Let's talk →" },
+  headlineHref: links.telegram,
   links: [
     { kind: "email", value: links.email, href: `mailto:${links.email}` },
     { kind: "Telegram", value: "Telegram", href: links.telegram },
     { kind: "GitHub", value: "GitHub", href: links.github },
     { kind: "VK", value: "VK", href: links.vk },
+    { kind: "hh.ru", value: "Резюме на hh.ru", href: links.hh },
   ],
-  cv: { ru: "↓ Резюме (PDF)", en: "↓ Download CV (PDF)" },
-  cvHref: links.cv,
 };
 
 /* ============================================================
