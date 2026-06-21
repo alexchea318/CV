@@ -69,14 +69,16 @@ title: { ru: "Заголовок на русском", en: "English title" }
 ## Деплой (Vercel)
 
 1. Запушить репозиторий в GitHub.
-2. В Vercel: **Add New → Project → Import** репозиторий.
-3. Vercel сам определит Next.js и прочитает `vercel.json`:
-   ```json
-   { "buildCommand": "next build", "outputDirectory": "out", "framework": "nextjs" }
-   ```
-4. **Deploy.** Канонический домен подхватится автоматически из build-окружения
-   Vercel — править ничего не нужно. Каждый push в продакшен-ветку
-   передеплоивает сайт.
+2. В Vercel: **Add New → Project → Import** репозиторий → **Deploy**.
+
+Никакого `vercel.json` не нужно: Vercel сам определяет Next.js и статический
+экспорт (`output: 'export'` в `next.config.ts`) и отдаёт `out/`. Канонический
+домен подхватывается из build-окружения Vercel. Каждый push в продакшен-ветку
+передеплоивает сайт.
+
+> Важно: не задавай вручную «Output Directory» в настройках проекта Vercel при
+> framework = Next.js — для export это вызывает ошибку поиска `routes-manifest.json`.
+> Оставь zero-config.
 
 ---
 
