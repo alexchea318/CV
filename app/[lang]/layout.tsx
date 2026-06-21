@@ -6,6 +6,7 @@ import { displayFont, GeistSans } from "../fonts";
 import { isLocale, pick, type Locale } from "@/lib/i18n";
 import { profile } from "@/content/profile";
 import { JsonLd } from "./JsonLd";
+import { SITE_URL } from "@/lib/config";
 
 export function generateStaticParams() {
   return [{ lang: "ru" }, { lang: "en" }];
@@ -22,6 +23,7 @@ export async function generateMetadata({
   const title = `${pick(profile.name, locale)} — ${pick(profile.role, locale)}`;
   const description = pick(profile.tagline, locale);
   return {
+    metadataBase: new URL(SITE_URL),
     title,
     description,
     openGraph: {
