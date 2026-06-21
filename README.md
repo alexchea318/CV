@@ -15,7 +15,7 @@
 | Стили | **SCSS Modules + БЭМ** (Tailwind v4 — только для тривиального, ≤3 утилиты) |
 | Анимации | Чистые CSS `@keyframes` + лёгкие хуки (`useReveal`, `useCountUp`, кастомный курсор, magnetic, parallax) |
 | Шрифты | Manrope + JetBrains Mono (Google Fonts, `@import` в `globals.css`) |
-| Деплой | Vercel (основной) / GitHub Pages (`out/`) |
+| Деплой | Vercel |
 
 Правила кодовой базы — в [`CLAUDE.md`](./CLAUDE.md).
 
@@ -66,23 +66,17 @@ title: { ru: "Заголовок на русском", en: "English title" }
 
 ---
 
-## Деплой
+## Деплой (Vercel)
 
-### Vercel (рекомендуется)
-
-1. Запушить ветку в GitHub.
-2. В Vercel: **Add New Project → Import** репозиторий.
-3. Vercel прочитает `vercel.json`:
+1. Запушить репозиторий в GitHub.
+2. В Vercel: **Add New → Project → Import** репозиторий.
+3. Vercel сам определит Next.js и прочитает `vercel.json`:
    ```json
    { "buildCommand": "next build", "outputDirectory": "out", "framework": "nextjs" }
    ```
-4. Канонический домен подхватится автоматически — править ничего не нужно.
-
-### GitHub Pages
-
-1. `npm run build` → появится `out/`.
-2. Запушить содержимое `out/` в ветку `gh-pages` (или через GitHub Actions).
-3. Settings → Pages → Source: `gh-pages / root`.
+4. **Deploy.** Канонический домен подхватится автоматически из build-окружения
+   Vercel — править ничего не нужно. Каждый push в продакшен-ветку
+   передеплоивает сайт.
 
 ---
 
