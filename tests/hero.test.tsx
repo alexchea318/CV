@@ -7,5 +7,6 @@ describe("Hero", () => {
     render(<Hero lang="en" />);
     expect(screen.getByText("FullStack AI Engineer")).toBeTruthy();
     expect(screen.getByText("Alexander Chechenev")).toBeTruthy();
+    expect(screen.getByText(/RAG & production LLM systems/)).toBeTruthy();
   });
 });
