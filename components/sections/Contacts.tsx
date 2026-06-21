@@ -1,23 +1,43 @@
 import { contacts } from "@/content/contacts";
 import type { Locale } from "@/lib/i18n";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { KineticText } from "@/components/ui/KineticText";
 
 export function Contacts({ lang }: { lang: Locale }) {
   const visible = contacts.filter((c) => !("ruOnly" in c && c.ruOnly) || lang === "ru");
   return (
-    <section id="contacts" className="px-6 md:px-16 py-28 border-t border-line">
-      <Reveal><SectionHeading>{lang === "ru" ? "Контакты" : "Contacts"}</SectionHeading></Reveal>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {visible.map((c) => (
-          <Reveal key={c.label}>
-            <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
-               className="block rounded-2xl border border-line p-6 hover:border-fg/40 transition-colors">
-              <p className="font-display text-lg">{c.value}</p>
-              <p className="text-muted text-sm">{c.label}</p>
+    <section id="contacts" className="gutter rule py-24 md:py-40">
+      <div className="mono mb-5 flex items-center gap-4">
+        <span>06</span>
+        <span className="h-px w-8 bg-[var(--color-faint)]" />
+        <span>CONTACT</span>
+      </div>
+
+      <KineticText
+        as="h2"
+        lines={lang === "ru" ? ["Давай", "поговорим."] : ["Let's", "talk."]}
+        className="display mb-16 text-[var(--text-giant)] md:mb-24"
+      />
+
+      <div>
+        {visible.map((c) => {
+          const external = c.href.startsWith("http");
+          return (
+            <a
+              key={c.label}
+              href={c.href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noreferrer" : undefined}
+              className="group rule flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-6 first:border-t-0 md:py-8"
+            >
+              <span className="display text-[var(--text-huge)] transition-transform duration-500 ease-out group-hover:translate-x-2">
+                {c.label}
+              </span>
+              <span className="mono normal-case tracking-normal text-[var(--color-muted)] transition-colors group-hover:text-[var(--color-fg)]">
+                {c.value}
+              </span>
             </a>
-          </Reveal>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

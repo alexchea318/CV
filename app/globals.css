@@ -1,29 +1,121 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0A0A0B;
-  --color-fg: #EDEAE3;
-  --color-muted: #8A8A82;
-  --color-line: #1E1E22;
-  --accent-from: #22D3EE; /* electric cyan */
-  --accent-to: #8B5CF6;   /* violet */
-  --font-display: var(--ff-display);
+  /* Editorial monochrome. No accent colour — the discipline is the statement. */
+  --color-bg: #0A0A0A;          /* near-black */
+  --color-fg: #F2F0EC;          /* warm bone white */
+  --color-muted: #6E6E6E;       /* secondary text */
+  --color-faint: #1C1C1C;       /* hairlines / dividers */
+  --color-surface: #111111;     /* hover plates */
+
   --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Dramatic type scale — the giant editorial voice. */
+  --text-mega: clamp(3.25rem, 14vw, 16rem);   /* hero thesis */
+  --text-giant: clamp(2.5rem, 9vw, 9rem);      /* section statements */
+  --text-huge: clamp(2rem, 5vw, 4.5rem);       /* company / project names */
 }
 
-html { scroll-behavior: smooth; }
-body {
-  background: var(--color-bg);
-  color: var(--color-fg);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  :root {
+    --gutter: clamp(1.25rem, 5vw, 6rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-bg);
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-fg);
+    color: var(--color-bg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+@layer components {
+  /* Section horizontal padding shared by every block. */
+  .gutter { padding-inline: var(--gutter); }
+
+  /* Giant display type defaults: tight tracking + low leading. */
+  .display {
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  /* Monospace "telemetry" voice: indices, labels, status lines. */
+  .mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;       /* 11px */
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  /* Hairline divider between sections. */
+  .rule {
+    border-top: 1px solid var(--color-faint);
+  }
+
+  /* Link with an underline that wipes in on hover. */
+  .link-wipe {
+    position: relative;
+    display: inline-block;
+  }
+  .link-wipe::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.1em;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-wipe:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Grayscale-to-colour editorial image treatment. */
+  .img-editorial {
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .img-editorial,
+  .img-editorial:hover {
+    filter: grayscale(0%) contrast(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .img-editorial { filter: none; }
+  }
+}
+
+/* Marquee track (used by the stack ticker). */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 38s linear infinite;
+  will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-.text-gradient {
-  background: linear-gradient(90deg, var(--accent-from), var(--accent-to));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  .marquee-track { animation: none; }
 }

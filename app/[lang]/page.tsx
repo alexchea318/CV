@@ -27,8 +27,9 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         <Projects lang={l} />
         <Awards lang={l} />
         <Contacts lang={l} />
-        <footer className="px-6 md:px-16 py-10 border-t border-line text-muted text-sm">
-          © {l === "ru" ? "Чеченев Александр" : "Alexander Chechenev"}, 2026
+        <footer className="gutter rule mono flex flex-wrap items-center justify-between gap-3 py-10">
+          <span>© {l === "ru" ? "Чеченев Александр" : "Alexander Chechenev"} — 2026</span>
+          <span>{l === "ru" ? "СПБ · NEXT.JS · СОБРАНО ВРУЧНУЮ" : "SPB · NEXT.JS · HAND-BUILT"}</span>
         </footer>
       </main>
     </SmoothScroll>

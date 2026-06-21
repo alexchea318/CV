@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "../globals.css";
-import { displayFont, GeistSans } from "../fonts";
+import { GeistSans, GeistMono } from "../fonts";
 import { isLocale, pick, type Locale } from "@/lib/i18n";
 import { profile } from "@/content/profile";
 import { JsonLd } from "./JsonLd";
@@ -48,7 +48,7 @@ export default async function LangLayout({
   if (!isLocale(lang)) notFound();
   const locale = lang as Locale;
   return (
-    <html lang={lang} className={`${displayFont.variable} ${GeistSans.variable}`}>
+    <html lang={lang} className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <JsonLd lang={locale} />
         {children}

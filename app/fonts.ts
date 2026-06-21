@@ -1,11 +1,7 @@
 import { GeistSans } from "geist/font/sans";
-import { Unbounded } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 
-export const displayFont = Unbounded({
-  subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: "variable",
-  variable: "--ff-display",
-  display: "swap",
-});
-
-export { GeistSans };
+// Single-family editorial system: Geist Sans carries both the giant display
+// type and body copy (scale + weight + tracking do the work), and Geist Mono
+// is the "telemetry" voice for indices, labels and status lines.
+export { GeistSans, GeistMono };
