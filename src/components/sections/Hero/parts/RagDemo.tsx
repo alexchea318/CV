@@ -13,7 +13,6 @@ export function RagDemo() {
       <div className={styles.rag__head}>
         <span className={styles.rag__dot} />
         <span className={styles.rag__live}>{ragDemo.liveLabel}</span>
-        <span className={styles.rag__src}>just-ai</span>
       </div>
       <div className={styles.rag__thread}>
         {messages.map((m, i) => {
