@@ -23,7 +23,7 @@ export function Skills() {
         <Reveal className={styles.skills__col}>
           <div className={styles.skills__colhead}>
             <span className={styles.skills__star}>✱</span>
-            <span>{t(responsibility.label)}</span>
+            <span className={styles["skills__colhead-text"]}>{t(responsibility.label)}</span>
           </div>
           <div className={styles.skills__own}>
             {responsibility.items.map((it) => (
@@ -42,7 +42,7 @@ export function Skills() {
         <Reveal className={styles.skills__col} delay={40}>
           <div className={styles.skills__colhead}>
             <span className={styles.skills__star}>✱</span>
-            <span>{t(technologies.label)}</span>
+            <span className={styles["skills__colhead-text"]}>{t(technologies.label)}</span>
           </div>
           <div className={styles.skills__tech}>
             {technologies.groups.map((g, i) => (

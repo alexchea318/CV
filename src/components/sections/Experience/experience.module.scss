@@ -69,7 +69,9 @@
   cursor: pointer;
 }
 .role--active { opacity: 1; }
-.role--last { border-bottom: 1px solid rgba(243, 235, 221, 0.16); }
+/* Timeline is open at both ends — dividers sit only between rows. */
+.role:first-child { border-top: 0; }
+.role--last { border-bottom: 0; }
 .role__bar {
   position: absolute;
   left: 0;

@@ -276,7 +276,7 @@ export const experience = {
         {
             period: {ru: "2026 — наст.", en: "2026 — now"},
             dateRange: {ru: "Январь 2026 — настоящее время", en: "January 2026 — present"},
-            title: {ru: "Full-Stack / AI Engineer (RAG)", en: "Full-Stack / AI Engineer (RAG)"},
+            title: {ru: "AI Engineer (RAG)", en: "AI Engineer (RAG)"},
             company: "Just AI",
             blurb: {
                 ru: "Enterprise RAG-платформа для поиска и генерации по корпоративным данным.",
@@ -291,12 +291,38 @@ export const experience = {
                             en: "Key engineer responsible for the technical evolution of the RAG platform",
                         },
                         {
-                            ru: "Архитектура retrieval- и data-пайплайнов",
-                            en: "Design of retrieval and data pipelines",
+                            ru: "Разработка retrieval- и data-пайплайнов",
+                            en: "Building retrieval and data pipelines",
                         },
                         {
                             ru: "Вывод AI-функциональности от концепции до production",
                             en: "Delivery of AI features from concept to production",
+                        },
+                    ],
+                },
+                {
+                    label: "AI",
+                    items: [
+                        {
+                            ru: "RAG-пайплайн: чанкинг, эмбеддинги, retrieval",
+                            en: "RAG pipeline: chunking, embeddings, retrieval",
+                        },
+                        {
+                            ru: "Оценка качества генерации (LLM evaluation)",
+                            en: "Generation quality evaluation (LLM evaluation)",
+                        },
+                    ],
+                },
+                {
+                    label: "PRACTICES",
+                    items: [
+                        {
+                            ru: "Code review, инженерные стандарты и шаблоны проверок",
+                            en: "Code review, engineering standards and review templates",
+                        },
+                        {
+                            ru: "Документация и база технических знаний команды",
+                            en: "Documentation and the team's technical knowledge base",
                         },
                     ],
                 },
@@ -321,21 +347,12 @@ export const experience = {
                     label: "PRODUCTION",
                     items: [
                         {
-                            ru: "CI/CD, Docker, Jenkins",
-                            en: "CI/CD, Docker, Jenkins",
+                            ru: "Docker, Jenkins, CI/CD-пайплайны",
+                            en: "Docker, Jenkins, CI/CD pipelines",
                         },
                         {
                             ru: "Надёжность и стабильность production-систем",
                             en: "Production reliability and system stability",
-                        },
-                    ],
-                },
-                {
-                    label: "AI",
-                    items: [
-                        {
-                            ru: "RAG, retrieval, LLM evaluation, MCP, AI-агенты",
-                            en: "RAG, retrieval, LLM evaluation, MCP, AI agents",
                         },
                     ],
                 },
@@ -549,7 +566,7 @@ export const skills = {
     marquee: ["ENTERPRISE", "PRODUCTION", "RELIABILITY"],
 
     responsibility: {
-        label: { ru: "ИНЖЕНЕРНАЯ ОТВЕТСТВЕННОСТЬ", en: "ENGINEERING OWNERSHIP" },
+        label: { ru: "Инженерная ответственность", en: "Engineering ownership" },
         items: [
             {
                 no: "01",
@@ -579,7 +596,7 @@ export const skills = {
     },
 
     technologies: {
-        label: { ru: "ТЕХНОЛОГИИ", en: "TECHNOLOGIES" },
+        label: { ru: "Технологии", en: "Technologies" },
         groups: [
             {
                 label: { ru: "AI / RAG", en: "AI / RAG" },
