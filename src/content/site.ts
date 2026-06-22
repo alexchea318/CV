@@ -22,18 +22,18 @@ export const nav = {
 ============================================================ */
 export const hero = {
     // Typewriter eyebrow: openStatus — location — <tenure phrase> suffix
-    openStatus: {ru: "Открыт к предложениям", en: "Open to work"},
-    location: {ru: "Санкт-Петербург / Удаленно", en: "St. Petersburg / Remote"},
+    openStatus: {ru: "Открыт к предложениям", en: "Open to opportunities"},
+    location: {ru: "Санкт-Петербург / Удалённо", en: "St. Petersburg / Remote"},
     tenureSuffix: {ru: "опыт", en: "experience"},
     firstName: {ru: "Александр", en: "Alexander"},
     lastName: {ru: "Чеченев", en: "Chechenev"},
-    role: {ru: `Full-Stack / AI${NB}Engineer`, en: "Full-Stack / AI Engineer"},
+    role: {ru: `AI${NB}Engineer`, en: "AI Engineer"},
     spec: {ru: "— специализация RAG", en: "— RAG specialization"},
     backgroundLabel: {ru: "Бэкграунд:", en: "Background:"},
     backgroundRoles: [`Team${NB}Lead`, `Senior${NB}Frontend`],
     tagline: {
-        ru: "Определяю техническое развитие AI-продуктов и довожу их от идеи до production.",
-        en: "I drive the technical direction of AI products and take them from idea to production.",
+        ru: "Разрабатываю RAG-функциональность enterprise-платформ и довожу AI-фичи от прототипа до production.",
+        en: "I build RAG functionality for enterprise platforms and take AI features from prototype to production.",
     } satisfies I18n,
     scroll: {ru: "ПРОКРУТКА", en: "SCROLL"},
 };
@@ -82,11 +82,11 @@ export const about = {
     statement: {
         leadA: {ru: "За ", en: "Over "},
         leadB: {
-            ru: ` я вырос до Full-Stack / AI-инженера. Сегодня строю Enterprise production-системы на стыке `,
-            en: " I grew into a Full-Stack / AI Engineer. Today I build Enterprise production systems at the intersection of ",
+            ru: ` вырос от fullstack-разработчика и тимлида до AI-инженера. Фуллстек-бэкграунд помогает строить фичи сквозь весь стек — от `,
+            en: " I grew from a fullstack developer and team lead into an AI Engineer. A fullstack background helps me build features across the whole stack — from ",
         },
-        accent: {ru: "RAG, LLM", en: "RAG, LLM"},
-        tail: {ru: ` и классической Fullstack-разработки.`, en: " and classic Fullstack engineering."},
+        accent: {ru: "retrieval до production", en: "retrieval to production"},
+        tail: {ru: `.`, en: "."},
     } satisfies Record<"leadA" | "leadB" | "accent" | "tail", I18n>,
     // First stat (years in production) is rendered dynamically; these follow it.
     stats: [
@@ -626,6 +626,7 @@ export const contact = {
     label: {ru: "КОНТАКТЫ", en: "CONTACTS"},
     headline: {ru: `Связаться${NB}→`, en: "Let's talk →"},
     headlineHref: links.telegram,
+    toTop: {ru: "Наверх", en: "Back to top"},
     links: [
         {kind: "email", value: links.email, href: `mailto:${links.email}`},
         {kind: "Telegram", value: "Telegram", href: links.telegram},

@@ -1,48 +1,108 @@
 @use 'mixins' as m;
+@use 'breakpoints' as bp;
+@use 'tokens' as t;
+
+// Co-scoped keyframes (CSS Modules scopes animation names).
+@keyframes axc-pan { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+@keyframes axc-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.82); } }
 
 .contact {
   position: relative;
   z-index: 2;
-  padding: 18vh 6vw 8vh;
+  overflow: hidden;
+  background: #17150f;
+  color: #f3ebdd;
+  padding: clamp(78px, 13vh, 160px) 6vw clamp(26px, 4vh, 40px);
 }
+.contact__inner { position: relative; z-index: 1; }
 
-.contact__head {
+.contact__top {
   @include m.mono;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px 24px;
   font-size: 12px;
   letter-spacing: 0.14em;
-  color: rgba(23, 21, 15, 0.45);
-  margin-bottom: 34px;
+  color: rgba(243, 235, 221, 0.5);
+}
+.contact__status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(243, 235, 221, 0.6);
+}
+.contact__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: t.$green;
+  animation: axc-pulse 1.6s ease-in-out infinite;
+  @include bp.reduced-motion { animation: none; }
 }
 
 .contact__headline {
   @include m.display;
   display: inline-block;
+  margin-top: clamp(28px, 4vh, 52px);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 0.86;
   letter-spacing: -0.04em;
-  font-size: clamp(46px, 11vw, 180px);
-  background: linear-gradient(110deg, #17150f 60%, #8e4ec6);
+  font-size: clamp(52px, 12vw, 200px);
+  background: linear-gradient(110deg, #f3ebdd 42%, #ff7543 70%, #8e4ec6);
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: axc-pan 9s linear infinite;
+  transition: transform 0.35s var(--ease);
+  @include bp.reduced-motion { animation: none; }
 }
 
 .contact__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px 44px;
-  margin-top: 64px;
-  border-top: 1px solid rgba(23, 21, 15, 0.14);
-  padding-top: 40px;
+  gap: 16px 40px;
+  margin-top: clamp(44px, 7vh, 86px);
 }
-
 .contact__link {
   @include m.mono;
-  font-size: 14px;
-  letter-spacing: 0.03em;
   display: flex;
   align-items: center;
   gap: 9px;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: #f3ebdd;
+  transition: color 0.3s var(--ease);
+}
+.contact__arrow { color: #ff7543; }
+
+.contact__bottom {
+  @include m.mono;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 32px;
+  margin-top: clamp(54px, 9vh, 110px);
+  padding-top: 26px;
+  border-top: 1px solid rgba(243, 235, 221, 0.14);
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  color: rgba(243, 235, 221, 0.5);
+}
+.contact__totop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(243, 235, 221, 0.5);
+  transition: color 0.3s var(--ease);
 }
 
-.contact__arrow { color: rgba(23, 21, 15, 0.4); }
+@media (hover: hover) {
+  .contact__link:hover { color: #ff7543; }
+  .contact__totop:hover { color: #f3ebdd; }
+}

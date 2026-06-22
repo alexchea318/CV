@@ -12,7 +12,6 @@ import { Work } from "@/components/sections/Work";
 import { Experience } from "@/components/sections/Experience";
 import { Skills } from "@/components/sections/Skills";
 import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/sections/Footer";
 import styles from "./portfolio.module.scss";
 
 function Shell() {
@@ -28,9 +27,8 @@ function Shell() {
         <Work />
         <Experience />
         <Skills />
-        <Contact />
       </main>
-      <Footer />
+      <Contact />
     </div>
   );
 }

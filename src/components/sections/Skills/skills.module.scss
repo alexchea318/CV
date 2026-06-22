@@ -91,7 +91,6 @@
   display: grid;
   grid-template-columns: minmax(104px, 0.42fr) minmax(0, 1fr);
   gap: 12px 40px;
-  align-items: center;
   @include bp.mobile {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -106,7 +105,7 @@
   @include m.display;
   font-weight: 700;
   font-size: clamp(20px, 1.9vw, 28px);
-  line-height: 1.05;
+  line-height: 1.25;
   letter-spacing: -0.025em;
 }
 .tech--lead .tech__name {
