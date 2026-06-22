@@ -14,8 +14,8 @@ export function AchievementCard({ item }: { item: Item }) {
     <div>
       <img src={item.img} alt={t(item.title)} loading="lazy" className={styles["ach-card__img"]} />
       <div className={styles["ach-card__head"]}>
-        <span className={cx(styles["ach-card__year"], styles[`ach-card__year--${variant}`])}>{item.year}</span>
         <span className={styles["ach-card__kicker"]}>{t(item.kicker)}</span>
+        <span className={cx(styles["ach-card__year"], styles[`ach-card__year--${variant}`])}>{item.year}</span>
       </div>
       <h3 className={styles["ach-card__title"]}>{t(item.title)}</h3>
       <p className={styles["ach-card__text"]}>{t(item.text)}</p>

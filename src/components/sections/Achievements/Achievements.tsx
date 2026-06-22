@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useT } from "@/components/primitives/T";
 import { Reveal } from "@/components/primitives/Reveal";
 import { cx } from "@/lib/cx";
+import { useCarousel } from "@/hooks/useCarousel";
 import { achievements } from "@/content/site";
 import { AchievementRow } from "./parts/AchievementRow";
 import { AchievementCard } from "./parts/AchievementCard";
@@ -13,6 +14,7 @@ export function Achievements() {
   const t = useT();
   const [active, setActive] = useState(0);
   const items = achievements.items;
+  const slider = useCarousel(items.length);
 
   return (
     <section id="achievements" className={styles.ach}>
@@ -48,10 +50,22 @@ export function Achievements() {
         </Reveal>
       </div>
 
-      {/* mobile: full cards, no hover */}
-      <div className={styles.ach__cards}>
+      {/* mobile: one-card slider */}
+      <div ref={slider.trackRef} className={styles.ach__cards}>
         {items.map((item) => (
           <AchievementCard key={item.year} item={item} />
+        ))}
+      </div>
+      <div className={styles.ach__dots}>
+        {items.map((item, i) => (
+          <button
+            key={item.year}
+            type="button"
+            aria-label={`${item.year}`}
+            aria-current={i === slider.active}
+            onClick={() => slider.goTo(i)}
+            className={cx(styles.ach__dot, i === slider.active && styles["ach__dot--active"])}
+          />
         ))}
       </div>
     </section>

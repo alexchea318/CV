@@ -114,9 +114,10 @@
   @include m.display;
   margin: 0;
   font-weight: 700;
-  line-height: 1.04;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   font-size: clamp(24px, 2.8vw, 40px);
+  @include bp.mobile { line-height: 1.4; }
 }
 .detail__company {
   @include m.mono;

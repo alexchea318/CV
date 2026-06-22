@@ -110,7 +110,7 @@
   @include m.display;
   margin: 0;
   font-weight: 700;
-  line-height: 1.06;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   font-size: clamp(21px, 2.5vw, 36px);
 }
@@ -145,11 +145,43 @@
 }
 
 .ach__cards {
-  margin-top: 40px;
+  margin-top: 44px;
   display: flex;
-  flex-direction: column;
-  gap: 40px;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   @include bp.desktop { display: none; }
+}
+.ach__cards::-webkit-scrollbar { display: none; }
+.ach__cards > * {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.ach__dots {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 30px;
+  @include bp.desktop { display: none; }
+}
+.ach__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(243, 235, 221, 0.26);
+  cursor: pointer;
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.ach__dot--active {
+  background: #f3ebdd;
+  transform: scale(1.35);
 }
 .ach-card__img {
   width: 100%;
@@ -161,14 +193,14 @@
 }
 .ach-card__head {
   display: flex;
-  align-items: baseline;
-  gap: 14px;
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
 }
 .ach-card__year {
   @include m.display;
   font-weight: 800;
-  font-size: clamp(30px, 11vw, 46px);
+  font-size: clamp(40px, 14vw, 60px);
   line-height: 1;
   letter-spacing: -0.03em;
 }
@@ -176,16 +208,16 @@
 .ach-card__year--grad { @include m.grad-text-static; }
 .ach-card__kicker {
   @include m.mono;
-  font-size: 11px;
+  font-size: 11.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(243, 235, 221, 0.5);
 }
 .ach-card__title {
   @include m.display;
-  margin: 12px 0 0;
+  margin: 18px 0 0;
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.4;
   letter-spacing: -0.02em;
   font-size: clamp(22px, 6.5vw, 32px);
 }

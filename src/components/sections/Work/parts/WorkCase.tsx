@@ -48,7 +48,6 @@ export function WorkCase({ c, index, last }: { c: Case; index: number; last: boo
             <h3 className={styles.case__title}>{t(c.title)}</h3>
           )}
           <p className={styles.case__text}>{t(c.text)}</p>
-          {hasLink && btn("mobile")}
         </div>
         <div className={styles.case__aside}>
           <div className={styles.case__tags}>
@@ -58,6 +57,7 @@ export function WorkCase({ c, index, last }: { c: Case; index: number; last: boo
           </div>
           {hasLink && btn("desktop")}
         </div>
+        {hasLink && btn("mobile")}
       </div>
     </Reveal>
   );

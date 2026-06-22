@@ -50,10 +50,11 @@
   display: block;
   margin: 0 0 16px;
   font-weight: 700;
-  line-height: 1.02;
+  line-height: 1.2;
   letter-spacing: -0.025em;
   font-size: clamp(30px, 4.6vw, 66px);
   color: var(--ink);
+  @include bp.mobile { line-height: 1.4; }
 }
 
 .case__text {
@@ -71,6 +72,10 @@
   justify-content: space-between;
   gap: 24px;
   max-width: 300px;
+  @include bp.mobile {
+    align-items: flex-start;
+    max-width: none;
+  }
 }
 
 .case__tags {
@@ -78,6 +83,7 @@
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-end;
+  @include bp.mobile { justify-content: flex-start; }
 }
 
 .case__tag {
@@ -102,7 +108,7 @@
 }
 .case__btn--mobile {
   display: inline-flex;
-  margin-top: 24px;
+  align-self: flex-start;
   @include bp.desktop { display: none; }
 }
 .case__btn--desktop {

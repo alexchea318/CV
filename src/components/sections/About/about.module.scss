@@ -7,6 +7,15 @@
   z-index: 2;
   padding-block: 16vh;
 }
+.about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+  background: rgba(23, 21, 15, 0.16);
+}
 
 .about__head {
   @include m.mono;
