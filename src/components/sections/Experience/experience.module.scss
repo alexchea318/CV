@@ -115,7 +115,7 @@
   color: rgba(243, 235, 221, 0.45);
   margin-bottom: 14px;
 }
-.detail__range--compact { margin-bottom: 12px; }
+.detail__range--compact { margin-bottom: 16px; }
 .detail__title {
   @include m.display;
   margin: 0;
@@ -138,7 +138,7 @@
   line-height: 1.55;
   color: rgba(243, 235, 221, 0.62);
 }
-.detail__blurb--compact { margin: 0 0 20px; }
+.detail__blurb--compact { margin: 0 0 26px; }
 .detail__group {
   display: flex;
   flex-wrap: wrap;
@@ -183,6 +183,12 @@
   opacity: 0.6;
 }
 
+/* Roomier rhythm for the accordion detail on small screens. */
+@include bp.mobile {
+  .detail__group { padding: 18px 0; gap: 10px 18px; }
+  .detail__items { gap: 10px; }
+}
+
 .exp__mobile { @include bp.desktop { display: none; } }
 .acc { border-top: 1px solid rgba(243, 235, 221, 0.16); }
 .acc--last { border-bottom: 1px solid rgba(243, 235, 221, 0.16); }
@@ -191,20 +197,20 @@
   text-align: left;
   background: none;
   border: 0;
-  padding: 20px 0 20px 16px;
+  padding: 26px 0 26px 16px;
   position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
   font: inherit;
   color: inherit;
 }
 .acc__bar {
   position: absolute;
   left: 0;
-  top: 20px;
-  bottom: 20px;
+  top: 26px;
+  bottom: 26px;
   width: 3px;
   border-radius: 2px;
   background: #a78bfa;
@@ -233,6 +239,6 @@
   color: rgba(243, 235, 221, 0.5);
 }
 .acc__panel {
-  padding: 0 0 26px 16px;
+  padding: 16px 0 36px 16px;
   animation: axc-reveal 0.4s var(--ease) both;
 }
