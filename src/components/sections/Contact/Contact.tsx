@@ -9,8 +9,10 @@ export function Contact() {
   const t = useT();
   const { lang } = useLang();
 
-  // VK is RU-only — drop it from the English contact row.
-  const contactLinks = contact.links.filter((l) => !(l.kind === "VK" && lang === "en"));
+  // VK and hh.ru are RU-only — drop them from the English contact row.
+  const contactLinks = contact.links.filter(
+    (l) => !((l.kind === "VK" || l.kind === "hh.ru") && lang === "en"),
+  );
 
   // No scroll-reveal here: the footer is the last thing on the page, so its lower
   // rows can never clear the reveal observer's bottom margin — they'd stay hidden.

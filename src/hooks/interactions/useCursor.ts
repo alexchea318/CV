@@ -56,7 +56,9 @@ export function useCursor() {
 
     const enter = (el: HTMLElement) => {
       const r = el.getBoundingClientRect();
-      if (r.width > 460 || r.height > 140) {
+      // [data-cursor-wrap] opts a big element into the morph instead of the blob.
+      const wrap = el.hasAttribute("data-cursor-wrap");
+      if (!wrap && (r.width > 460 || r.height > 140)) {
         ring.style.width = "58px";
         ring.style.height = "58px";
         ring.style.borderRadius = "50%";
@@ -69,7 +71,7 @@ export function useCursor() {
       ring.style.width = `${r.width + 20}px`;
       ring.style.height = `${r.height + 14}px`;
       ring.style.borderRadius = br;
-      ring.style.borderWidth = "1.5px";
+      ring.style.borderWidth = "2px";
       dot.style.opacity = "0";
       stuck = el;
     };
@@ -77,7 +79,7 @@ export function useCursor() {
       ring.style.width = "42px";
       ring.style.height = "42px";
       ring.style.borderRadius = "50%";
-      ring.style.borderWidth = "1.5px";
+      ring.style.borderWidth = "2px";
       dot.style.opacity = "1";
       stuck = null;
     };

@@ -19,7 +19,7 @@ export function WorkCase({ c, index, last }: { c: Case; index: number; last: boo
     : {};
 
   return (
-    <Reveal delay={index * 40} {...linkProps} className={cx(styles.case, last && styles["case--last"])}>
+    <Reveal delay={index * 40} {...linkProps} className={cx(styles.case, index === 0 && styles["case--first"], last && styles["case--last"])}>
       <div className={styles.case__top}>
         <div className={styles.case__meta}>
           <span>{c.company}</span>

@@ -642,7 +642,7 @@ export const contact = {
 ============================================================ */
 export const footer = {
     left: {
-        ru: "Александр Чеченев — Full-Stack / AI Engineer (RAG)",
-        en: "Alexander Chechenev — Full-Stack / AI Engineer (RAG)",
+        ru: "Александр Чеченев",
+        en: "Alexander Chechenev",
     } satisfies I18n,
 };

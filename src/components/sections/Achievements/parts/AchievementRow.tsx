@@ -17,6 +17,7 @@ export function AchievementRow({
   return (
     <div
       data-cursor
+      data-cursor-wrap
       onMouseEnter={onActivate}
       onClick={onActivate}
       className={cx(styles["ach-row"], active && styles["ach-row--active"], last && styles["ach-row--last"])}

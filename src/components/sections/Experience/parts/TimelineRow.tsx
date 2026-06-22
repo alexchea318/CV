@@ -16,6 +16,7 @@ export function TimelineRow({
   return (
     <div
       data-cursor
+      data-cursor-wrap
       onMouseEnter={onActivate}
       onClick={onActivate}
       className={cx(styles.role, active && styles["role--active"], last && styles["role--last"])}
