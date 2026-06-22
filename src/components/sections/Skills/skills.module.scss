@@ -1,138 +1,175 @@
 @use 'mixins' as m;
 @use 'breakpoints' as bp;
 
-// Co-scoped keyframes for the flagship gradient title (see m.grad-text).
-@keyframes axc-pan { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+// Co-scoped marquee loop (CSS Modules scopes the animation name).
+@keyframes axc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 .skills {
   @include m.gutter;
   position: relative;
   z-index: 2;
-  padding-block: 14vh;
-  background: #17150f;
-  color: #f3ebdd;
+  padding-block: 13vh;
+  background: #f3ebdd;
+  color: #17150f;
 }
 
 .skills__head {
   @include m.mono;
-  display: flex;
-  align-items: baseline;
-  gap: 18px;
   font-size: 12px;
   letter-spacing: 0.14em;
-  color: rgba(243, 235, 221, 0.5);
-  margin-bottom: 48px;
-}
-.skills__rule {
-  flex: 1;
-  height: 1px;
-  background: rgba(243, 235, 221, 0.16);
+  color: rgba(23, 21, 15, 0.5);
+  margin-bottom: 54px;
 }
 
+/* Two columns: ownership (accountability) | technologies (stack). */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-}
-.skills__cell { display: flex; }
-.skills__cell--wide { grid-column: 1 / -1; }
-
-.sk-card {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(243, 235, 221, 0.14);
-  border-radius: 14px;
-  padding: 22px 24px;
-  background: rgba(243, 235, 221, 0.02);
-  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease);
-}
-.sk-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 117, 67, 0.5);
-  background: rgba(243, 235, 221, 0.045);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 448px), 1fr));
+  gap: clamp(40px, 5vw, 84px) clamp(48px, 6vw, 92px);
+  align-items: start;
 }
 
-.sk-card__title {
+.skills__colhead {
   @include m.mono;
-  font-size: 11.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(23, 21, 15, 0.5);
+  margin-bottom: clamp(26px, 3vw, 40px);
+}
+.skills__star {
   color: #ff7543;
-  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1;
 }
 
-.sk-card__items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+/* ===== Ownership ========================================================== */
+.skills__own {
+  display: grid;
+  gap: clamp(28px, 3vw, 40px);
 }
-.sk-card__chip {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: rgba(243, 235, 221, 0.82);
-  border: 1px solid rgba(243, 235, 221, 0.16);
-  border-radius: 9999px;
-  padding: 6px 13px;
-  white-space: nowrap;
-}
-
-/* Flagship — the specialization card, larger and gradient-titled. */
-.sk-card--flagship {
-  padding: 30px 32px;
-  border-color: rgba(255, 117, 67, 0.28);
-  background: rgba(255, 117, 67, 0.04);
-}
-.sk-card--flagship .sk-card__title {
-  @include m.display;
-  @include m.grad-text;
-  font-size: clamp(24px, 3vw, 34px);
-  letter-spacing: -0.02em;
-  text-transform: none;
-  margin-bottom: 22px;
-}
-.sk-card--flagship .sk-card__items { gap: 10px; }
-.sk-card--flagship .sk-card__chip {
-  font-size: 14.5px;
-  padding: 8px 16px;
-  border-color: rgba(243, 235, 221, 0.22);
-}
-
-/* Non-technical band — visually a different family from the tech cards. */
-.skills__soft {
-  display: flex;
-  flex-wrap: wrap;
+.own {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 15px;
   align-items: baseline;
-  gap: 16px 32px;
-  margin-top: 40px;
-  border-top: 1px solid rgba(243, 235, 221, 0.16);
-  padding-top: 32px;
 }
-.skills__soft-label {
+.own__no {
   @include m.mono;
-  font-size: 11.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(243, 235, 221, 0.5);
-  flex: 0 0 auto;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #ff7543;
 }
-.skills__soft-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.own__name {
+  @include m.display;
+  font-weight: 700;
+  font-size: clamp(21px, 2vw, 29px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
-.skills__soft-chip {
-  font-size: 13.5px;
-  font-weight: 500;
-  color: rgba(243, 235, 221, 0.88);
-  border: 1px solid rgba(255, 117, 67, 0.28);
-  border-radius: 9999px;
-  padding: 6px 13px;
-  white-space: nowrap;
+.own__text {
+  margin: 11px 0 0;
+  max-width: 440px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(23, 21, 15, 0.6);
 }
 
-@include bp.mobile {
-  .sk-card { padding: 20px; }
-  .sk-card--flagship { padding: 24px 22px; }
+/* ===== Technologies — name | chips, first group leads ===================== */
+.skills__tech {
+  display: grid;
+  gap: clamp(22px, 2.6vw, 36px);
+}
+.tech {
+  display: grid;
+  grid-template-columns: minmax(104px, 0.42fr) minmax(0, 1fr);
+  gap: 12px 40px;
+  align-items: center;
+  @include bp.mobile {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+.tech--lead {
+  gap: 16px 40px;
+  padding-bottom: clamp(6px, 1vw, 14px);
+  @include bp.mobile { gap: 14px; }
+}
+.tech__name {
+  @include m.display;
+  font-weight: 700;
+  font-size: clamp(20px, 1.9vw, 28px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+.tech--lead .tech__name {
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 46px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: #ff7543;
+}
+.tech__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.chip {
+  @include m.mono;
+  font-size: 13px;
+  color: rgba(23, 21, 15, 0.72);
+  border: 1px solid rgba(23, 21, 15, 0.18);
+  border-radius: 9999px;
+  padding: 8px 15px;
+  white-space: nowrap;
+}
+.chip--lead {
+  color: #ff7543;
+  border-color: rgba(255, 117, 67, 0.4);
+  background: rgba(255, 117, 67, 0.08);
+}
+
+/* ===== Full-bleed marquee ================================================= */
+.skills__marquee {
+  position: relative;
+  margin-top: clamp(84px, 11vw, 150px);
+  margin-inline: calc(var(--gutter) * -1);
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 11%, #000 89%, transparent);
+}
+.skills__marqueeTrack {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: axc-marquee 52s linear infinite;
+  will-change: transform;
+  @include bp.reduced-motion { animation: none; }
+}
+.skills__marqueeItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 42px;
+  padding-right: 42px;
+}
+.skills__marqueeWord {
+  @include m.display;
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 98px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(23, 21, 15, 0.15);
+}
+.skills__marqueeStar {
+  @include m.display;
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 98px);
+  line-height: 1;
+  color: rgba(255, 117, 67, 0.45);
 }

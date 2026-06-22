@@ -4,11 +4,15 @@
 // Co-scoped with the .acc__panel reveal animation (CSS Modules scopes the name).
 @keyframes axc-reveal { from { opacity: 0; transform: translateY(42px); } to { opacity: 1; transform: translateY(0); } }
 
+// Inverted (dark) section — ink ground, cream ink. Accent is the violet tint
+// that reads on dark (#a78bfa), the same role #8e4ec6 plays on the light ground.
 .exp {
   @include m.gutter;
   position: relative;
   z-index: 2;
   padding-block: 16vh;
+  background: #17150f;
+  color: #f3ebdd;
 }
 
 .exp__head {
@@ -18,13 +22,13 @@
   gap: 18px;
   font-size: 12px;
   letter-spacing: 0.14em;
-  color: rgba(23, 21, 15, 0.45);
+  color: rgba(243, 235, 221, 0.45);
   margin-bottom: 56px;
 }
 .exp__rule {
   flex: 1;
   height: 1px;
-  background: rgba(23, 21, 15, 0.16);
+  background: rgba(243, 235, 221, 0.16);
   @include bp.mobile { display: none; }
 }
 .exp__hint { @include bp.mobile { display: none; } }
@@ -58,14 +62,14 @@
   display: flex;
   gap: 18px;
   align-items: baseline;
-  border-top: 1px solid rgba(23, 21, 15, 0.16);
+  border-top: 1px solid rgba(243, 235, 221, 0.16);
   padding: 20px 0 20px 22px;
   opacity: 0.4;
   transition: opacity 0.35s ease;
   cursor: pointer;
 }
 .role--active { opacity: 1; }
-.role--last { border-bottom: 1px solid rgba(23, 21, 15, 0.16); }
+.role--last { border-bottom: 1px solid rgba(243, 235, 221, 0.16); }
 .role__bar {
   position: absolute;
   left: 0;
@@ -73,7 +77,7 @@
   bottom: 20px;
   width: 3px;
   border-radius: 2px;
-  background: #8e4ec6;
+  background: #a78bfa;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.45s var(--ease);
@@ -83,7 +87,7 @@
   @include m.mono;
   font-size: 12.5px;
   letter-spacing: 0.03em;
-  color: rgba(23, 21, 15, 0.5);
+  color: rgba(243, 235, 221, 0.5);
   flex: 0 0 96px;
 }
 .role__body { flex: 1; }
@@ -94,19 +98,19 @@
   letter-spacing: -0.015em;
   transition: color 0.3s ease, transform 0.4s var(--ease);
 }
-.role--active .role__title { color: #8e4ec6; transform: translateX(8px); }
+.role--active .role__title { color: #a78bfa }
 .role__company {
   @include m.mono;
   font-size: 12px;
-  color: rgba(23, 21, 15, 0.5);
-  margin-top: 4px;
+  color: rgba(243, 235, 221, 0.5);
+  margin-top: 10px;
 }
 
 .detail__range {
   @include m.mono;
   font-size: 11.5px;
   letter-spacing: 0.06em;
-  color: rgba(23, 21, 15, 0.45);
+  color: rgba(243, 235, 221, 0.45);
   margin-bottom: 14px;
 }
 .detail__range--compact { margin-bottom: 12px; }
@@ -122,7 +126,7 @@
 .detail__company {
   @include m.mono;
   font-size: 13px;
-  color: rgba(23, 21, 15, 0.5);
+  color: #a78bfa;
   margin-top: 7px;
 }
 .detail__blurb {
@@ -130,21 +134,21 @@
   max-width: 560px;
   font-size: 15.5px;
   line-height: 1.55;
-  color: rgba(23, 21, 15, 0.62);
+  color: rgba(243, 235, 221, 0.62);
 }
 .detail__blurb--compact { margin: 0 0 20px; }
 .detail__group {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 18px;
-  border-top: 1px solid rgba(23, 21, 15, 0.12);
+  border-top: 1px solid rgba(243, 235, 221, 0.12);
   padding: 14px 0;
 }
 .detail__label {
   @include m.mono;
   font-size: 11px;
   letter-spacing: 0.08em;
-  color: #8e4ec6;
+  color: #a78bfa;
   flex: 0 0 132px;
   padding-top: 3px;
 }
@@ -163,7 +167,7 @@
   padding-left: 18px;
   font-size: 14px;
   line-height: 1.5;
-  color: rgba(23, 21, 15, 0.72);
+  color: rgba(243, 235, 221, 0.72);
 }
 .detail__item::before {
   content: "";
@@ -173,13 +177,13 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #8e4ec6;
+  background: #a78bfa;
   opacity: 0.6;
 }
 
 .exp__mobile { @include bp.desktop { display: none; } }
-.acc { border-top: 1px solid rgba(23, 21, 15, 0.16); }
-.acc--last { border-bottom: 1px solid rgba(23, 21, 15, 0.16); }
+.acc { border-top: 1px solid rgba(243, 235, 221, 0.16); }
+.acc--last { border-bottom: 1px solid rgba(243, 235, 221, 0.16); }
 .acc__btn {
   width: 100%;
   text-align: left;
@@ -201,7 +205,7 @@
   bottom: 20px;
   width: 3px;
   border-radius: 2px;
-  background: #8e4ec6;
+  background: #a78bfa;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.4s var(--ease);
@@ -211,7 +215,7 @@
   @include m.mono;
   font-size: 12px;
   letter-spacing: 0.03em;
-  color: rgba(23, 21, 15, 0.5);
+  color: rgba(243, 235, 221, 0.5);
 }
 .acc__title {
   @include m.display;
@@ -220,11 +224,11 @@
   letter-spacing: -0.015em;
   transition: color 0.3s ease;
 }
-.acc--open .acc__title { color: #8e4ec6; }
+.acc--open .acc__title { color: #a78bfa; }
 .acc__company {
   @include m.mono;
   font-size: 12px;
-  color: rgba(23, 21, 15, 0.5);
+  color: rgba(243, 235, 221, 0.5);
 }
 .acc__panel {
   padding: 0 0 26px 16px;

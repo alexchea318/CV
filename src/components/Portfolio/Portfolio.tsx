@@ -9,7 +9,6 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Achievements } from "@/components/sections/Achievements";
 import { Work } from "@/components/sections/Work";
-import { Marquee } from "@/components/sections/Marquee";
 import { Experience } from "@/components/sections/Experience";
 import { Skills } from "@/components/sections/Skills";
 import { Contact } from "@/components/sections/Contact";
@@ -27,7 +26,6 @@ function Shell() {
         <About />
         <Achievements />
         <Work />
-        <Marquee />
         <Experience />
         <Skills />
         <Contact />
