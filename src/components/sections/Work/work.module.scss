@@ -57,6 +57,16 @@
   @include bp.mobile { line-height: 1.4; }
 }
 
+.case__what {
+  margin: 0 0 18px;
+  max-width: 640px;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(23, 21, 15, 0.9);
+}
+
 .case__text {
   margin: 0;
   max-width: 640px;

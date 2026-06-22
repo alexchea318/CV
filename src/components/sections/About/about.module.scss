@@ -29,7 +29,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 56px 90px;
-  align-items: start;
+  align-items: center;
+}
+
+/* Cycle stepper: centred block within the (taller) right column. */
+.cycle {
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
 }
 
 .about__statement {
@@ -78,54 +85,103 @@
   color: rgba(23, 21, 15, 0.45);
   margin-bottom: 28px;
 }
-.cap {
+/* ===== Full-cycle pipeline stepper ============================================
+   A vertical rail whose gradient fill advances with the active step. The fill's
+   reach is mapped to node centres, which only works if every row is the SAME
+   height — so the note slot is reserved at all times (88px row, see insets). */
+.cycle__steps {
   position: relative;
-  display: flex;
-  gap: 18px;
-  align-items: baseline;
-  border-top: 1px solid rgba(23, 21, 15, 0.16);
-  padding: 19px 0;
-  opacity: 0.5;
-  transition: opacity 0.35s ease;
-  cursor: default;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.cap--interactive { cursor: pointer; }
-.cap--active { opacity: 1; }
-.cap--last { border-bottom: 1px solid rgba(23, 21, 15, 0.16); }
-.cap__num {
+
+.cycle__rail,
+.cycle__fill {
+  position: absolute;
+  left: 9px;
+  width: 2px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.cycle__rail {
+  top: 18px;
+  bottom: 70px;
+  background: rgba(23, 21, 15, 0.14);
+}
+.cycle__fill {
+  top: 18px;
+  height: calc((100% - 88px) * var(--p, 0));
+  background: linear-gradient(180deg, #d21306, #ff7543, #8e4ec6);
+  transition: height 0.6s var(--ease);
+}
+
+.cycle__step {
+  position: relative;
+  min-height: 88px;
+  padding: 4px 0 0 40px;
+  opacity: 0.38;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+.cycle__step--done { opacity: 0.62; }
+.cycle__step--active { opacity: 1; }
+
+.cycle__node {
+  position: absolute;
+  left: 1px;
+  top: 18px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f3ebdd;
+  border: 2px solid rgba(23, 21, 15, 0.22);
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.cycle__step--done .cycle__node { border-color: #ff7543; background: #ff7543; }
+.cycle__step--active .cycle__node {
+  border-color: #8e4ec6;
+  background: #8e4ec6;
+  transform: translateY(-50%) scale(1.3);
+  box-shadow: 0 0 0 5px rgba(142, 78, 198, 0.16);
+}
+
+.cycle__num {
   @include m.mono;
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(23, 21, 15, 0.4);
-  flex: 0 0 26px;
+  margin-right: 12px;
 }
-.cap__body { flex: 1; }
-.cap__name {
+.cycle__name {
   @include m.display;
   font-weight: 700;
   font-size: clamp(20px, 2.1vw, 30px);
   letter-spacing: -0.015em;
-  transition: color 0.3s ease, transform 0.4s var(--ease);
+  transition: color 0.35s ease;
 }
-.cap--active .cap__name { color: #8e4ec6; transform: translateX(8px); }
-// Stack space is reserved at all times (always in flow) so hovering between
-// cards only fades opacity — never changes height. This stops the card list
-// and the section below from jumping on hover.
-.cap__stack {
-  @include m.mono;
-  font-size: 12.5px;
-  letter-spacing: 0.03em;
-  color: rgba(23, 21, 15, 0.5);
-  margin-top: 10px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.cap--active .cap__stack { opacity: 1; }
+.cycle__step--active .cycle__name { color: #8e4ec6; }
 
-/* mobile: hover unavailable — reveal every stack */
-@include bp.mobile {
-  .cap { opacity: 1; }
-  .cap__stack { opacity: 1; }
+.cycle__note {
+  display: block;
+  height: 36px;
+  overflow: hidden;
+  margin-top: 9px;
+  max-width: 380px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: rgba(23, 21, 15, 0.55);
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 0.4s ease, transform 0.5s var(--ease);
 }
+.cycle__step--active .cycle__note { opacity: 1; transform: none; }
+
+/* reduced motion: no auto-play — everything resolved and visible */
+.cycle__steps--static .cycle__step { opacity: 1; }
+.cycle__steps--static .cycle__note { opacity: 1; transform: none; }
 
 /* StatHint tooltip badge */
 .hint { position: relative; display: inline-flex; }

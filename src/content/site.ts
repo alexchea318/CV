@@ -101,14 +101,16 @@ export const about = {
     { value: { ru: "B2", en: "B2" }, label: { ru: "английский", en: "English" } },
   ] satisfies { value: I18n; label: I18n; hint?: I18n }[],
   capsHeading: { ru: "Полный цикл разработки", en: "Full development cycle" },
+  // The cycle proves breadth — I own every phase end-to-end. No tech here (that
+  // lives in the Skills section); each phase shows only what I actually do in it.
   caps: [
-    { name: { ru: "Системный анализ", en: "System analysis" }, stack: { ru: "Требования · формализация · UX", en: "Requirements · analysis · UX" } },
-    { name: { ru: "Прототипирование", en: "Prototyping" }, stack: { ru: "Figma · Claude Design · Google Stitch", en: "Figma · Claude Design · Google Stitch" } },
-    { name: { ru: "Бэкенд", en: "Backend" }, stack: { ru: "Java · Spring · Python", en: "Java · Spring · Python" } },
-    { name: { ru: "Фронтенд", en: "Frontend" }, stack: { ru: "React · TypeScript · Redux", en: "React · TypeScript · Redux" } },
-    { name: { ru: "Инфраструктура", en: "Infrastructure" }, stack: { ru: "Docker · Jenkins · CI/CD", en: "Docker · Jenkins · CI/CD" } },
-    { name: { ru: "Качество", en: "Quality" }, stack: { ru: "Graylog · Grafana · Sentry · pytest · Playwright", en: "Graylog · Grafana · Sentry · pytest · Playwright" } },
-  ] satisfies { name: I18n; stack: I18n }[],
+    { name: { ru: "Системный анализ", en: "System analysis" }, note: { ru: "Требования, формализация, пользовательские сценарии", en: "Requirements, formalization, user flows" } },
+    { name: { ru: "Прототипирование", en: "Prototyping" }, note: { ru: "Кликабельные прототипы и проверка гипотез", en: "Clickable prototypes and hypothesis checks" } },
+    { name: { ru: "Бэкенд", en: "Backend" }, note: { ru: "Сервисы, API и доменная логика", en: "Services, APIs and domain logic" } },
+    { name: { ru: "Фронтенд", en: "Frontend" }, note: { ru: "Архитектура SPA и UI-слой продукта", en: "SPA architecture and the product UI layer" } },
+    { name: { ru: "Инфраструктура", en: "Infrastructure" }, note: { ru: "Контейнеры, пайплайны и окружения", en: "Containers, pipelines and environments" } },
+    { name: { ru: "Качество", en: "Quality" }, note: { ru: "Тесты и наблюдаемость в production", en: "Tests and observability in production" } },
+  ] satisfies { name: I18n; note: I18n }[],
 };
 
 /* ============================================================
@@ -169,25 +171,35 @@ export const work = {
   index: "(03)",
   label: { ru: "ПРОЕКТЫ", en: "PROJECTS" },
   cta: { ru: "Перейти к проекту →", en: "View project →" },
+  // Projects tell WHAT the product is and the altitude of my impact — not task
+  // lists (those live in Experience). Tags stay as quiet proof of the stack.
   cases: [
     {
       company: "Just AI",
       period: { ru: "2026 — наст.", en: "2026 — now" },
-      title: { ru: `RAG-платформа — Full-Stack / AI${NB}Engineer`, en: "RAG Platform — Full-Stack / AI Engineer" },
-      text: {
-        ru: `Полный цикл production-RAG: от требований и системного анализа до деплоя и контроля качества. Backend на Java${NB}(Spring) и Python, данные на Elasticsearch${NB}+${NB}PostgreSQL, версионирование данных через lakeFS.`,
-        en: "Full-cycle delivery of production RAG: from requirements and system analysis to deploy and quality monitoring. Backend on Java (Spring) & Python, data on Elasticsearch + PostgreSQL, data versioning with lakeFS.",
+      title: { ru: "Enterprise RAG Platform", en: "Enterprise RAG Platform" },
+      what: {
+        ru: "Поиск и генерация по корпоративным данным на естественном языке.",
+        en: "Natural-language search and generation over enterprise data.",
       },
-      tags: ["Python", "Spring", "Elasticsearch", "lakeFS", "MCP"],
+      text: {
+        ru: `Один из ключевых инженеров платформы. Определяю техническое развитие продукта: архитектуру сервисов, работу с данными и retrieval-пайплайнами, подходы к оценке качества генерации. Отвечаю за вывод новых возможностей от концепции до production.`,
+        en: "One of the platform's key engineers. I drive the product's technical direction: service architecture, data and retrieval pipelines, and how generation quality is evaluated. I own the rollout of new capabilities from concept to production.",
+      },
+      tags: ["Java", "Spring", "Python", "Elasticsearch", "lakeFS", "MCP"],
       href: "https://khub.just-ai.com/",
     },
     {
       company: "Just AI",
       period: { ru: "2024 — 2026", en: "2024 — 2026" },
-      title: { ru: "База знаний AI — Senior Frontend", en: "AI Knowledge Base — Senior Frontend" },
+      title: { ru: "AI Knowledge Base", en: "AI Knowledge Base" },
+      what: {
+        ru: "Корпоративная база знаний с диалоговым AI-поиском вместо классического поиска по документам.",
+        en: "Enterprise knowledge base with conversational AI search instead of classic document search.",
+      },
       text: {
-        ru: `Frontend-архитектура enterprise AI-продукта (React, TypeScript, монорепозиторий). Вёл общую UI-библиотеку (shadcn/ui), провёл миграции npm→pnpm, webpack→Vite, React${NB}16→18 и сложный UI: canvas, карты, video${NB}streaming.`,
-        en: "Frontend architecture of an enterprise AI product (React, TypeScript, monorepo). Owned a shared UI library (shadcn/ui), drove migrations npm→pnpm, webpack→Vite, React 16→18, and shipped complex UI: canvas, maps, video streaming.",
+        ru: `Входил в число ведущих разработчиков продукта. Определял развитие фронтенд-платформы: инициировал технологические миграции, развивал внутреннюю UI-систему и формировал инженерные стандарты команды.`,
+        en: "One of the product's lead developers. I shaped the frontend platform: initiated technology migrations, grew the internal UI system and set the team's engineering standards.",
       },
       tags: ["React", "TypeScript", "Vite", "shadcn/ui", "Playwright"],
       href: "https://just-ai.com/ai-baza-znaniy",
@@ -195,12 +207,16 @@ export const work = {
     {
       company: "НеоБИТ",
       period: { ru: "2023 — 2024", en: "2023 — 2024" },
-      title: { ru: "AI × Соцсети — Team Lead / PM", en: "AI × Social Networks — Team Lead / PM" },
-      text: {
-        ru: `Руководил командой из 5 человек (планирование спринтов, Jira, оценки) и был project-менеджером проектов «AI × соцсети»: перевод бизнес-требований в технические, демо, контроль качества, документация и работа с гостайной (3${NB}уровень) с прохождением ПИМ.`,
-        en: "Led a team of 5 (sprint planning, Jira boards, estimates) and acted as project manager on AI-for-social-networks projects: translating business into technical requirements, demos, QA, documentation and state-secrecy clearance (level 3) with formal acceptance testing.",
+      title: { ru: "AI × Social Networks", en: "AI × Social Networks" },
+      what: {
+        ru: "Генеративный ИИ для социальных платформ: автоматизация создания контента, аналитика аудитории и AI-ассистенты для SMM.",
+        en: "Generative AI for social platforms: automated content creation, audience analytics and AI assistants for SMM.",
       },
-      tags: [{ ru: "Лидерство", en: "Leadership" }, "Jira", { ru: "Управление", en: "Project Mgmt" }],
+      text: {
+        ru: `Технический лидер и один из основных драйверов развития продуктовой линейки. Принимал ключевые архитектурные решения, руководил командой разработки и отвечал за превращение продуктовых гипотез в готовые решения.`,
+        en: "Technical lead and a primary driver of the product line. Made key architectural decisions, led the development team and turned product hypotheses into shipped solutions.",
+      },
+      tags: [{ ru: "Тимлид", en: "Team Lead" }, { ru: "Продукт", en: "Product" }, "Jira"],
       href: "https://neobit.ru/",
     },
   ],
@@ -445,19 +461,40 @@ export const experience = {
 /* ============================================================
    SKILLS (05)
 ============================================================ */
+export type SkillCard = { title: I18n; items: (string | I18n)[]; flagship?: boolean };
+
 export const skills = {
   index: "(05)",
   label: { ru: "СТЕК И НАВЫКИ", en: "STACK & SKILLS" },
-  groups: [
-    { title: { ru: "BACKEND", en: "BACKEND" }, items: ["Java", "Spring", "Python", "Go"] },
-    { title: { ru: "ДАННЫЕ", en: "DATA" }, items: ["Elasticsearch", "PostgreSQL", "lakeFS"] },
-    { title: { ru: "FRONTEND", en: "FRONTEND" }, items: ["React", "TypeScript", "Redux", "CSS3"] },
-    { title: { ru: "ПРОТОТИПИРОВАНИЕ", en: "PROTOTYPING" }, items: ["Figma", "Claude Design", "Google Stitch"] },
-    { title: { ru: "DEVOPS", en: "DEVOPS" }, items: ["Docker", "Jenkins", "CI/CD", "Vite"] },
-    { title: { ru: "OBSERVABILITY", en: "OBSERVABILITY" }, items: ["Graylog", "Grafana", "Sentry"] },
-    { title: { ru: "ТЕСТИРОВАНИЕ", en: "TESTING" }, items: ["pytest", "Jest", "Playwright", "Cypress"] },
-    { title: { ru: "AI / АВТОМАТИЗАЦИЯ", en: "AI / AUTOMATION" }, items: ["Claude Code", "MCP", { ru: "AI-агенты", en: "AI agents" }, "Skills"] },
-  ],
+  // Lead with the specialization; everything stays visible (no hover-to-reveal).
+  cards: [
+    {
+      title: { ru: "AI / LLM", en: "AI / LLM" },
+      flagship: true,
+      items: [
+        "RAG", "Retrieval", "Embeddings", "Reranking",
+        { ru: "Векторный поиск", en: "Vector search" },
+        "Prompt engineering", "LLM evaluation",
+        "Claude Code", "MCP", { ru: "AI-агенты", en: "AI agents" }, "Skills",
+      ],
+    },
+    { title: { ru: "Backend", en: "Backend" }, items: ["Java", "Spring", "Python", "Go"] },
+    { title: { ru: "Frontend", en: "Frontend" }, items: ["React", "TypeScript", "Next.js", "Redux", "Vite"] },
+    { title: { ru: "Данные и поиск", en: "Data & Search" }, items: ["Elasticsearch", "PostgreSQL", "lakeFS"] },
+    { title: { ru: "Инфраструктура", en: "Infrastructure" }, items: ["Docker", "Jenkins", "GitLab CI", "Nexus", "Nginx"] },
+    { title: { ru: "Качество", en: "Quality" }, items: ["pytest", "Jest", "Playwright", "Cypress", "Sentry", "Grafana", "Graylog"] },
+  ] satisfies SkillCard[],
+  // Non-technical competencies — kept apart from the stack so they read as approach, not tooling.
+  soft: {
+    label: { ru: "Подход и лидерство", en: "Approach & Leadership" },
+    items: [
+      { ru: "Системный анализ", en: "System analysis" },
+      { ru: "Требования", en: "Requirements" },
+      "Team Lead",
+      { ru: "Менторинг", en: "Mentoring" },
+      "Code review",
+    ] as (string | I18n)[],
+  },
 };
 
 /* ============================================================
