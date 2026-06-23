@@ -82,8 +82,8 @@ export const about = {
     statement: {
         leadA: {ru: "За ", en: "Over "},
         leadB: {
-            ru: ` вырос от fullstack-разработчика и тимлида до AI-инженера. Фуллстек-бэкграунд помогает строить фичи сквозь весь стек — от `,
-            en: " I grew from a fullstack developer and team lead into an AI Engineer. A fullstack background helps me build features across the whole stack — from ",
+            ru: ` вырос до AI-инженера. Фуллстек-бэкграунд помогает строить фичи сквозь весь стек — от `,
+            en: " I grew into an AI Engineer. A fullstack background helps me build features across the whole stack — from ",
         },
         accent: {ru: "retrieval до production", en: "retrieval to production"},
         tail: {ru: `.`, en: "."},
