@@ -3,6 +3,7 @@
 import { useT } from "@/components/primitives/T";
 import { cx } from "@/lib/cx";
 import { experience } from "@/content/site";
+import { useScrollOpenIntoView } from "@/hooks/useScrollOpenIntoView";
 import { RoleDetail } from "./RoleDetail";
 import styles from "../experience.module.scss";
 
@@ -14,8 +15,9 @@ export function RoleAccordion({
   role: Role; open: boolean; last: boolean; onToggle: () => void;
 }) {
   const t = useT();
+  const ref = useScrollOpenIntoView<HTMLDivElement>(open);
   return (
-    <div className={cx(styles.acc, last && styles["acc--last"], open && styles["acc--open"])}>
+    <div ref={ref} className={cx(styles.acc, last && styles["acc--last"], open && styles["acc--open"])}>
       <button type="button" onClick={onToggle} aria-expanded={open} className={styles.acc__btn}>
         <span className={styles.acc__bar} />
         <span className={styles.acc__period}>{t(role.period)}</span>

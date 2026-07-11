@@ -190,7 +190,8 @@
 }
 
 .exp__mobile { @include bp.desktop { display: none; } }
-.acc { border-top: 1px solid rgba(243, 235, 221, 0.16); }
+// scroll-margin clears the fixed nav pill when an item is scrolled into view on open.
+.acc { border-top: 1px solid rgba(243, 235, 221, 0.16); scroll-margin-top: 80px; }
 .acc--last { border-bottom: 1px solid rgba(243, 235, 221, 0.16); }
 .acc__btn {
   width: 100%;
