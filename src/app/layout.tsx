@@ -2,11 +2,14 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { SITE_URL, links } from "@/lib/config";
+import { tenurePhrase } from "@/lib/tenure";
 
 const NAME = "Александр Чеченев";
-const ROLE = "AI Engineer — LLM / RAG / оценка качества / агенты";
+const ROLE = "AI Engineer · LLM / RAG / оценка качества / агенты";
+// The tenure is derived at build time from the same February 2022 start as the
+// page copy, so the search snippet never disagrees with the first screen.
 const DESC =
-  "3-й год создаю LLM-продукты для production: поиск и извлечение данных, оценка качества, инструменты для агентов, gateway и интерфейс. 3 продукта внедрены в банках и на производстве, качество ответов 96%, 90,4% и 89%.";
+  `${tenurePhrase("ru")} создаю LLM-продукты для production: поиск и извлечение данных, оценка качества, инструменты для агентов, gateway и интерфейс, 7 сервисов. 3 продукта внедрены в банках и на производстве, качество ответов 96%, 90,4% и 89%.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -33,7 +36,7 @@ const jsonLd = {
   url: `${SITE_URL}/`,
   email: links.email,
   address: { "@type": "PostalAddress", addressLocality: "Saint Petersburg", addressCountry: "RU" },
-  sameAs: [links.github, links.linkedin, links.telegram, links.vk],
+  sameAs: [links.github, links.linkedin, links.telegram, links.vk, links.hh],
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
