@@ -21,7 +21,7 @@ export const nav = {
 ============================================================ */
 export const hero = {
     openStatus: {ru: "Открыт к предложениям", en: "Open to offers"} satisfies I18n,
-    location: {ru: "Санкт-Петербург / удалённо", en: "Saint Petersburg / remote"} satisfies I18n,
+    location: {ru: "Санкт-Петербург / удалённо", en: "Remote"} satisfies I18n,
     english: {ru: "английский B2", en: "English B2"} satisfies I18n,
     firstName: {ru: "Александр", en: "Alexander"} satisfies I18n,
     lastName: {ru: "Чеченев", en: "Chechenev"} satisfies I18n,
@@ -54,6 +54,21 @@ export const hero = {
     ] satisfies { value: number; suffix?: string; label: I18n }[],
     tenureSuffix: {ru: "в production", en: "in production"} satisfies I18n,
     ctaResume: {ru: "Смотреть резюме ↓", en: "View CV ↓"} satisfies I18n,
+};
+
+/* ============================================================
+   META — the search snippet and the social card. Title and role are taken
+   from the hero, so the tab, the snippet and the first screen cannot drift
+   apart; only the description lives here, kept short for search results.
+============================================================ */
+export const meta = {
+    description: {
+        ru: "{tenure} создаю LLM-продукты для production: поиск и извлечение данных, оценка качества, инструменты для агентов, gateway и интерфейс, 7 сервисов. 3 продукта внедрены в банках и на производстве, качество ответов 96%, 90,4% и 89%.",
+        en: "{tenure} building LLM products for production: search and retrieval, quality evaluation, agent tooling, gateway and interface, 7 services. 3 products deployed on-prem in banking and manufacturing, answer quality 96%, 90.4% and 89%.",
+    } satisfies I18n,
+    ogImage: "/img/me.jpg",
+    locality: {ru: "Санкт-Петербург", en: null} satisfies { ru: string; en: string | null },
+    country: "RU",
 };
 
 /* ============================================================

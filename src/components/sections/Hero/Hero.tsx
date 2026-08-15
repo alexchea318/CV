@@ -3,15 +3,13 @@
 import {useLang, useT} from "@/components/primitives/T";
 import {hero} from "@/content/site";
 import {links} from "@/lib/config";
-import {TENURE, formatTenureNumber, tenureUnit, withTenure} from "@/lib/tenure";
-import {useCountUp} from "@/hooks/useCountUp";
+import {withTenure} from "@/lib/tenure";
 import {StatCard} from "./parts/StatCard";
 import styles from "./hero.module.scss";
 
 export function Hero() {
     const {lang} = useLang();
     const t = useT();
-    const tenure = useCountUp(TENURE);
 
     return (
         <header id="top" className={styles.hero}>
@@ -42,15 +40,6 @@ export function Hero() {
                         {hero.stats.map((s, i) => (
                             <StatCard key={i} value={s.value} suffix={s.suffix} label={s.label}/>
                         ))}
-                    </div>
-
-                    <div className={styles.hero__tenure}>
-                        <span ref={tenure.ref} className={styles.hero__years}>
-                            {formatTenureNumber(tenure.value, lang)}
-                        </span>
-                        <span className={styles.hero__years_label}>
-                            {tenureUnit(lang)} {t(hero.tenureSuffix)}
-                        </span>
                     </div>
                 </div>
 

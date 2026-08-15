@@ -7,8 +7,8 @@
   overflow-x: clip;
   // Deliberately shorter than a screen: the sheet comes into view while the
   // hero is still on it, so the page reads as a document, not a poster.
-  min-height: 78vh;
-  padding-block: 120px 28px;
+  min-height: 66vh;
+  padding-block: 116px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -161,29 +161,6 @@
   color: oklch(0.74 0.008 74);
 }
 
-/* Third item of the split grid: it lands under the tagline, in the left
-   column, so the number reads as part of the sentence above it. */
-.hero__tenure {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 18px;
-  min-width: 0;
-  padding-top: 4px;
-}
-.hero__years {
-  @include m.display;
-  font-size: clamp(46px, 6.4vw, 96px);
-  font-weight: 500;
-  letter-spacing: -0.06em;
-  line-height: 0.95;
-  color: oklch(0.8 0.14 52);
-  font-variant-numeric: tabular-nums;
-}
-.hero__years_label {
-  font-size: clamp(15px, 1.3vw, 19px);
-  color: oklch(0.78 0.008 76);
-}
 
 .hero__actions {
   display: flex;
