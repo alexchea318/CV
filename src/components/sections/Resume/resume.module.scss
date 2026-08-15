@@ -1,0 +1,342 @@
+@use 'mixins' as m;
+@use 'breakpoints' as bp;
+
+.resume {
+  @include m.gutter;
+  padding-block: 8px 72px;
+
+  // Edge to edge on a phone; the sheet keeps its rounded corners, so the top
+  // and bottom of the document still read as a sheet.
+  @include bp.mobile { padding-inline: 0; padding-block: 4px 48px; }
+}
+
+.resume__head {
+  @include m.mono;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 16px;
+  font-size: 12px;
+  color: var(--dim);
+  @include bp.mobile { padding: 0 12px 10px; }
+}
+
+/* ===== The sheet ===========================================================
+   Paper on a night page: the contrast is the point — the hero sells, this is
+   the document a recruiter came to read. */
+.sheet {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(30px, 3.6vw, 46px);
+  padding: clamp(28px, 4.4vw, 68px);
+  border-radius: 26px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  box-shadow: 0 40px 80px -40px oklch(0 0 0 / 0.6);
+
+  @include bp.mobile {
+    gap: 32px;
+    padding: 34px 24px 40px;
+    border-radius: 18px;
+  }
+}
+
+.sheet__head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: clamp(22px, 2.6vw, 32px);
+  border-bottom: 2px solid var(--paper-ink);
+}
+.sheet__id {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+.sheet__name {
+  @include m.display;
+  margin: 0;
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.sheet__role {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--paper-accent);
+}
+/* Blocks of the fact line are separated by a middle dot drawn in CSS; the
+   stack inside a block keeps its own commas. */
+.sheet__facts {
+  @include m.mono;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 12.5px;
+  color: oklch(0.44 0.01 62);
+
+  > *:not(:last-child)::after {
+    content: "·";
+    margin-left: 12px;
+    color: oklch(0.68 0.01 62);
+  }
+}
+.sheet__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+.sheet__contacts {
+  @include m.mono;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-size: 13.5px;
+
+  a {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    transition: color 0.2s var(--ease);
+  }
+  a:hover { color: var(--paper-accent); }
+}
+.sheet__arrow { color: var(--paper-accent); }
+.sheet__download {
+  @include m.mono;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--paper);
+  background: var(--paper-ink);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+
+  &:hover { background: var(--paper-accent); transform: translateY(-1px); }
+}
+
+/* ===== Rows: label on the left, content on the right ======================= */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 176px) minmax(0, 1fr);
+  gap: 10px 36px;
+  @include bp.tablet { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+}
+.row__label {
+  @include m.mono;
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--paper-dim);
+}
+.row__text {
+  margin: 0;
+  max-width: 68ch;
+  font-size: 17px;
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+/* ===== Selected impact ===================================================== */
+.impact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  @include bp.mobile { gap: 28px; }
+}
+.impact__item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 70ch;
+}
+.impact__claim {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+}
+.impact__detail {
+  font-size: 16.5px;
+  line-height: 1.66;
+  color: var(--paper-body);
+  text-wrap: pretty;
+}
+.impact__stack {
+  @include m.mono;
+  font-size: 12px;
+  color: oklch(0.5 0.01 62);
+}
+
+/* ===== Experience ========================================================== */
+.exp {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.company {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.company__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 20px;
+}
+.company__name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.company__period {
+  @include m.mono;
+  font-size: 12.5px;
+  color: oklch(0.46 0.01 62);
+}
+.company__blurb {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 16px;
+  line-height: 1.64;
+  color: oklch(0.38 0.01 62);
+  text-wrap: pretty;
+}
+.company__earlier {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 16.5px;
+  line-height: 1.66;
+  color: var(--paper-body);
+  text-wrap: pretty;
+
+  strong { font-weight: 600; color: var(--paper-ink); }
+}
+
+.job {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+.job__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+}
+.job__title {
+  font-size: 16.5px;
+  font-weight: 600;
+}
+.job__period {
+  @include m.mono;
+  font-size: 12px;
+  color: oklch(0.5 0.01 62);
+}
+/* Flex on a list kills the native markers, so the bullet is drawn back in. */
+.job__items {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  @include bp.mobile { gap: 14px; padding-left: 18px; }
+
+  li {
+    position: relative;
+    max-width: 70ch;
+    font-size: 16.5px;
+    line-height: 1.66;
+    text-wrap: pretty;
+  }
+  li::before {
+    content: "•";
+    position: absolute;
+    left: -18px;
+    color: oklch(0.6 0.01 62);
+  }
+}
+.job__stack {
+  @include m.mono;
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: oklch(0.5 0.01 62);
+}
+
+/* ===== Stack and footnotes ================================================= */
+.stack,
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.meta { gap: 10px; }
+
+.stack__row,
+.meta p {
+  margin: 0;
+  max-width: 70ch;
+  font-size: 16.5px;
+  line-height: 1.66;
+  text-wrap: pretty;
+}
+.stack__row strong { font-weight: 600; }
+
+/* ===== Paper ===============================================================
+   Cmd+P prints the sheet alone, which is what the download button triggers. */
+/* Tailwind's pipeline drops @page from globals.css, so the paper margin
+   lives here, next to the rest of the print rules. */
+@page { margin: 12mm; }
+
+@media print {
+  .resume { padding: 0; }
+  .resume__head { display: none; }
+  .sheet {
+    gap: 18px;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+    color: #000;
+  }
+
+  /* A whole row is taller than a sheet of paper: forbidding a break inside it
+     pushes the entire block to the next page and leaves the label alone on an
+     empty one. Only units that fit a page keep their break-inside guard. */
+  .row {
+    break-inside: auto;
+    grid-template-columns: minmax(0, 130px) minmax(0, 1fr);
+    gap: 6px 20px;
+  }
+  .row__label { break-after: avoid; }
+  .company, .job, .impact__item, .stack__row, .job__items li { break-inside: avoid; }
+  .company__head, .job__head { break-after: avoid; }
+
+  /* Paper is narrower than the screen column, so the type scale comes down. */
+  .sheet__name { font-size: 24pt; }
+  .sheet__role { font-size: 10pt; }
+  .sheet__facts, .sheet__contacts { font-size: 8pt; }
+  .row__label, .impact__stack, .job__stack, .company__period, .job__period { font-size: 8pt; }
+  .row__text, .impact__detail, .job__items li, .stack__row, .meta p, .company__blurb,
+  .company__earlier { font-size: 9.5pt; line-height: 1.45; }
+  .impact__claim { font-size: 10.5pt; }
+  .company__name { font-size: 12pt; }
+  .job__title { font-size: 10.5pt; }
+  .row { margin-top: 0; }
+  .exp { gap: 16px; }
+  .impact { gap: 12px; }
+}

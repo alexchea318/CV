@@ -1,13 +1,15 @@
 "use client";
-import { useParallax } from "./useParallax";
-import { useHoverAffordance } from "./useHoverAffordance";
 import { useMagnetic } from "./useMagnetic";
 import { useCursor } from "./useCursor";
 
-/** All desktop kinetic flourishes. Each sub-hook self-gates and self-cleans. */
+export { useTilt } from "./useTilt";
+
+/**
+ * Desktop pointer behaviour. Each sub-hook self-gates and self-cleans.
+ * Hover affordance is left to CSS: links carry their own colour shift, and a
+ * generic underline used to double up with the one a link already draws.
+ */
 export function useInteractions(): void {
-  useParallax();
-  useHoverAffordance();
   useMagnetic();
   useCursor();
 }

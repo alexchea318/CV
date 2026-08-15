@@ -1,108 +1,84 @@
 @use 'mixins' as m;
 @use 'breakpoints' as bp;
-@use 'tokens' as t;
-
-// Co-scoped keyframes (CSS Modules scopes animation names).
-@keyframes axc-pan { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
-@keyframes axc-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.82); } }
 
 .contact {
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-  background: #17150f;
-  color: #f3ebdd;
-  padding: clamp(78px, 13vh, 160px) 6vw clamp(26px, 4vh, 40px);
-}
-.contact__inner { position: relative; z-index: 1; }
-
-.contact__top {
-  @include m.mono;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px 24px;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  color: rgba(243, 235, 221, 0.5);
-}
-.contact__status {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: rgba(243, 235, 221, 0.6);
-}
-.contact__dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: t.$green;
-  animation: axc-pulse 1.6s ease-in-out infinite;
-  @include bp.reduced-motion { animation: none; }
+  @include m.gutter;
+  padding-block: clamp(60px, 9vh, 110px) 44px;
+  @include bp.mobile { padding-block: 40px 28px; }
 }
 
+.contact__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(26px, 3.6vw, 48px);
+  @include bp.mobile { gap: 22px; }
+}
+
+/* The word is the block: no ambiguous call-to-action, the links do the work. */
 .contact__headline {
   @include m.display;
-  display: inline-block;
-  margin-top: clamp(28px, 4vh, 52px);
-  font-weight: 800;
-  line-height: 0.86;
-  letter-spacing: -0.04em;
-  font-size: clamp(52px, 12vw, 200px);
-  background: linear-gradient(110deg, #f3ebdd 42%, #ff7543 70%, #8e4ec6);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: axc-pan 9s linear infinite;
-  transition: transform 0.35s var(--ease);
-  @include bp.reduced-motion { animation: none; }
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(48px, 12vw, 190px);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
 }
 
 .contact__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 40px;
-  margin-top: clamp(44px, 7vh, 86px);
-}
-.contact__link {
   @include m.mono;
   display: flex;
-  align-items: center;
-  gap: 9px;
+  flex-wrap: wrap;
+  gap: 14px 36px;
   font-size: 14px;
-  letter-spacing: 0.03em;
-  color: #f3ebdd;
-  transition: color 0.3s var(--ease);
 }
-.contact__arrow { color: #ff7543; }
+
+.link {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+
+  &:hover { color: var(--accent-soft); }
+}
+.link__arrow { color: var(--accent); }
 
 .contact__bottom {
   @include m.mono;
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   justify-content: space-between;
-  align-items: center;
-  gap: 12px 32px;
-  margin-top: clamp(54px, 9vh, 110px);
-  padding-top: 26px;
-  border-top: 1px solid rgba(243, 235, 221, 0.14);
-  font-size: 11.5px;
-  letter-spacing: 0.05em;
-  color: rgba(243, 235, 221, 0.5);
+  gap: 12px 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--dim);
 }
-.contact__totop {
+.contact__left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+.contact__status {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: rgba(243, 235, 221, 0.5);
-  transition: color 0.3s var(--ease);
+  color: oklch(0.86 0.006 80);
 }
-
-@media (hover: hover) {
-  .contact__link:hover { color: #ff7543; }
-  .contact__totop:hover { color: #f3ebdd; }
+.contact__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.contact__totop {
+  transition: color 0.2s var(--ease);
+  &:hover { color: var(--accent-soft); }
 }

@@ -84,24 +84,33 @@ export function useCursor() {
       stuck = null;
     };
 
-    const targets = [...document.querySelectorAll<HTMLElement>("[data-cursor], a, button")];
-    const pairs = targets.map((el) => {
-      const onEnter = () => enter(el);
-      el.addEventListener("mouseenter", onEnter);
-      el.addEventListener("mouseleave", leave);
-      return { el, onEnter };
-    });
+    // Delegated, not per-element: elements that appear after mount — a link the
+    // language switch brings back, for instance — are new DOM nodes, and
+    // listeners attached once at mount would never reach them.
+    const SELECTOR = "[data-cursor], a, button";
+    const onOver = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement | null)?.closest<HTMLElement>(SELECTOR);
+      if (!el || el === stuck) return;
+      enter(el);
+    };
+    const onOut = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement | null)?.closest<HTMLElement>(SELECTOR);
+      if (!el) return;
+      const to = e.relatedTarget as Node | null;
+      if (to && el.contains(to)) return;
+      leave();
+    };
+    document.addEventListener("mouseover", onOver);
+    document.addEventListener("mouseout", onOut);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseout", onOut);
       document.body.style.cursor = "";
       ring.style.display = "none";
       dot.style.display = "none";
-      pairs.forEach(({ el, onEnter }) => {
-        el.removeEventListener("mouseenter", onEnter);
-        el.removeEventListener("mouseleave", leave);
-      });
     };
   }, []);
 }

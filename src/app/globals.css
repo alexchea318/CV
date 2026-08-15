@@ -1,48 +1,70 @@
 /* Fonts loaded client-side (matches the source design system). Must precede
    the Tailwind import so the bundled CSS keeps @import rules at the top. */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
 @theme {
-  /* ---------- Editorial cream surface ---------- */
-  --color-bg: #f3ebdd;
-  --color-ink: #17150f;
-  --color-panel: #ece2d0;
+  /* ---------- Night surface ---------- */
+  --color-bg: oklch(0.185 0.014 265);
+  --color-ink: oklch(0.96 0.006 85);
+  --color-panel: oklch(0.225 0.016 265);
 
   /* ---------- Brand ---------- */
-  --color-red: #d21306;
-  --color-orange: #ff7543;
-  --color-violet: #8e4ec6;
-  --color-violet-soft: #a78bfa;
-  --color-green: #30a46c;
+  --color-accent: oklch(0.7 0.16 47);
+  --color-accent-soft: oklch(0.78 0.14 52);
 
-  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Manrope", sans-serif;
+  /* ---------- Paper (the resume sheet) ---------- */
+  --color-paper: oklch(0.985 0.004 85);
+  --color-paper-ink: oklch(0.2 0.01 62);
+
+  --font-sans: "Golos Text", "Helvetica Neue", Helvetica, sans-serif;
+  --font-display: "Unbounded", "Golos Text", sans-serif;
   --font-mono: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --gutter: 6vw;
-  --ink: #17150f;
-  --bg: #f3ebdd;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --gutter: max(24px, calc((100% - 1240px) / 2));
+
+  --bg: oklch(0.185 0.014 265);
+  --ink: oklch(0.96 0.006 85);
+  --muted: oklch(0.76 0.008 74);
+  --dim: oklch(0.62 0.008 70);
+  --line: oklch(0.305 0.016 265);
+  --accent: oklch(0.7 0.16 47);
+  --accent-soft: oklch(0.78 0.14 52);
+
+  --card-top: oklch(0.245 0.018 265);
+  --card-bottom: oklch(0.212 0.014 265);
+  --card-line: oklch(0.3 0.016 265);
+
+  --paper: oklch(0.985 0.004 85);
+  --paper-ink: oklch(0.2 0.01 62);
+  --paper-body: oklch(0.32 0.01 62);
+  --paper-dim: oklch(0.48 0.01 62);
+  --paper-line: oklch(0.82 0.01 80);
+  --paper-accent: oklch(0.52 0.16 42);
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* The hero glow bleeds past the right edge by design; clipping on <html> as
+   well as <body> is what actually stops the page from scrolling sideways. */
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
-::selection { background: var(--ink); color: var(--bg); }
+::selection { background: var(--accent); color: oklch(0.2 0.014 265); }
 a { color: inherit; text-decoration: none; }
 
 /* ============================================================
@@ -50,14 +72,29 @@ a { color: inherit; text-decoration: none; }
    (className string), so the selector and its keyframes stay global.
    Other keyframes live co-scoped inside their CSS Modules.
 ============================================================ */
-@keyframes axc-reveal { from { opacity: 0; transform: translateY(42px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes axc-reveal { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 .reveal[data-reveal] { opacity: 0; }
-.reveal[data-reveal].is-visible { animation: axc-reveal 1s var(--ease) both; }
+.reveal[data-reveal].is-visible { animation: axc-reveal 0.9s var(--ease) both; }
 
 /* No custom cursor on touch / coarse-pointer devices. */
 @media (hover: none), (pointer: coarse) {
   [data-cursor-ring],
   [data-cursor-dot] { display: none !important; }
+}
+
+/* ============================================================
+   Print: the page keeps only the resume sheet, so Cmd+P on the site
+   yields the same one-page CV that HR would ask for as a PDF.
+============================================================ */
+@media print {
+  body { background: #fff; color: #000; overflow: visible; font-size: 10pt; }
+  nav,
+  header#top,
+  footer#contact,
+  [data-print-hide],
+  [data-cursor-ring],
+  [data-cursor-dot] { display: none !important; }
+  .reveal[data-reveal] { opacity: 1 !important; animation: none !important; }
 }
 
 /* ============================================================

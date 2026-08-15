@@ -1,32 +1,39 @@
 "use client";
 
-import { T } from "@/components/primitives/T";
-import { useMobileMenu } from "@/hooks/useMobileMenu";
-import { nav } from "@/content/site";
-import { LangToggle } from "./parts/LangToggle";
-import { Burger } from "./parts/Burger";
-import { MobileMenu } from "./parts/MobileMenu";
+import {T} from "@/components/primitives/T";
+import {nav} from "@/content/site";
+import {useScrollProgress} from "@/hooks/useScrollProgress";
+import {LangToggle} from "./parts/LangToggle";
 import styles from "./nav.module.scss";
 
 export function Nav() {
-  const { open, toggle, close } = useMobileMenu();
-  return (
-    <nav className={styles.nav}>
-      <a href="#top" data-cursor data-magnet className={styles.nav__brand}>
-        <T v={nav.brand} />
-      </a>
+    const progress = useScrollProgress();
 
-      <div className={styles.nav__links}>
-        {nav.links.map((l) => (
-          <a key={l.href} href={l.href} data-cursor className={styles.nav__link}>
-            <T v={l.label} />
-          </a>
-        ))}
-        <LangToggle />
-      </div>
+    return (
+        <nav className={styles.nav}>
+            <div className={styles.nav__inner}>
+                <a href="#top" data-cursor className={styles.nav__brand}>
+                    <span className={styles.nav__mark}><T v={nav.brand}/></span>
+                    <span className={styles.nav__name}><T v={nav.name}/></span>
+                </a>
 
-      <Burger open={open} onToggle={toggle} />
-      {open && <MobileMenu onClose={close} />}
-    </nav>
-  );
+                <LangToggle/>
+
+                <div className={styles.nav__right}>
+                    {nav.links.map((l) => (
+                        <a key={l.href} href={l.href} data-cursor className={styles.nav__link}>
+                            <T v={l.label}/>
+                        </a>
+                    ))}
+                    <a href={nav.ctaHref} data-cursor className={styles.nav__cta}>
+                        <T v={nav.cta}/>
+                    </a>
+                </div>
+            </div>
+
+            <div className={styles.nav__track}>
+                <div className={styles.nav__progress} style={progress}/>
+            </div>
+        </nav>
+    );
 }

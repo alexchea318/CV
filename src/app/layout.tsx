@@ -4,9 +4,9 @@ import "./globals.css";
 import { SITE_URL, links } from "@/lib/config";
 
 const NAME = "Александр Чеченев";
-const ROLE = "Full-Stack / AI Engineer (RAG)";
+const ROLE = "AI Engineer — LLM / RAG / оценка качества / агенты";
 const DESC =
-  "Довожу RAG-системы до продакшена: бэкенд, фронт, инфраструктура и качество генерации. Санкт-Петербург, удалённо.";
+  "3-й год создаю LLM-продукты для production: поиск и извлечение данных, оценка качества, инструменты для агентов, gateway и интерфейс. 3 продукта внедрены в банках и на производстве, качество ответов 96%, 90,4% и 89%.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

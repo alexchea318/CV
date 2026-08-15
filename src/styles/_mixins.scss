@@ -2,42 +2,49 @@
 
 @mixin mono {
   font-family: var(--font-mono);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.01em;
 }
 @mixin display {
   font-family: var(--font-display);
-  letter-spacing: -0.03em;
-  line-height: 0.9;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
 }
 @mixin gutter { padding-inline: var(--gutter); }
 
-@mixin grad-text {
-  // Hex from tokens, not var(--color-*): Tailwind v4 @theme tree-shakes unused
-  // theme vars, so var(--color-red) is empty at runtime.
-  background: linear-gradient(110deg, t.$red, t.$orange, t.$violet);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  // Consumer module must define @keyframes axc-pan locally — CSS Modules scopes
-  // the animation name, so the keyframes must be co-scoped in the same file.
-  animation: axc-pan 9s linear infinite;
-  @media (prefers-reduced-motion: reduce) { animation: none; }
-}
-@mixin grad-text-static {
-  background: linear-gradient(110deg, t.$red, t.$orange);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+// Pill used by the nav CTA and the hero primary action.
+@mixin pill-accent {
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: oklch(0.2 0.014 265);
+  font-size: 15px;
+  font-weight: 500;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+
+  &:hover { background: var(--accent-soft); transform: translateY(-1px); }
 }
 
-// Frosted backdrop behind nav logo / links / menu.
-@mixin nav-pill {
-  background: rgba(243, 235, 221, 0.72);
-  backdrop-filter: blur(12px) saturate(1.1);
-  -webkit-backdrop-filter: blur(12px) saturate(1.1);
-  border: 1px solid rgba(23, 21, 15, 0.08);
-  box-shadow: 0 6px 24px rgba(23, 21, 15, 0.07);
+@mixin pill-ghost {
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+
+  &:hover { border-color: var(--accent); color: var(--accent-soft); }
+}
+
+// Stat cards in the hero: lifted panel that the tilt hook rotates.
+@mixin card {
+  background: linear-gradient(160deg, var(--card-top), var(--card-bottom));
+  border: 1px solid var(--card-line);
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  will-change: transform;
 }

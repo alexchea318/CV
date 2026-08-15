@@ -1,149 +1,212 @@
 @use 'mixins' as m;
 @use 'breakpoints' as bp;
 
-// Local copies of shared keyframes: CSS Modules scopes animation names, so the
-// keyframes must live in the same module file as the references to match.
-@keyframes axc-pan { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
-@keyframes axc-cue { 0% { transform: translateY(0); opacity: .9; } 60% { opacity: .15; } 100% { transform: translateY(16px); opacity: 0; } }
-
 .hero {
+  @include m.gutter;
   position: relative;
-  z-index: 2;
+  overflow-x: clip;
   min-height: 100vh;
+  padding-block: 132px 56px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 108px 6vw 48px;
-  @include bp.short { padding: 88px 6vw 28px; }
+  justify-content: space-between;
+  gap: 56px;
+
+  @include bp.mobile {
+    min-height: auto;
+    padding-block: 86px 36px;
+    gap: 34px;
+  }
 }
 
-.hero__eyebrow {
-  margin-bottom: 18px;
-  @include bp.short { margin-bottom: 12px; }
+/* Warm bloom behind the name: the only decoration on the page. */
+.hero__glow {
+  position: absolute;
+  top: 14%;
+  right: -6%;
+  width: 46vw;
+  height: 46vw;
+  max-width: 620px;
+  max-height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, oklch(0.58 0.13 42 / 0.34), transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
 }
+
+.hero__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(26px, 3.4vw, 44px);
+}
+
+@keyframes axc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* A middle dot separates the blocks; it is drawn by CSS so the copy stays
+   free of punctuation that only exists for layout. */
 .hero__status {
   @include m.mono;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(23, 21, 15, 0.6);
-  line-height: 1.7;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-size: 12.5px;
+  color: oklch(0.72 0.008 72);
+  animation: axc-rise 0.7s var(--ease) 0.05s both;
+
+  > *:not(:last-child)::after {
+    content: "·";
+    margin-left: 14px;
+    color: oklch(0.5 0.008 68);
+  }
+
+  // On a phone the three facts stack, and stacked lines need no separators.
+  @include bp.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    > *:not(:last-child)::after { content: none; }
+  }
 }
-.hero__pulse {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
+.hero__live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+}
+.hero__dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #30a46c;
-  margin-right: 11px;
-  vertical-align: middle;
+  background: var(--accent);
+  animation: axc-pulse 2.4s var(--ease) infinite;
 }
-.hero__status-text { vertical-align: middle; }
+@keyframes axc-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
 .hero__title {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.hero__name {
   @include m.display;
   margin: 0;
-  font-weight: 800;
-  line-height: 0.86;
-  letter-spacing: -0.045em;
-  // Cap by height too so the width-driven type shrinks on short laptop
-  // viewports instead of pushing content past 100vh. min() picks the smaller,
-  // so big screens (tall) and mobile (portrait) keep the width-driven size.
-  font-size: clamp(58px, min(15.5vw, 17vh), 250px);
+  font-weight: 700;
+  font-size: clamp(40px, 8.2vw, 128px);
+  max-width: 15ch;
+
+  span {
+    display: block;
+    padding-bottom: 0.04em;
+    animation: axc-rise 0.9s var(--ease) both;
+  }
+  span:nth-child(2) { animation-delay: 0.12s; }
 }
-.hero__line { display: block; overflow: hidden; }
-.hero__word { display: block; }
-.hero__word--grad {
-  @include m.grad-text;
-  display: block;
+.hero__role {
+  margin: 0;
+  font-size: clamp(19px, 2.2vw, 30px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--accent-soft);
+  animation: axc-rise 0.8s var(--ease) 0.3s both;
 }
 
-.hero__role-row {
-  margin-top: 30px;
-  @include bp.short { margin-top: 18px; }
+.hero__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+  @include bp.tablet { grid-template-columns: minmax(0, 1fr); }
 }
-.hero__role-wrap {
+.hero__tagline {
+  margin: 0;
+  max-width: 58ch;
+  font-size: clamp(17.5px, 1.5vw, 22px);
+  line-height: 1.62;
+  color: oklch(0.88 0.006 82);
+  text-wrap: pretty;
+  animation: axc-rise 0.8s var(--ease) 0.38s both;
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 168px), 1fr));
+  gap: 12px;
+  perspective: 900px;
+  min-width: 0;
+}
+
+.stat {
+  @include m.card;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+.stat__value {
+  @include m.display;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 500;
+  line-height: 1;
+  color: oklch(0.8 0.14 52);
+  font-variant-numeric: tabular-nums;
+}
+.stat__label {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: oklch(0.74 0.008 74);
+}
+
+/* Third item of the split grid: it lands under the tagline, in the left
+   column, so the number reads as part of the sentence above it. */
+.hero__tenure {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 10px 18px;
+  gap: 4px 18px;
+  min-width: 0;
+  padding-top: 4px;
 }
-.hero__role {
+.hero__years {
   @include m.display;
-  font-weight: 700;
-  font-size: clamp(22px, 3vw, 42px);
-  letter-spacing: -0.025em;
+  font-size: clamp(46px, 6.4vw, 96px);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+  color: oklch(0.8 0.14 52);
+  font-variant-numeric: tabular-nums;
 }
-.hero__spec {
-  @include m.mono;
-  font-size: clamp(12px, 1.1vw, 15px);
-  letter-spacing: 0.04em;
-  color: rgba(23, 21, 15, 0.5);
-  padding-bottom: 5px;
-}
-.hero__background {
-  @include m.mono;
-  margin-top: 15px;
-  @include bp.short { margin-top: 10px; }
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  color: rgba(23, 21, 15, 0.55);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 9px;
-}
-.hero__bg-role { color: #8e4ec6; font-weight: 600; }
-.hero__bg-sep { opacity: 0.4; }
-
-.hero__bottom {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px 56px;
-  margin-top: 44px;
-  @include bp.short { gap: 24px 56px; margin-top: 24px; }
-}
-.hero__tagline-wrap { max-width: 500px; }
-.hero__tagline {
-  margin: 0;
-  font-size: clamp(17px, 1.5vw, 21px);
-  line-height: 1.5;
-  color: rgba(23, 21, 15, 0.72);
+.hero__years_label {
+  font-size: clamp(15px, 1.3vw, 19px);
+  color: oklch(0.78 0.008 76);
 }
 
-.hero__scroll {
-  @include m.mono;
-  position: absolute;
-  bottom: 34px;
-  left: 6vw;
+.hero__actions {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: rgba(23, 21, 15, 0.45);
+  flex-wrap: wrap;
+  gap: 10px;
+  animation: axc-rise 0.8s var(--ease) 0.56s both;
+}
+.hero__mail { @include m.pill-accent; }
+
+/* On a phone the sheet starts right under the fold: a jump link to it is
+   one more thing to read, not a shortcut. */
+.hero__ghost {
+  @include m.pill-ghost;
   @include bp.mobile { display: none; }
-  // Short laptops: the bottom row reaches down into this absolute cue, so drop
-  // it — the empty space it relies on only exists on tall desktop viewports.
-  @include bp.short { display: none; }
 }
-.hero__mouse {
-  position: relative;
-  display: inline-block;
-  width: 18px;
-  height: 26px;
-  border: 1px solid rgba(23, 21, 15, 0.35);
-  border-radius: 9px;
-}
-.hero__cue {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  width: 2px;
-  height: 6px;
-  background: rgba(23, 21, 15, 0.6);
-  transform: translateX(-50%);
-  animation: axc-cue 1.8s ease-in-out infinite;
+
+/* The stack repeats inside the sheet a screen below; on a phone that costs a
+   third of the first screen for nothing. */
+.hero__techs {
+  @include m.mono;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 12px;
+  color: oklch(0.6 0.008 68);
+  animation: axc-rise 0.8s var(--ease) 0.7s both;
+  @include bp.mobile { display: none; }
 }

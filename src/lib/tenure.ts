@@ -37,6 +37,11 @@ export function tenurePhrase(lang: Locale, n: number = TENURE): string {
   return lang === "ru" ? `${num} ${ruYearWord(n)}` : `${num} years`;
 }
 
+/** Fills the {tenure} placeholder in copy, so the number is never typed by hand. */
+export function withTenure(text: string, lang: Locale): string {
+  return text.replace("{tenure}", tenurePhrase(lang));
+}
+
 /** Just the unit word, e.g. "года" / "years". */
 export function tenureUnit(lang: Locale, n: number = TENURE): string {
   return lang === "ru" ? ruYearWord(n) : "years";

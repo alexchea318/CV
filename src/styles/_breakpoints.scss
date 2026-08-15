@@ -1,6 +1,8 @@
 // Desktop/mobile swap point — matches the original 820/821px boundary.
 @mixin desktop { @media (min-width: 821px) { @content; } }
 @mixin mobile  { @media (max-width: 820px) { @content; } }
+// Two-column layouts (hero split, sheet rows) collapse here, before mobile.
+@mixin tablet  { @media (max-width: 900px) { @content; } }
 // Short desktop viewports (laptops): wide enough for the desktop layout but
 // too short to fit a 100vh hero at full scale — used to tighten vertical rhythm.
 @mixin short { @media (min-width: 821px) and (max-height: 900px) { @content; } }

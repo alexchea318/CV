@@ -8,7 +8,7 @@
  */
 export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "https://alexchea.vercel.app";
+  : `http://localhost:3000`;
 
 export const links = {
   email: "alexchea319@gmail.com",
@@ -18,4 +18,6 @@ export const links = {
   vk: "https://vk.me/schechenev",
   hh: "https://hh.ru/resume/393677b8ff0cef9eb60039ed1f794c544b5469",
   interview2021: "https://media.spbstu.ru/news/unicorn_factory/319",
+  product: "https://just-ai.com/ai-baza-znaniy",
+  mcp: "https://mlops.caila.io/catalog/knowlege-hub/just-ai-jay-knowledge-hub",
 } as const;

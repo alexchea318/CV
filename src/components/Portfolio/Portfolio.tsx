@@ -6,11 +6,7 @@ import { Cursor } from "@/components/Cursor";
 import { useInteractions } from "@/hooks/interactions";
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Achievements } from "@/components/sections/Achievements";
-import { Work } from "@/components/sections/Work";
-import { Experience } from "@/components/sections/Experience";
-import { Skills } from "@/components/sections/Skills";
+import { Resume } from "@/components/sections/Resume";
 import { Contact } from "@/components/sections/Contact";
 import styles from "./portfolio.module.scss";
 
@@ -20,13 +16,11 @@ function Shell() {
     <div className={styles.portfolio}>
       <Cursor />
       <Nav />
+      {/* The hero and the contacts wrap a plain CV: the wow is the frame,
+          the sheet inside is what an HR person came to read. */}
       <main>
         <Hero />
-        <About />
-        <Achievements />
-        <Work />
-        <Experience />
-        <Skills />
+        <Resume />
       </main>
       <Contact />
     </div>
