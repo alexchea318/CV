@@ -14,7 +14,7 @@
   @include bp.mobile { gap: 22px; }
 }
 
-/* The word is the block: no ambiguous call-to-action, the links do the work. */
+/* The word is the block: no ambiguous call-to-action, the cards do the work. */
 .contact__headline {
   @include m.display;
   margin: 0;
@@ -24,30 +24,83 @@
   line-height: 0.9;
 }
 
-.contact__links {
-  @include m.mono;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px 36px;
-  font-size: 14px;
+/* ===== Cards ===============================================================
+   Six columns; each card declares its own width through --span, so the row
+   closes up when the RU-only card is dropped on the English page. */
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  @include bp.mobile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-.link {
+.card {
+  position: relative;
+  overflow: hidden;
+  grid-column: span var(--span, 2);
+  min-height: 180px;
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 0;
-  font: inherit;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px solid var(--card-line);
+  background: linear-gradient(160deg, var(--card-top), var(--card-bottom));
   color: inherit;
-  background: none;
-  border: 0;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
-  transition: color 0.2s var(--ease);
+  transition: color 0.35s var(--ease), border-color 0.35s var(--ease);
 
-  &:hover { color: var(--accent-soft); }
+  &:hover {
+    color: oklch(0.2 0.014 265);
+    border-color: var(--accent);
+  }
+  &:hover .card__fill { transform: scaleY(1); }
+  &:hover .card__arrow { transform: translate(4px, -4px); }
+
+  @include bp.mobile {
+    grid-column: span 1;
+    min-height: 132px;
+    gap: 16px;
+    padding: 16px;
+  }
 }
-.link__arrow { color: var(--accent); }
 
+/* The accent sweeps up from the bottom edge on hover. */
+.card__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: center bottom;
+  transition: transform 0.45s var(--ease);
+  will-change: transform;
+}
+
+.card__top {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.card__arrow {
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 0.35s var(--ease);
+}
+
+.card__value {
+  position: relative;
+  font-size: clamp(16px, 1.4vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+/* ===== Footer line ========================================================= */
 .contact__bottom {
   @include m.mono;
   display: flex;

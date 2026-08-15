@@ -1,7 +1,6 @@
 "use client";
 
 import {useLang, useT} from "@/components/primitives/T";
-import {Reveal} from "@/components/primitives/Reveal";
 import {resume} from "@/content/site";
 import {monthYear} from "@/lib/date";
 import {withTenure} from "@/lib/tenure";
@@ -21,7 +20,7 @@ export function Resume() {
                 <span>{t(resume.updatedLabel)}: {monthYear(lang)}</span>
             </div>
 
-            <Reveal as="article" className={styles.sheet}>
+            <article className={styles.sheet}>
                 <SheetHead/>
 
                 <div className={styles.row}>
@@ -58,7 +57,7 @@ export function Resume() {
                         ))}
                     </div>
                 </div>
-            </Reveal>
+            </article>
         </section>
     );
 }

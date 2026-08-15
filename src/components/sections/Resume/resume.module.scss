@@ -91,21 +91,22 @@
   gap: 12px 24px;
 }
 .sheet__contacts {
-  @include m.mono;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 28px;
-  font-size: 13.5px;
+  gap: 6px 18px;
+  font-size: 15px;
+  font-weight: 500;
 
   a {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    transition: color 0.2s var(--ease);
+    border-bottom: 1px solid var(--paper-line);
+    transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
   }
-  a:hover { color: var(--paper-accent); }
+  // The first link is the one to use: it carries the accent underline.
+  a:first-child { border-color: var(--paper-accent); }
+  a:hover { color: var(--paper-accent); border-color: var(--paper-accent); }
 }
-.sheet__arrow { color: var(--paper-accent); }
+// Spelled-out address: paper only, where a link cannot be clicked.
+.sheet__printed { display: none; }
 .sheet__download {
   @include m.mono;
   padding: 10px 20px;
@@ -305,30 +306,63 @@
 @media print {
   .resume { padding: 0; }
   .resume__head { display: none; }
+
+  /* Flex and grid containers paginate badly: a browser that cannot break
+     inside them pushes the whole sheet to the next page and leaves the header
+     alone on the first one. Print falls back to plain block flow. */
+  .sheet,
+  .row,
+  .sheet__head,
+  .sheet__id,
+  .exp,
+  .company,
+  .job,
+  .impact,
+  .impact__item,
+  .stack,
+  .meta,
+  .job__items {
+    display: block;
+  }
+
   .sheet {
-    gap: 18px;
     padding: 0;
     border-radius: 0;
     box-shadow: none;
     background: #fff;
     color: #000;
   }
+  .sheet__head { padding-bottom: 8px; border-bottom: 1.5px solid #000; }
+  .sheet__facts { display: flex; margin-top: 4px; }
+  .sheet__row { display: block; margin-top: 4px; }
+  .sheet__contacts { display: block; }
 
-  /* A whole row is taller than a sheet of paper: forbidding a break inside it
-     pushes the entire block to the next page and leaves the label alone on an
-     empty one. Only units that fit a page keep their break-inside guard. */
-  .row {
-    break-inside: auto;
-    grid-template-columns: minmax(0, 130px) minmax(0, 1fr);
-    gap: 6px 20px;
+  /* On paper a link cannot be clicked: the address is printed instead, and the
+     networks that carry no address at all drop out. */
+  .sheet__contacts a {
+    border-bottom: 0;
+    margin-right: 14px;
   }
-  .row__label { break-after: avoid; }
+  .sheet__contact--screen { display: none; }
+  .sheet__label { display: none; }
+  .sheet__printed { display: inline; }
+
+  .row { margin-top: 14px; }
+  .row__label { margin-bottom: 4px; break-after: avoid; }
   .company, .job, .impact__item, .stack__row, .job__items li { break-inside: avoid; }
   .company__head, .job__head { break-after: avoid; }
+  .company + .company { margin-top: 14px; }
+  .job { margin-top: 10px; }
+  .impact__item + .impact__item { margin-top: 10px; }
+  .impact__claim { display: block; }
+  .impact__detail, .impact__stack { display: block; margin-top: 2px; }
+  .job__items { padding-left: 16px; }
+  .job__items li + li { margin-top: 5px; }
+  .stack__row + .stack__row, .meta p + p { margin-top: 4px; }
 
   /* Paper is narrower than the screen column, so the type scale comes down. */
-  .sheet__name { font-size: 24pt; }
-  .sheet__role { font-size: 10pt; }
+  .sheet__name { font-size: 22pt; }
+  .sheet__role { font-size: 9.5pt; }
   .sheet__facts, .sheet__contacts { font-size: 8pt; }
   .row__label, .impact__stack, .job__stack, .company__period, .job__period { font-size: 8pt; }
   .row__text, .impact__detail, .job__items li, .stack__row, .meta p, .company__blurb,
@@ -336,7 +370,5 @@
   .impact__claim { font-size: 10.5pt; }
   .company__name { font-size: 12pt; }
   .job__title { font-size: 10.5pt; }
-  .row { margin-top: 0; }
-  .exp { gap: 16px; }
-  .impact { gap: 12px; }
+  .job__stack { margin-top: 2px; }
 }

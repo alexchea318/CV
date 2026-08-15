@@ -5,8 +5,10 @@
   @include m.gutter;
   position: relative;
   overflow-x: clip;
-  min-height: 100vh;
-  padding-block: 132px 56px;
+  // Deliberately shorter than a screen: the sheet comes into view while the
+  // hero is still on it, so the page reads as a document, not a poster.
+  min-height: 78vh;
+  padding-block: 120px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,7 +16,7 @@
 
   @include bp.mobile {
     min-height: auto;
-    padding-block: 86px 36px;
+    padding-block: 80px 28px;
     gap: 34px;
   }
 }
@@ -198,15 +200,4 @@
   @include bp.mobile { display: none; }
 }
 
-/* The stack repeats inside the sheet a screen below; on a phone that costs a
-   third of the first screen for nothing. */
-.hero__techs {
-  @include m.mono;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  font-size: 12px;
-  color: oklch(0.6 0.008 68);
-  animation: axc-rise 0.8s var(--ease) 0.7s both;
-  @include bp.mobile { display: none; }
-}
+

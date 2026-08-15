@@ -6,10 +6,10 @@ export const TENURE_START = new Date(2022, 1, 1); // month is 0-indexed → Febr
 
 const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
 
-/** Whole years since the start, rounded to the nearest half. */
+/** Years since the start, rounded to one decimal. */
 export function tenureYears(now: Date = new Date()): number {
   const years = (now.getTime() - TENURE_START.getTime()) / MS_PER_YEAR;
-  return Math.max(0, Math.round(years * 2) / 2);
+  return Math.max(0, Math.round(years * 10) / 10);
 }
 
 /** Evaluated at module load: build time on the server, runtime in the browser. */

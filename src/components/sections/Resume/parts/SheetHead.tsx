@@ -2,6 +2,7 @@
 
 import {useLang, useT} from "@/components/primitives/T";
 import {contact, hero, resume} from "@/content/site";
+import {cx} from "@/lib/cx";
 import {tenurePhrase} from "@/lib/tenure";
 import {usePrint} from "@/hooks/usePrint";
 import styles from "../resume.module.scss";
@@ -40,9 +41,12 @@ export function SheetHead() {
                                 data-cursor
                                 href={l.href}
                                 {...(l.href.startsWith("http") ? {target: "_blank", rel: "noopener"} : {})}
+                                className={cx(!l.print && styles["sheet__contact--screen"])}
                             >
-                                <span className={styles.sheet__arrow} aria-hidden>↳</span>
-                                {typeof l.value === "string" ? l.value : t(l.value)}
+                                <span className={styles.sheet__label}>
+                                    {typeof l.value === "string" ? l.value : t(l.value)}
+                                </span>
+                                {l.print && <span className={styles.sheet__printed}>{l.print}</span>}
                             </a>
                         ))}
                 </div>

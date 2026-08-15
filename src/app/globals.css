@@ -67,14 +67,6 @@ body {
 ::selection { background: var(--accent); color: oklch(0.2 0.014 265); }
 a { color: inherit; text-decoration: none; }
 
-/* ============================================================
-   Scroll-reveal: applied globally via the <Reveal> primitive
-   (className string), so the selector and its keyframes stay global.
-   Other keyframes live co-scoped inside their CSS Modules.
-============================================================ */
-@keyframes axc-reveal { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-.reveal[data-reveal] { opacity: 0; }
-.reveal[data-reveal].is-visible { animation: axc-reveal 0.9s var(--ease) both; }
 
 /* No custom cursor on touch / coarse-pointer devices. */
 @media (hover: none), (pointer: coarse) {
@@ -94,7 +86,6 @@ a { color: inherit; text-decoration: none; }
   [data-print-hide],
   [data-cursor-ring],
   [data-cursor-dot] { display: none !important; }
-  .reveal[data-reveal] { opacity: 1 !important; animation: none !important; }
 }
 
 /* ============================================================
@@ -102,8 +93,6 @@ a { color: inherit; text-decoration: none; }
 ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal[data-reveal] { opacity: 1 !important; }
-  .reveal[data-reveal].is-visible { animation: none; }
   [data-cue] { animation: none !important; }
   [data-pulse] { animation: none !important; opacity: 1 !important; }
 }

@@ -54,7 +54,6 @@ export const hero = {
     ] satisfies { value: number; suffix?: string; label: I18n }[],
     tenureSuffix: {ru: "в production", en: "in production"} satisfies I18n,
     ctaResume: {ru: "Смотреть резюме ↓", en: "View CV ↓"} satisfies I18n,
-    techs: ["Python", "TypeScript", "Kotlin", "Go", "Elasticsearch", "MCP", "Kubernetes"],
 };
 
 /* ============================================================
@@ -311,30 +310,50 @@ export const resume = {
 /* ============================================================
    CONTACT — unchanged block: the headline, the link row, back to top.
 ============================================================ */
-export type ContactLink = { kind: string; value: string | I18n; href: string; ruOnly?: true };
+export type IconKind = "email" | "telegram" | "github" | "linkedin" | "vk" | "hh" | "pdf";
+export type ContactLink = {
+    kind: string;
+    value: string | I18n;
+    href: string;
+    ruOnly?: true;
+    icon?: IconKind;
+    /** Address spelled out for the printout; absent means "screen only". */
+    print?: string;
+    /** Card width in columns of the six-column grid. */
+    span?: number;
+    /** Width when the RU-only cards are gone and the row has to close up. */
+    spanEn?: number;
+};
 
 // Annotated, not `satisfies`: without the annotation TypeScript narrows every
 // value to `string` and the I18n branch in the components becomes unreachable.
+// Six columns, two rows, always. In Russian that is three cards per row; in
+// English hh.ru drops out and the two cards left in the first row widen.
+// Six columns, two rows, always. Russian fills them with three cards each;
+// in English the RU-only cards drop out and the rest widen to three columns.
+// GitHub lives in the sheet header only: the code speaks for itself there.
 const CONTACT_LINKS: ContactLink[] = [
-    {kind: "email", value: links.email, href: `mailto:${links.email}`},
-    {kind: "Telegram", value: "Telegram", href: links.telegram},
-    {kind: "GitHub", value: "GitHub", href: links.github},
-    {kind: "LinkedIn", value: "LinkedIn", href: links.linkedin},
-    {kind: "hh", value: {ru: "Резюме на hh.ru", en: "CV on hh.ru"}, href: links.hh, ruOnly: true},
+    {kind: "email", value: links.email, href: `mailto:${links.email}`, icon: "email", span: 2, spanEn: 3},
+    {kind: "Telegram", value: "Telegram", href: links.telegram, icon: "telegram", span: 2, spanEn: 3},
+    {kind: "hh", value: "hh.ru", href: links.hh, ruOnly: true, icon: "hh", span: 2},
+    {kind: "VK", value: "VK", href: links.vk, ruOnly: true, icon: "vk", span: 2},
+    {kind: "LinkedIn", value: "LinkedIn", href: links.linkedin, icon: "linkedin", span: 2, spanEn: 3},
 ];
 
 // The sheet carries VK; hh.ru stays in the contacts block only.
+// `print` is what the paper carries: on a printout a link is unclickable, so
+// the address is spelled out. Links without it are dropped from the printout.
 const SHEET_LINKS: ContactLink[] = [
-    {kind: "email", value: links.email, href: `mailto:${links.email}`},
-    {kind: "Telegram", value: "Telegram", href: links.telegram},
+    {kind: "email", value: links.email, href: `mailto:${links.email}`, print: links.email},
+    {kind: "Telegram", value: "Telegram", href: links.telegram, print: "t.me/alexchea318"},
     {kind: "GitHub", value: "GitHub", href: links.github},
     {kind: "LinkedIn", value: "LinkedIn", href: links.linkedin},
-    {kind: "VK", value: "VK", href: links.vk, ruOnly: true},
+    {kind: "VK", value: "VK", href: links.vk, ruOnly: true, print: "vk.me/schechenev"},
 ];
 
 export const contact = {
     headline: {ru: "Контакты", en: "Contacts"} satisfies I18n,
-    downloadCta: {ru: "Скачать PDF", en: "Download PDF"} satisfies I18n,
+    downloadCta: {ru: "Скачать резюме в PDF", en: "Download the CV as PDF"} satisfies I18n,
     toTop: {ru: "наверх", en: "back to top"} satisfies I18n,
     links: CONTACT_LINKS,
     sheetLinks: SHEET_LINKS,

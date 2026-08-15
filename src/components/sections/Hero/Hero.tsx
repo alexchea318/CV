@@ -63,12 +63,6 @@ export function Hero() {
                     </a>
                 </div>
             </div>
-
-            <div className={styles.hero__techs}>
-                {hero.techs.map((tech) => (
-                    <span key={tech}>{tech}</span>
-                ))}
-            </div>
         </header>
     );
 }
