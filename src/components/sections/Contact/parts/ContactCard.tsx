@@ -16,7 +16,7 @@ type Props = {
 };
 
 /** One contact tile: icon and arrow on top, the destination on the bottom. */
-export function ContactCard({icon, label, span, href, onClick, arrow = "↗"}: Props) {
+export function ContactCard({icon, label, span, href, onClick, arrow = "↗︎"}: Props) {
     const content = (
         <>
             <span className={styles.card__fill} aria-hidden/>

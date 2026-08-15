@@ -27,7 +27,7 @@ export default function NotFound() {
         className="mono"
         style={{ fontSize: 14, border: "1px solid rgba(23,21,15,.25)", borderRadius: 9999, padding: "10px 20px" }}
       >
-        ↳ На главную / Home
+        ↳︎ На главную / Home
       </Link>
     </main>
   );

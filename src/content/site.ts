@@ -6,7 +6,6 @@ import {links} from "@/lib/config";
 ============================================================ */
 export const nav = {
     brand: {ru: "АЧ", en: "AC"} satisfies I18n,
-    name: {ru: "Александр Чеченев", en: "Alexander Chechenev"} satisfies I18n,
     links: [
         {href: "#resume", label: {ru: "Резюме", en: "CV"}},
     ] satisfies { href: string; label: I18n }[],
@@ -53,7 +52,7 @@ export const hero = {
         },
     ] satisfies { value: number; suffix?: string; label: I18n }[],
     tenureSuffix: {ru: "в production", en: "in production"} satisfies I18n,
-    ctaResume: {ru: "Смотреть резюме ↓", en: "View CV ↓"} satisfies I18n,
+    ctaResume: {ru: "Смотреть резюме ↓︎", en: "View CV ↓︎"} satisfies I18n,
 };
 
 /* ============================================================

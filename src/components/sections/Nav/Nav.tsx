@@ -13,8 +13,7 @@ export function Nav() {
         <nav className={styles.nav}>
             <div className={styles.nav__inner}>
                 <a href="#top" data-cursor className={styles.nav__brand}>
-                    <span className={styles.nav__mark}><T v={nav.brand}/></span>
-                    <span className={styles.nav__name}><T v={nav.name}/></span>
+                    <T v={nav.brand}/>
                 </a>
 
                 <LangToggle/>

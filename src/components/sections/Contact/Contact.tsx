@@ -37,7 +37,7 @@ export function Contact() {
                         icon="pdf"
                         label={t(contact.downloadCta)}
                         span={lang === "en" ? 3 : 2}
-                        arrow="↓"
+                        arrow="↓︎"
                         onClick={print}
                     />
                 </div>
@@ -51,7 +51,7 @@ export function Contact() {
                         </span>
                     </div>
                     <a href="#top" data-cursor className={styles.contact__totop}>
-                        {t(contact.toTop)} ↑
+                        {t(contact.toTop)} ↑︎
                     </a>
                 </div>
             </div>

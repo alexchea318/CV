@@ -51,7 +51,7 @@ export function SheetHead() {
                         ))}
                 </div>
                 <button type="button" data-cursor data-print-hide onClick={print} className={styles.sheet__download}>
-                    {t(resume.downloadCta)} ↓
+                    {t(resume.downloadCta)} ↓︎
                 </button>
             </div>
         </header>
