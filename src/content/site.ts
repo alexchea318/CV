@@ -30,8 +30,8 @@ export const hero = {
     } satisfies I18n,
     // {tenure} is filled from February 2022 at render time — see lib/tenure.
     tagline: {
-        ru: "{tenure} создаю LLM-продукты для production. Собираю enterprise-системы на LLM целиком: поиск и извлечение данных, оценка качества, инструменты для агентов, gateway и интерфейс: 7 сервисов.",
-        en: "{tenure} building LLM products for production. I assemble enterprise LLM systems end to end: search and retrieval, quality evaluation, agent tooling, gateway and interface: 7 services.",
+        ru: "{tenure} создаю LLM-продукты для production. Собираю enterprise RAG целиком: 7 сервисов от поиска и оценки качества до gateway и интерфейса.",
+        en: "{tenure} building LLM products for production. I assemble enterprise RAG end to end: 7 services from search and evaluation to gateway and interface.",
     } satisfies I18n,
     stats: [
         {
@@ -62,8 +62,8 @@ export const hero = {
 ============================================================ */
 export const meta = {
     description: {
-        ru: "{tenure} создаю LLM-продукты для production: поиск и извлечение данных, оценка качества, инструменты для агентов, gateway и интерфейс, 7 сервисов. 3 продукта внедрены в банках и на производстве, качество ответов 96%, 90,4% и 89%.",
-        en: "{tenure} building LLM products for production: search and retrieval, quality evaluation, agent tooling, gateway and interface, 7 services. 3 products deployed on-prem in banking and manufacturing, answer quality 96%, 90.4% and 89%.",
+        ru: "{tenure} создаю LLM-продукты для production: 7 сервисов enterprise RAG, от поиска и оценки качества до gateway и интерфейса. 3 внедрения on-prem в банках и на производстве, точность ответов 96%, 90,4% и 89%.",
+        en: "{tenure} building LLM products for production: 7 services of an enterprise RAG platform, from search and evaluation to gateway and interface. 3 on-prem deployments in banking and manufacturing, answer accuracy 96%, 90.4% and 89%.",
     } satisfies I18n,
     ogImage: "/img/me.jpg",
     locality: {ru: "Санкт-Петербург", en: null} satisfies { ru: string; en: string | null },
@@ -89,44 +89,44 @@ export const resume = {
 
     summaryLabel: {ru: "Кратко", en: "Summary"} satisfies I18n,
     summary: {
-        ru: "{tenure} создаю LLM-продукты для production. Собираю enterprise-системы на LLM целиком: поиск и извлечение данных, оценка качества, инструменты для агентов, gateway и интерфейс: 7 сервисов. 3 продукта внедрены в банках и на производстве, on-prem. Для каждого внедрения зафиксировано качество ответов: 96%, 90,4% и 89%. Система оценки качества разработана и сдана вместе с продуктом.",
-        en: "{tenure} building LLM products for production. I assemble enterprise LLM systems end to end: search and retrieval, quality evaluation, agent tooling, gateway and interface: 7 services. 3 products deployed on-prem in banking and manufacturing. Answer quality is on record for every deployment: 96%, 90.4% and 89%. The quality evaluation system was built and shipped together with the product.",
+        ru: "{tenure} создаю LLM-продукты для production. Отвечаю за 7 сервисов enterprise RAG-платформы: поиск и извлечение данных, оценку качества, инструменты для агентов, gateway и интерфейс. 3 внедрения on-prem в банках и на производстве с точностью ответов 96%, 90,4% и 89%: цифры даёт система оценки, которую я разработал и сдал вместе с продуктом.",
+        en: "{tenure} building LLM products for production. I own 7 services of an enterprise RAG platform: search and retrieval, quality evaluation, agent tooling, gateway and interface. 3 on-prem deployments in banking and manufacturing at 96%, 90.4% and 89% answer accuracy: the numbers come from the evaluation system I built and shipped with the product.",
     } satisfies I18n,
 
     impactLabel: {ru: "Ключевые результаты", en: "Selected impact"} satisfies I18n,
     impact: [
         {
             claim: {
-                ru: "Сократил команду с 3 до 2 инженеров без снижения объёма поставки.",
-                en: "Cut the team from three engineers to two with no drop in delivery scope.",
+                ru: "Держу точность ответов 96%, 90,4% и 89% при кратном росте объёма знаний.",
+                en: "I hold answer accuracy at 96%, 90.4% and 89% as the knowledge base grows many times over.",
             },
             detail: {
-                ru: "Разложил рабочий цикл на регламенты разработки: от постановки задачи и создания ветки до changelog и merge request. Процесс исполняют и человек, и AI-агент: объём поставки 7 сервисов остался прежним.",
-                en: "I broke the workflow down into development runbooks: from task intake and branch creation to changelog and merge request. Both a human and an AI agent run the process; delivery across 7 services stayed the same.",
-            },
-            stack: "Claude Code, Cursor, MCP, GitLab CI",
-        },
-        {
-            claim: {
-                ru: "Добился точности ответов 96%, 90,4% и 89% в production.",
-                en: "Reached 96%, 90.4% and 89% answer accuracy in production.",
-            },
-            detail: {
-                ru: "Построил систему оценки качества и регрессионный гейт: тест-сеты, эталонные ответы, модель-судья, дифференциальные прогоны на каждое изменение в CI. Корпуса от 10 тысяч до 500 тысяч слов, результаты оценки опубликованы вместе с продуктом.",
-                en: "I built the quality evaluation system and the regression gate: test sets, reference answers, LLM-as-a-Judge, differential runs on every change in CI. Corpora from 10K to 500K words; the evaluation results are published with the product.",
+                ru: "Построил систему оценки качества и регрессионный гейт: тест-сеты, эталонные ответы, модель-судья, дифференциальный прогон на каждое изменение в CI. На внедрении в клиентской поддержке охват ассистента вырос с 55 до 3 000 вопросов, точность 89% осталась прежней.",
+                en: "I built the quality evaluation system and the regression gate: test sets, reference answers, LLM-as-a-Judge, a differential run on every change in CI. In one customer-support deployment the assistant went from 55 to 3,000 questions covered, with accuracy holding at 89%.",
             },
             stack: "Python, LLM-as-a-Judge, pytest, CI",
         },
         {
             claim: {
-                ru: "Устранил 3 источника финансовых потерь и настроил стоимость инференса по результатам замеров.",
-                en: "Eliminated three sources of financial loss and tuned inference cost on measured data.",
+                ru: "Устранил 3 источника финансовых потерь и снизил стоимость инференса по замерам.",
+                en: "Eliminated three sources of financial loss and cut inference cost on measured data.",
             },
             detail: {
-                ru: "Убрал повторную генерацию семантическим кэшем, сохранил оплаченные внешнему краулеру страницы при повторной обработке, исключил списание токенов при недоступном биллинге. Сравнил 4 модели-судьи по расходу токенов, лимит ответа судьи выбрал на основании 400 вердиктов за 30 дней вместо значения по умолчанию в gateway. Настроил мониторинг TTFT, перцентилей p50, p95 и p99, стоимости и SLA по этапам. 2 инцидента P1 закрыты в день обнаружения: за 4 часа и 2 часа 23 минуты.",
-                en: "I removed repeated generation with a semantic cache, kept the pages already paid for to the external crawler across retries, and stopped token charges during billing outages. I compared 4 judge models on token spend and set the judge output limit from 400 verdicts over 30 days instead of the gateway default. I instrumented TTFT, p50, p95 and p99, cost and SLA per stage. 2 P1 incidents were closed the day they were found: in 4 hours and 2 hours 23 minutes.",
+                ru: "Убрал повторную генерацию семантическим кэшем, сохранил оплаченные краулеру страницы при повторе, исключил списание токенов при недоступном биллинге. Сравнил 4 модели-судьи по расходу токенов и выбрал лимит ответа по 400 вердиктам за 30 дней вместо значения по умолчанию. По мониторингу TTFT, перцентилей и стоимости 2 инцидента P1 закрыты в день обнаружения.",
+                en: "I removed repeated generation with a semantic cache, kept the pages already paid for to the crawler across retries, and stopped token charges during billing outages. I compared 4 judge models on token spend and set the judge output limit from 400 verdicts over 30 days instead of the default. Monitoring of TTFT, percentiles and cost closed 2 P1 incidents the day they were found.",
             },
             stack: "Python, Memcached, Prometheus, Grafana, Sentry",
+        },
+        {
+            claim: {
+                ru: "Сократил команду с 3 до 2 инженеров без снижения объёма поставки.",
+                en: "Cut the team from three engineers to two with no drop in delivery scope.",
+            },
+            detail: {
+                ru: "Разложил цикл разработки на регламенты: от постановки задачи до changelog и merge request. Регламенты исполняет и человек, и AI-агент, поставка по 7 сервисам осталась прежней.",
+                en: "I broke the development cycle into runbooks: from task intake to changelog and merge request. A human and an AI agent run them alike; delivery across 7 services stayed the same.",
+            },
+            stack: "Claude Code, Cursor, MCP, GitLab CI",
         },
         {
             claim: {
@@ -134,8 +134,8 @@ export const resume = {
                 en: "Put permission checks across four services and five data-access paths.",
             },
             detail: {
-                ru: "Вынес проверку прав из обработчика запроса непосредственно в процесс поиска и извлечения данных: исключил обходы через GraphRAG, табличный поиск, описания картинок, выгрузку архива и прямое чтение фрагментов.",
-                en: "I moved the permission check out of the request handler directly into search and retrieval: bypasses through GraphRAG, table search, image descriptions, archive export and direct fragment reads are gone.",
+                ru: "Перенёс проверку прав из обработчика запроса в сам поиск: закрыл обходы через GraphRAG, табличный поиск, описания картинок, выгрузку архива и чтение фрагментов.",
+                en: "I moved the permission check out of the request handler into search itself: bypasses through GraphRAG, table search, image descriptions, archive export and direct fragment reads are gone.",
             },
             stack: "Kotlin, Python, Neo4j, RBAC",
         },
@@ -145,8 +145,8 @@ export const resume = {
                 en: "Built five MCP tools over two transport protocols.",
             },
             detail: {
-                ru: "Написал и опубликовал в публичном каталоге MCP-сервер для базы знаний: права по проектному токену, приёмочные тесты, отсутствие операций изменения данных.",
-                en: "I wrote and published the knowledge-base MCP server in a public catalog: project-token authorization, acceptance tests, and no data-mutating operations.",
+                ru: "Опубликовал MCP-сервер базы знаний в публичном каталоге: права по проектному токену, приёмочные тесты, только чтение данных.",
+                en: "I published the knowledge-base MCP server in a public catalog: project-token authorization, acceptance tests, read-only access to data.",
             },
             stack: "Python, MCP, tool calling",
         },
@@ -158,8 +158,8 @@ export const resume = {
             name: {ru: "Just AI · Jay Knowledge Hub", en: "Just AI · Jay Knowledge Hub"},
             period: {ru: "апрель 2024 — настоящее время", en: "April 2024 — present"},
             blurb: {
-                ru: "Enterprise RAG-платформа в реестре отечественного ПО, внедрённая в банках и на производстве. LLM-продукт с первого дня, титул AI Engineer (RAG) с декабря 2025: он закрепил ответственность, которая уже сходилась на индексе, поиске, gateway и интерфейсе.",
-                en: "Enterprise RAG platform in the Russian software registry, deployed in banking and manufacturing. LLM product work from day one; the AI Engineer (RAG) title from December 2025 formalized ownership that had already converged on indexing, search, gateway and interface.",
+                ru: "Enterprise RAG-платформа в реестре отечественного ПО, внедрена в банках и на производстве.",
+                en: "Enterprise RAG platform in the Russian software registry, deployed in banking and manufacturing.",
             },
             roles: [
                 {
@@ -174,15 +174,15 @@ export const resume = {
                         },
                         {
                             text: {
-                                ru: "Провёл версионирование документов через 5 сервисов и 4 языка: версия стала атрибутом чанка вместо отдельного индекса, шаг выбора версии на LLM возвращает фильтр к Elasticsearch, смена текущей версии не требует переиндексации источников. Публичный API расширен только опциональными полями: проекты без версий сохранили поведение и задержку поиска.",
-                                en: "I shipped document versioning across 5 services and 4 languages: version became a chunk attribute rather than a separate index, an LLM step returns an Elasticsearch filter, and switching the current version needs no reindexing. The public API grew only optional fields, so projects without versions kept their behaviour and search latency.",
+                                ru: "Провёл версионирование документов через 5 сервисов и 4 языка: версия стала атрибутом чанка вместо отдельного индекса, шаг выбора версии на LLM возвращает фильтр к Elasticsearch, смена версии не требует переиндексации. Публичный API расширен только опциональными полями, проекты без версий сохранили поведение и задержку поиска.",
+                                en: "I shipped document versioning across 5 services and 4 languages: version became a chunk attribute rather than a separate index, an LLM step returns an Elasticsearch filter, switching the current version needs no reindexing. The public API grew only optional fields, so projects without versions kept their behaviour and search latency.",
                             },
                             stack: "Kotlin, Python, TypeScript, Elasticsearch, LLM",
                         },
                         {
                             text: {
-                                ru: "Разработал загрузку из файлов, внешних API и обхода сайтов: docling приводит PDF, сканы и таблицы к единому виду до чанкинга, документ свыше 100 страниц разбивается и идёт через приоритетную очередь, оборванный обход продолжается с сохранённого места, повтор касается только упавших источников.",
-                                en: "I built ingestion from files, third-party APIs and web crawling: docling normalizes PDFs, scans and tables before chunking, a document over 100 pages is split and routed through a priority queue, an interrupted crawl resumes from the saved position, and a retry touches only the failed sources.",
+                                ru: "Разработал загрузку из файлов, внешних API и обхода сайтов: docling приводит PDF, сканы и таблицы к единому виду до чанкинга, документ свыше 100 страниц идёт через приоритетную очередь, оборванный обход продолжается с сохранённого места, повтор касается только упавших источников.",
+                                en: "I built ingestion from files, third-party APIs and web crawling: docling normalizes PDFs, scans and tables before chunking, a document over 100 pages goes through a priority queue, an interrupted crawl resumes from the saved position, and a retry touches only the failed sources.",
                             },
                             stack: "Python, docling, очереди, повторы, MinIO",
                         },
@@ -200,17 +200,24 @@ export const resume = {
                     items: [
                         {
                             text: {
-                                ru: "Разработал диалоговый интерфейс к базе знаний, через который пользователь получает ответы и источники: потоковый вывод ответа, цитаты источников, работа с документами и правами.",
-                                en: "I built the conversational interface to the knowledge base, where the user gets answers and sources: streaming answers, source citations, document and permission handling.",
+                                ru: "Разработал диалоговый интерфейс к базе знаний: потоковый вывод ответа, цитаты источников, работа с документами и правами.",
+                                en: "I built the conversational interface to the knowledge base: streaming answers, source citations, document and permission handling.",
                             },
                             stack: "React, Next.js, TypeScript, REST",
                         },
                         {
                             text: {
-                                ru: "Создал интерфейс продукта с нуля вместе со сборкой, маршрутизацией и поставкой, задал стандарты кодовой базы, которую развивают 20 инженеров.",
-                                en: "I created the product interface from zero along with its build, routing and delivery, and set the standards for a codebase now developed by 20 engineers.",
+                                ru: "Владел frontend-архитектурой продукта: 4 репозитория, 12 разработчиков, 6 внедрённых стандартов разработки, 0 уязвимостей в квартальных аудитах.",
+                                en: "I owned the product frontend architecture: 4 repositories, 12 developers, 6 development standards I introduced, zero vulnerabilities in the quarterly audits.",
                             },
-                            stack: "Vite, Node.js, Playwright, Jest, SonarQube",
+                            stack: "React, Next.js, TypeScript, SonarQube",
+                        },
+                        {
+                            text: {
+                                ru: "Руководил миграцией монорепозитория из 12 проектов (React 16 на React 19, webpack на Vite, Jest на Vitest) и ускорил загрузку 3 проектов в 2,7 раза.",
+                                en: "I led the migration of a 12-project monorepo (React 16 to React 19, webpack to Vite, Jest to Vitest) and made 3 projects load 2.7× faster.",
+                            },
+                            stack: "Vite, Vitest, Node.js",
                         },
                     ],
                 },
@@ -226,14 +233,20 @@ export const resume = {
             items: [
                 {
                     text: {
-                        ru: "Руководил командой 5 инженеров и вывел 3 продукта на генеративном AI от идеи до production.",
-                        en: "I led a team of 5 engineers and took 3 generative-AI products from idea to production.",
+                        ru: "Руководил командой 5 инженеров (2 Go, frontend, DevOps, ML) и вывел 3 продукта на генеративном AI от требований до production: 17 спринтов, 218 задач, 5 performance review.",
+                        en: "I led a team of 5 engineers (2 Go, frontend, DevOps, ML) and took 3 generative-AI products from requirements to production: 17 sprints, 218 tasks, 5 performance reviews.",
                     },
                 },
                 {
                     text: {
-                        ru: "Отвечал за архитектуру, планирование, ревью, релизы и технические решения перед заказчиком без посредника.",
-                        en: "I owned architecture, planning, review, releases and customer-facing technical decisions with no intermediary.",
+                        ru: "Совмещал роль project-менеджера: 15 Epic и 50 Story из бизнес-требований, 8 демонстраций высшему руководству заказчика, 3 проекта сданы в срок.",
+                        en: "I doubled as project manager: 15 epics and 50 stories from business requirements, 8 demos to customer executives, all 3 projects delivered on time.",
+                    },
+                },
+                {
+                    text: {
+                        ru: "Сдал 3 поставки в закрытый контур с официальной документацией для госзакупок, включая проекты с гостайной.",
+                        en: "I delivered 3 releases into an air-gapped environment with the formal documentation required for state procurement, classified projects included.",
                     },
                 },
             ],
@@ -245,8 +258,8 @@ export const resume = {
         {
             lead: {ru: "Frontend / Fullstack Developer · НеоБИТ", en: "Frontend / Fullstack Developer · NeoBIT"},
             text: {
-                ru: "февраль 2022 — сентябрь 2023: React и Go в production, UI-система, первые коммерческие сервисы на Go.",
-                en: "February 2022 — September 2023: React and Go in production, a UI system, the first commercial Go services.",
+                ru: "февраль 2022 — сентябрь 2023: вёл React-разработку в команде, библиотека компонентов, ревью и архитектура, первые коммерческие сервисы на Go.",
+                en: "February 2022 — September 2023: led React development in the team, a component library, review and architecture, the first commercial Go services.",
             },
         },
         {
@@ -263,8 +276,8 @@ export const resume = {
         {
             label: {ru: "LLM и агенты", en: "LLM and agents"},
             items: {
-                ru: "агенты с инструментами, tool calling, structured output, MCP, контекст-инжиниринг, промпт-инжиниринг, human-in-the-loop, Claude Code, Cursor, коммерческие API и открытые веса, расчёт расхода токенов",
-                en: "tool-using agents, tool calling, structured output, MCP, context engineering, prompt engineering, human-in-the-loop, Claude Code, Cursor, commercial APIs and open-weight models, token cost accounting",
+                ru: "агенты с инструментами, tool calling, structured output, MCP, контекст- и промпт-инжиниринг, human-in-the-loop, Claude Code, Cursor, подбор и замена готовых моделей (коммерческие API и открытые веса), расчёт расхода токенов",
+                en: "tool-using agents, tool calling, structured output, MCP, context and prompt engineering, human-in-the-loop, Claude Code, Cursor, model selection and swap (commercial APIs and open-weight models), token cost accounting",
             },
         },
         {
@@ -277,7 +290,7 @@ export const resume = {
         {
             label: {ru: "Оценка качества", en: "Evaluation"},
             items: {
-                ru: "LLM-as-a-Judge, тест-сеты, эталонные ответы, дифференциальные прогоны, регрессия промптов, метрики качества в CI, дрейф качества, стоимость и задержка",
+                ru: "LLM-as-a-Judge, тест-сеты, эталонные ответы, дифференциальные прогоны, регрессия промптов, метрики качества в CI, дрейф качества, стоимость и задержка ответа",
                 en: "LLM-as-a-Judge, test sets, reference answers, differential runs, prompt regression, quality metrics in CI, drift detection, cost and latency",
             },
         },
