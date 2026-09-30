@@ -6,7 +6,7 @@ import {withTenure} from "@/lib/tenure";
 
 const PATHS: Record<Locale, string> = {en: "/", ru: "/ru/"};
 
-/** Full name in the given locale, assembled from the hero copy. */
+/** Full name in the given locale. */
 export function personName(lang: Locale): string {
     return `${hero.firstName[lang]} ${hero.lastName[lang]}`;
 }
@@ -17,7 +17,7 @@ export function personName(lang: Locale): string {
  * second time, so the tab, the search snippet and the first screen agree.
  */
 export function siteMetadata(lang: Locale): Metadata {
-    const title = `${personName(lang)} — ${hero.roleLine[lang]}`;
+    const title = `${personName(lang)}, ${hero.roleLine[lang]}`;
     const description = withTenure(meta.description[lang], lang);
 
     return {

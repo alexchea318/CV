@@ -1,0 +1,5 @@
+#!/bin/sh
+# The PDF follows the sheet: rebuild it only when the sheet could have changed.
+# Skip once with `git commit --no-verify`.
+git diff --cached --name-only | grep -q '^src/' || exit 0
+npm run pdf && git add public/cv-en.pdf public/cv-ru.pdf

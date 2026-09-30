@@ -3,6 +3,7 @@ docs/
 .superpowers/
 node_modules/
 .next/
+.next-pdf/
 out/
 *.tsbuildinfo
 .claude/

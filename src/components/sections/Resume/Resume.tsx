@@ -2,7 +2,6 @@
 
 import {useLang, useT} from "@/components/primitives/T";
 import {resume} from "@/content/site";
-import {monthYear} from "@/lib/date";
 import {withTenure} from "@/lib/tenure";
 import {SheetHead} from "./parts/SheetHead";
 import {Experience} from "./parts/Experience";
@@ -15,10 +14,6 @@ export function Resume() {
 
     return (
         <section id="resume" className={styles.resume}>
-            <div className={styles.resume__head}>
-                <span>{t(resume.updatedLabel)}: {monthYear(lang)}</span>
-            </div>
-
             <article className={styles.sheet}>
                 <SheetHead/>
 

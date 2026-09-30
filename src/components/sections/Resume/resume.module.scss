@@ -3,29 +3,17 @@
 
 .resume {
   @include m.gutter;
-  padding-block: 8px 72px;
+  padding-block: 24px 72px;
 
   // Edge to edge on a phone; the sheet keeps its rounded corners, so the top
   // and bottom of the document still read as a sheet.
   @include bp.mobile { padding-inline: 0; padding-block: 4px 48px; }
 }
 
-.resume__head {
-  @include m.mono;
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 16px;
-  font-size: 12px;
-  color: var(--dim);
-  @include bp.mobile { padding: 0 12px 10px; }
-}
-
 /* ===== The sheet ===========================================================
-   Paper on a night page: the contrast is the point — the hero sells, this is
-   the document a recruiter came to read. */
+   Paper on a night page: the contrast is the point — this is the document a
+   recruiter came to read. */
 .sheet {
-  // Positioned, so it paints over the hero glow that spills past the hero.
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: clamp(30px, 3.6vw, 46px);
@@ -68,28 +56,10 @@
   text-wrap: balance;
   color: var(--paper-accent);
 }
-/* Blocks of the fact line are separated by a middle dot drawn in CSS; the
-   stack inside a block keeps its own commas. */
 .sheet__facts {
   @include m.mono;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 12px;
   font-size: 12.5px;
   color: oklch(0.44 0.01 62);
-
-  > *:not(:last-child)::after {
-    content: "·";
-    margin-left: 12px;
-    color: oklch(0.68 0.01 62);
-  }
-}
-.sheet__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 24px;
 }
 .sheet__contacts {
   display: flex;
@@ -108,20 +78,6 @@
 }
 // Spelled-out address: paper only, where a link cannot be clicked.
 .sheet__printed { display: none; }
-.sheet__download {
-  @include m.mono;
-  padding: 10px 20px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--paper);
-  background: var(--paper-ink);
-  border: 0;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
-
-  &:hover { background: var(--paper-accent); transform: translateY(-1px); }
-}
 
 /* ===== Rows: label on the left, content on the right ======================= */
 .row {
@@ -277,7 +233,6 @@
 
 @media print {
   .resume { padding: 0; }
-  .resume__head { display: none; }
 
   /* Flex and grid containers paginate badly: a browser that cannot break
      inside them pushes the whole sheet to the next page and leaves the header
@@ -302,9 +257,8 @@
     color: #000;
   }
   .sheet__head { padding-bottom: 8px; border-bottom: 1.5px solid #000; }
-  .sheet__facts { display: flex; margin-top: 4px; }
-  .sheet__row { display: block; margin-top: 4px; }
-  .sheet__contacts { display: block; }
+  .sheet__facts { margin-top: 4px; }
+  .sheet__contacts { display: block; margin-top: 4px; }
 
   /* On paper a link cannot be clicked: the address is printed instead, and the
      networks that carry no address at all drop out. */

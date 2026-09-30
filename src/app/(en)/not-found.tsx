@@ -20,14 +20,14 @@ export default function NotFound() {
         404
       </div>
       <p className="mono" style={{ fontSize: 13, letterSpacing: ".1em", color: "rgba(23,21,15,.55)", margin: 0 }}>
-        СТРАНИЦА НЕ НАЙДЕНА · PAGE NOT FOUND
+        PAGE NOT FOUND
       </p>
       <Link
         href="/"
         className="mono"
         style={{ fontSize: 14, border: "1px solid rgba(23,21,15,.25)", borderRadius: 9999, padding: "10px 20px" }}
       >
-        ↳︎ На главную / Home
+        Home
       </Link>
     </main>
   );

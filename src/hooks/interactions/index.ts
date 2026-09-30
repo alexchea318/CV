@@ -1,5 +1,4 @@
 "use client";
-import { useMagnetic } from "./useMagnetic";
 import { useCursor } from "./useCursor";
 
 /**
@@ -8,6 +7,5 @@ import { useCursor } from "./useCursor";
  * generic underline used to double up with the one a link already draws.
  */
 export function useInteractions(): void {
-  useMagnetic();
   useCursor();
 }

@@ -28,6 +28,7 @@ npm run dev        # разработка — http://localhost:3000
 npm run build      # прод-сборка в .next (включает проверку типов)
 npm run start      # запуск прод-сборки локально (next start, после build)
 npm run lint       # next lint (ESLint в проекте не настроен)
+npm run pdf        # PDF резюме в public/cv-{en,ru}.pdf (сам запускается pre-commit, если менялся src/)
 ```
 
 > Тестов нет; гейтом служит проверка типов внутри `npm run build`.

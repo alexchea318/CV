@@ -55,7 +55,7 @@ export function Experience() {
                 <h4 className={styles.company__name}>{t(resume.earlierLabel)}</h4>
                 {resume.earlier.map((e, i) => (
                     <p key={i} className={styles.company__earlier}>
-                        <strong>{t(e.lead)}</strong>, {t(e.text)}
+                        <strong>{t(e.lead)}</strong>. {t(e.text)}
                     </p>
                 ))}
             </article>

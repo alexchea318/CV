@@ -2,45 +2,30 @@ import type {I18n} from "@/lib/i18n";
 import {links} from "@/lib/config";
 
 /* ============================================================
-   NAV — one destination, the language switch and the write-to-me pill.
+   NAV — the name on the left, the PDF on the right. The file keeps "CV" in
+   its name: that is what HR sees in their downloads folder.
 ============================================================ */
 export const nav = {
-    brand: {ru: "АЧ", en: "AC"} satisfies I18n,
-    links: [
-        {href: "#resume", label: {ru: "Резюме", en: "CV"}},
-    ] satisfies { href: string; label: I18n }[],
-    cta: {ru: "Контакты", en: "Contacts"} satisfies I18n,
-    ctaHref: "#contact",
+    fileName: {ru: "Резюме Александра Чеченева", en: "Alexander Chechenev CV"} satisfies I18n,
 };
 
 /* ============================================================
-   HERO — sells; the sheet below it is the document HR came to read.
-   The tenure number is not stored here: lib/tenure derives it from
-   February 2022 on every render, so it never goes stale.
+   HERO — who: the sheet header and the page metadata both read it.
 ============================================================ */
 export const hero = {
-    // A public "open to offers" on the English page reads as shopping around
-    // while employed; the English page carries no status at all.
-    openStatus: {ru: "Открыт к предложениям", en: null} satisfies I18n<string | null>,
-    location: {ru: "Санкт-Петербург / удалённо", en: "Remote"} satisfies I18n,
+    location: {ru: "Санкт-Петербург или удалённо", en: "Remote"} satisfies I18n,
     english: {ru: "английский B2", en: "English B2"} satisfies I18n,
     firstName: {ru: "Александр", en: "Alexander"} satisfies I18n,
     lastName: {ru: "Чеченев", en: "Chechenev"} satisfies I18n,
     roleLine: {
-        ru: "AI Engineer · LLM / RAG / оценка качества / агенты",
-        en: "AI Engineer · LLM / RAG / evaluation / agents",
+        ru: "AI Engineer (LLM, RAG, оценка качества, агенты)",
+        en: "AI Engineer (LLM, RAG, evaluation, agents)",
     } satisfies I18n,
-    // {tenure} is filled from February 2022 at render time — see lib/tenure.
-    tagline: {
-        ru: "{tenure} в разработке, с 2023 года создаю LLM-продукты для production. Веду разработку во всех 7 сервисах enterprise RAG: от поиска и оценки качества до gateway и интерфейса.",
-        en: "{tenure} in software engineering, building LLM products for production since 2023. I lead development across all 7 services of an enterprise RAG platform, from search and evaluation to gateway and interface.",
-    } satisfies I18n,
-    ctaResume: {ru: "Смотреть резюме ↓︎", en: "View CV ↓︎"} satisfies I18n,
 };
 
 /* ============================================================
    META — the search snippet and the social card. Title and role are taken
-   from the hero, so the tab, the snippet and the first screen cannot drift
+   from the hero, so the tab, the snippet and the sheet cannot drift
    apart; only the description lives here, kept short for search results.
 ============================================================ */
 export const meta = {
@@ -68,7 +53,6 @@ export type CompanyBlock = {
 };
 
 export const resume = {
-    updatedLabel: {ru: "обновлено", en: "updated"} satisfies I18n,
     downloadCta: {ru: "Скачать PDF", en: "Download PDF"} satisfies I18n,
 
     summaryLabel: {ru: "Кратко", en: "Summary"} satisfies I18n,
@@ -80,9 +64,9 @@ export const resume = {
     experienceLabel: {ru: "Опыт", en: "Experience"} satisfies I18n,
     companies: [
         {
-            name: {ru: "Just AI · Jay Knowledge Hub", en: "Just AI · Jay Knowledge Hub"},
+            name: {ru: "Just AI (Jay Knowledge Hub)", en: "Just AI (Jay Knowledge Hub)"},
             url: "https://just-ai.com/ai-baza-znaniy",
-            period: {ru: "апрель 2024 — настоящее время", en: "Apr 2024 — present"},
+            period: {ru: "апрель 2024 – настоящее время", en: "Apr 2024 – present"},
             blurb: {
                 ru: "Enterprise RAG-платформа в реестре отечественного ПО, внедрена в банках и на производстве.",
                 en: "Enterprise RAG platform in the Russian software registry, deployed in banking and manufacturing.",
@@ -90,7 +74,7 @@ export const resume = {
             roles: [
                 {
                     title: {ru: "AI Engineer (RAG)", en: "AI Engineer (RAG)"},
-                    period: {ru: "декабрь 2025 — настоящее время", en: "Dec 2025 — present"},
+                    period: {ru: "декабрь 2025 – настоящее время", en: "Dec 2025 – present"},
                     items: [
                         {
                             text: {
@@ -138,7 +122,7 @@ export const resume = {
                 },
                 {
                     title: {ru: "Senior Frontend Developer", en: "Senior Frontend Developer"},
-                    period: {ru: "апрель 2024 — декабрь 2025", en: "Apr 2024 — Dec 2025"},
+                    period: {ru: "апрель 2024 – декабрь 2025", en: "Apr 2024 – Dec 2025"},
                     items: [
                         {
                             text: {
@@ -159,11 +143,11 @@ export const resume = {
             ],
         },
         {
-            name: {ru: "НеоБИТ · Development Team Lead / PM", en: "NeoBIT · Development Team Lead / PM"},
-            period: {ru: "сентябрь 2023 — апрель 2024", en: "Sep 2023 — Apr 2024"},
+            name: {ru: "НеоБИТ, Development Team Lead и PM", en: "NeoBIT, Development Team Lead and PM"},
+            period: {ru: "сентябрь 2023 – апрель 2024", en: "Sep 2023 – Apr 2024"},
             blurb: {
-                ru: "Генеративный AI для социальных платформ, сервисы на Go в Kubernetes.",
-                en: "Generative AI for social platforms; Go services on Kubernetes.",
+                ru: "Генеративный AI для соцсетей и мессенджеров, сервисы на Go в Kubernetes.",
+                en: "Generative AI for social media and messengers; Go services on Kubernetes.",
             },
             items: [
                 {
@@ -185,17 +169,17 @@ export const resume = {
     earlierLabel: {ru: "Ранние роли", en: "Earlier roles"} satisfies I18n,
     earlier: [
         {
-            lead: {ru: "Frontend / Fullstack Developer · НеоБИТ", en: "Frontend / Fullstack Developer · NeoBIT"},
+            lead: {ru: "НеоБИТ, Frontend и Fullstack Developer", en: "NeoBIT, Frontend and Fullstack Developer"},
             text: {
                 ru: "2022–2023: React, библиотека компонентов, первые сервисы на Go.",
                 en: "2022–2023: React, a component library, the first Go services.",
             },
         },
         {
-            lead: {ru: "Data Science Intern · LG Electronics Russia R&D Lab", en: "Data Science Intern · LG Electronics Russia R&D Lab"},
+            lead: {ru: "LG Electronics Russia R&D Lab, Data Science Intern", en: "LG Electronics Russia R&D Lab, Data Science Intern"},
             text: {
-                ru: "лето 2021: методы оптимизации градиентного спуска.",
-                en: "summer 2021: optimization methods for gradient descent.",
+                ru: "Лето 2021: методы оптимизации градиентного спуска.",
+                en: "Summer 2021: optimization methods for gradient descent.",
             },
         },
     ] satisfies { lead: I18n; text: I18n }[],
@@ -246,58 +230,24 @@ export const resume = {
 };
 
 /* ============================================================
-   CONTACT — unchanged block: the headline, the link row, back to top.
+   CONTACT — the link row in the sheet header.
 ============================================================ */
-export type IconKind = "email" | "telegram" | "linkedin" | "vk" | "hh" | "pdf";
 export type ContactLink = {
     kind: string;
     value: string | I18n;
     href: string;
     ruOnly?: true;
-    icon?: IconKind;
     /** Address spelled out for the printout; absent means "screen only". */
     print?: string;
-    /** Card width in columns of the six-column grid. */
-    span?: number;
-    /** Width when the RU-only cards are gone and the row has to close up. */
-    spanEn?: number;
 };
 
 // Annotated, not `satisfies`: without the annotation TypeScript narrows every
 // value to `string` and the I18n branch in the components becomes unreachable.
-// Six columns, two rows, always. In Russian that is three cards per row; in
-// English hh.ru drops out and the two cards left in the first row widen.
-// Six columns, two rows, always. Russian fills them with three cards each;
-// in English the RU-only cards drop out and the rest widen to three columns.
-const CONTACT_LINKS: ContactLink[] = [
-    {kind: "email", value: links.email, href: `mailto:${links.email}`, icon: "email", span: 2, spanEn: 3},
-    {kind: "Telegram", value: "Telegram", href: links.telegram, icon: "telegram", span: 2, spanEn: 3},
-    {kind: "hh", value: "hh.ru", href: links.hh, ruOnly: true, icon: "hh", span: 2},
-    {kind: "VK", value: "VK", href: links.vk, ruOnly: true, icon: "vk", span: 2},
-    {kind: "LinkedIn", value: "LinkedIn", href: links.linkedin, icon: "linkedin", span: 2, spanEn: 3},
-];
-
-// The sheet carries VK; hh.ru stays in the contacts block only.
 // `print` is what the paper carries: on a printout a link is unclickable, so
 // the address is spelled out. Links without it are dropped from the printout.
-const SHEET_LINKS: ContactLink[] = [
+export const contactLinks: ContactLink[] = [
     {kind: "email", value: links.email, href: `mailto:${links.email}`, print: links.email},
     {kind: "Telegram", value: "Telegram", href: links.telegram, print: "t.me/alexchea318"},
     {kind: "LinkedIn", value: "LinkedIn", href: links.linkedin, print: "linkedin.com/in/alexander-chechenev"},
     {kind: "VK", value: "VK", href: links.vk, ruOnly: true, print: "vk.me/schechenev"},
 ];
-
-export const contact = {
-    headline: {ru: "Контакты", en: "Contacts"} satisfies I18n,
-    downloadCta: {ru: "Скачать резюме в PDF", en: "Download the CV as PDF"} satisfies I18n,
-    toTop: {ru: "наверх", en: "back to top"} satisfies I18n,
-    links: CONTACT_LINKS,
-    sheetLinks: SHEET_LINKS,
-};
-
-/* ============================================================
-   FOOTER
-============================================================ */
-export const footer = {
-    left: {ru: "Александр Чеченев", en: "Alexander Chechenev"} satisfies I18n,
-};

@@ -1,37 +1,25 @@
 "use client";
 
-import {T} from "@/components/primitives/T";
-import {nav} from "@/content/site";
-import {useScrollProgress} from "@/hooks/useScrollProgress";
+import {useLang, useT} from "@/components/primitives/T";
+import {hero, nav, resume} from "@/content/site";
 import {LangToggle} from "./parts/LangToggle";
 import styles from "./nav.module.scss";
 
+/** The page is the sheet; the bar carries the name, the language and the PDF. */
 export function Nav() {
-    const progress = useScrollProgress();
+    const t = useT();
+    const {lang} = useLang();
 
     return (
         <nav className={styles.nav}>
             <div className={styles.nav__inner}>
-                <a href="#top" data-cursor className={styles.nav__brand}>
-                    <T v={nav.brand}/>
-                </a>
-
+                <span className={styles.nav__title}>{t(hero.firstName)} {t(hero.lastName)}</span>
                 <LangToggle/>
-
-                <div className={styles.nav__right}>
-                    {nav.links.map((l) => (
-                        <a key={l.href} href={l.href} data-cursor className={styles.nav__link}>
-                            <T v={l.label}/>
-                        </a>
-                    ))}
-                    <a href={nav.ctaHref} data-cursor className={styles.nav__cta}>
-                        <T v={nav.cta}/>
-                    </a>
-                </div>
-            </div>
-
-            <div className={styles.nav__track}>
-                <div className={styles.nav__progress} style={progress}/>
+                {/* A file, not window.print(): some browsers have no print dialog.
+                    The PDFs are rendered by `npm run pdf` (scripts/pdf.mjs). */}
+                <a href={`/cv-${lang}.pdf`} download={`${t(nav.fileName)}.pdf`} data-cursor className={styles.nav__cta}>
+                    {t(resume.downloadCta)}
+                </a>
             </div>
         </nav>
     );

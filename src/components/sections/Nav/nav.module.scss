@@ -1,20 +1,20 @@
 @use 'mixins' as m;
 @use 'breakpoints' as bp;
 
-// One height for every control on the right side of the nav.
+// One height for both controls in the bar.
 $control: 36px;
 
+// Sticky, not fixed: the bar keeps its place in the flow, so the sheet below
+// needs no offset to clear it.
 .nav {
-  position: fixed;
-  inset: 0 0 auto;
+  position: sticky;
+  top: 0;
   z-index: 60;
-  // The page colour, flat: the bar is the top of the background, not a panel
-  // laid over it.
   background: var(--bg);
 }
 
 /* Three tracks so the language switch sits in the middle of the bar regardless
-   of how wide the brand and the controls next to it are. */
+   of how wide the title and the PDF button are. */
 .nav__inner {
   @include m.gutter;
   display: grid;
@@ -22,71 +22,39 @@ $control: 36px;
   align-items: center;
   gap: 16px;
   padding-block: 13px;
-
-  // Four controls do not fit a phone: the brand keeps only its mark and the
-  // resume link goes away — the sheet is the next thing on the page anyway.
-  @include bp.mobile {
-    gap: 10px;
-    padding-block: 10px;
-  }
+  @include bp.mobile { gap: 10px; padding-block: 10px; }
 
   // Grid tracks default to a min-content floor, so without this the row grows
   // past the viewport instead of shrinking.
   > * { min-width: 0; }
 }
 
-.nav__brand {
-  @include m.display;
-  display: inline-flex;
-  align-items: center;
-  height: $control;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.nav__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--ink);
-  transition: opacity 0.2s var(--ease);
-
-  &:hover { opacity: 0.7; }
+  // The name opens the sheet right below; a phone has no room for it twice.
+  @include bp.mobile { visibility: hidden; }
 }
 
-/* Three controls, one row: same height, same type size, same radius. Only the
-   contact pill carries the accent — everything else stays quiet. */
-.nav__right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  font-size: 13.5px;
-  color: var(--muted);
-}
-
-.nav__link {
-  display: inline-flex;
-  align-items: center;
-  height: $control;
-  padding-inline: 14px;
-  border-radius: 999px;
-  transition: color 0.2s var(--ease), background 0.2s var(--ease);
-
-  &:hover { color: var(--ink); background: oklch(0.26 0.014 265); }
-  @include bp.mobile { display: none; }
-}
-
-/* Outlined, not filled: the bar carries no solid colour, so the orange is
-   left to the page below it. */
 .nav__cta {
+  justify-self: end;
   display: inline-flex;
   align-items: center;
   height: $control;
   padding-inline: 18px;
   white-space: nowrap;
-  @include bp.mobile { padding-inline: 14px; }
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: var(--ink);
-  font-weight: 500;
   transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
   &:hover { border-color: var(--accent); color: var(--accent-soft); }
+  @include bp.mobile { padding-inline: 14px; }
 }
 
 /* ===== Language switch ===================================================== */
@@ -125,15 +93,4 @@ $control: 36px;
 .lang__btn--active {
   background: oklch(0.94 0.006 85);
   color: oklch(0.2 0.014 265);
-}
-
-/* ===== Reading progress ==================================================== */
-.nav__track {
-  height: 1px;
-  background: var(--line);
-}
-.nav__progress {
-  height: 100%;
-  width: calc(var(--progress, 0) * 100%);
-  background: var(--accent);
 }
