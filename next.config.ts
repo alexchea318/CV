@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
   // manifest conflicts on Vercel.
   trailingSlash: true,
   sassOptions: { includePaths: ["src/styles"] },
+  // English moved to the root; links already shared as /en/ keep working.
+  async redirects() {
+    return [{ source: "/en", destination: "/", permanent: true }];
+  },
 };
 
 export default nextConfig;

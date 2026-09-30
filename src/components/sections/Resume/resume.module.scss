@@ -44,8 +44,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-bottom: clamp(22px, 2.6vw, 32px);
-  border-bottom: 2px solid var(--paper-ink);
 }
 .sheet__id {
   display: flex;
@@ -57,7 +55,7 @@
 .sheet__name {
   @include m.display;
   margin: 0;
-  font-size: clamp(26px, 3vw, 38px);
+  font-size: clamp(22px, 2.4vw, 30px);
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -144,40 +142,6 @@
   text-wrap: pretty;
 }
 
-/* ===== Selected impact ===================================================== */
-.impact {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  @include bp.mobile { gap: 28px; }
-}
-.impact__item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  max-width: 70ch;
-}
-.impact__claim {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.4;
-}
-.impact__detail {
-  font-size: 16.5px;
-  line-height: 1.66;
-  color: var(--paper-body);
-  text-wrap: pretty;
-}
-.impact__stack {
-  @include m.mono;
-  font-size: 12px;
-  color: oklch(0.5 0.01 62);
-}
-
 /* ===== Experience ========================================================== */
 .exp {
   display: flex;
@@ -201,6 +165,11 @@
   font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+.company__link {
+  border-bottom: 1px solid var(--paper-line);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+  &:hover { color: var(--paper-accent); border-color: var(--paper-accent); }
 }
 .company__period {
   @include m.mono;
@@ -301,7 +270,7 @@
    Cmd+P prints the sheet alone, which is what the download button triggers. */
 /* Tailwind's pipeline drops @page from globals.css, so the paper margin
    lives here, next to the rest of the print rules. */
-@page { margin: 12mm; }
+@page { margin: 10mm 12mm; }
 
 @media print {
   .resume { padding: 0; }
@@ -313,12 +282,9 @@
   .sheet,
   .row,
   .sheet__head,
-  .sheet__id,
   .exp,
   .company,
   .job,
-  .impact,
-  .impact__item,
   .stack,
   .meta,
   .job__items {
@@ -347,28 +313,28 @@
   .sheet__label { display: none; }
   .sheet__printed { display: inline; }
 
-  .row { margin-top: 14px; }
+  .row { margin-top: 9px; }
   .row__label { margin-bottom: 4px; break-after: avoid; }
-  .company, .job, .impact__item, .stack__row, .job__items li { break-inside: avoid; }
+  .job__items li, .stack__row { break-inside: avoid; }
   .company__head, .job__head { break-after: avoid; }
-  .company + .company { margin-top: 14px; }
-  .job { margin-top: 10px; }
-  .impact__item + .impact__item { margin-top: 10px; }
-  .impact__claim { display: block; }
-  .impact__detail, .impact__stack { display: block; margin-top: 2px; }
+  .company + .company { margin-top: 10px; }
+  .job { margin-top: 6px; }
   .job__items { padding-left: 16px; }
-  .job__items li + li { margin-top: 5px; }
+  .job__items li + li { margin-top: 3px; }
   .stack__row + .stack__row, .meta p + p { margin-top: 4px; }
 
   /* Paper is narrower than the screen column, so the type scale comes down. */
-  .sheet__name { font-size: 22pt; }
-  .sheet__role { font-size: 9.5pt; }
+  .sheet__name { font-size: 16pt; }
+  .sheet__role { font-size: 10pt; }
   .sheet__facts, .sheet__contacts { font-size: 8pt; }
-  .row__label, .impact__stack, .job__stack, .company__period, .job__period { font-size: 8pt; }
-  .row__text, .impact__detail, .job__items li, .stack__row, .meta p, .company__blurb,
-  .company__earlier { font-size: 9.5pt; line-height: 1.45; }
-  .impact__claim { font-size: 10.5pt; }
+  .row__label, .job__stack, .company__period, .job__period { font-size: 8pt; }
+  .row__text, .job__items li, .stack__row, .meta p, .company__blurb,
+  .company__earlier { font-size: 9.5pt; line-height: 1.36; }
   .company__name { font-size: 12pt; }
   .job__title { font-size: 10.5pt; }
-  .job__stack { margin-top: 2px; }
+
+  /* Paper uses its full width; the 70ch cap is for reading on screen. */
+  .row__text, .company__blurb, .company__earlier, .job__items li, .stack__row, .meta p { max-width: none; }
+  /* Stack trails its bullet instead of taking a line of its own. */
+  .job__stack { display: inline; margin: 0 0 0 8px; }
 }

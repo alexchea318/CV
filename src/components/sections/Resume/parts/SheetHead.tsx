@@ -3,7 +3,6 @@
 import {useLang, useT} from "@/components/primitives/T";
 import {contact, hero, resume} from "@/content/site";
 import {cx} from "@/lib/cx";
-import {tenurePhrase} from "@/lib/tenure";
 import {usePrint} from "@/hooks/usePrint";
 import styles from "../resume.module.scss";
 
@@ -23,8 +22,6 @@ export function SheetHead() {
             </div>
 
             <div className={styles.sheet__facts}>
-                <span>{tenurePhrase(lang)} {t(hero.tenureSuffix)}</span>
-                <span>Python, TypeScript, Kotlin, Go</span>
                 <span>{t(hero.location)}</span>
                 <span>{t(hero.english)}</span>
             </div>

@@ -28,7 +28,11 @@ export function Experience() {
             {resume.companies.map((company, i) => (
                 <article key={i} className={styles.company}>
                     <div className={styles.company__head}>
-                        <h4 className={styles.company__name}>{t(company.name)}</h4>
+                        <h4 className={styles.company__name}>
+                            {company.url
+                                ? <a data-cursor href={company.url} target="_blank" rel="noopener" className={styles.company__link}>{t(company.name)}</a>
+                                : t(company.name)}
+                        </h4>
                         <span className={styles.company__period}>{t(company.period)}</span>
                     </div>
                     <p className={styles.company__blurb}>{t(company.blurb)}</p>

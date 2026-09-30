@@ -12,7 +12,7 @@ export function Document({lang, children}: { lang: Locale; children: ReactNode }
     const jsonLd = {
         ...personJsonLd(lang),
         email: links.email,
-        sameAs: [links.github, links.linkedin, links.telegram, links.vk, links.hh],
+        sameAs: [links.linkedin, links.telegram, links.vk, links.hh],
     };
 
     return (

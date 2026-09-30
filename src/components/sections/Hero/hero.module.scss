@@ -5,20 +5,11 @@
   @include m.gutter;
   position: relative;
   overflow-x: clip;
-  // Deliberately shorter than a screen: the sheet comes into view while the
-  // hero is still on it, so the page reads as a document, not a poster.
-  min-height: 66vh;
-  padding-block: 116px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 56px;
+  // A few lines, not a poster: the sheet is what people came for, so it
+  // starts high on the first screen.
+  padding-block: 104px 16px;
 
-  @include bp.mobile {
-    min-height: auto;
-    padding-block: 80px 28px;
-    gap: 34px;
-  }
+  @include bp.mobile { padding-block: 80px 20px; }
 }
 
 /* Warm bloom behind the name: the only decoration on the page. */
@@ -40,7 +31,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(26px, 3.4vw, 44px);
+  gap: clamp(22px, 2.6vw, 34px);
 }
 
 @keyframes axc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -90,13 +81,13 @@
 .hero__title {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 .hero__name {
   @include m.display;
   margin: 0;
   font-weight: 700;
-  font-size: clamp(40px, 8.2vw, 128px);
+  font-size: clamp(40px, 5.6vw, 84px);
   max-width: 15ch;
 
   span {
@@ -108,59 +99,35 @@
 }
 .hero__role {
   margin: 0;
-  font-size: clamp(19px, 2.2vw, 30px);
+  font-size: clamp(17px, 1.6vw, 22px);
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--accent-soft);
   animation: axc-rise 0.8s var(--ease) 0.3s both;
 }
 
+/* Who on the left, what and how to reach on the right, bottoms aligned. */
 .hero__split {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 64px);
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: end;
   @include bp.tablet { grid-template-columns: minmax(0, 1fr); }
+}
+.hero__pitch {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 .hero__tagline {
   margin: 0;
   max-width: 58ch;
-  font-size: clamp(17.5px, 1.5vw, 22px);
-  line-height: 1.62;
+  font-size: clamp(16.5px, 1.3vw, 19px);
+  line-height: 1.6;
   color: oklch(0.88 0.006 82);
   text-wrap: pretty;
   animation: axc-rise 0.8s var(--ease) 0.38s both;
 }
-
-.hero__stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 168px), 1fr));
-  gap: 12px;
-  perspective: 900px;
-  min-width: 0;
-}
-
-.stat {
-  @include m.card;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 20px;
-}
-.stat__value {
-  @include m.display;
-  font-size: clamp(30px, 3vw, 42px);
-  font-weight: 500;
-  line-height: 1;
-  color: oklch(0.8 0.14 52);
-  font-variant-numeric: tabular-nums;
-}
-.stat__label {
-  font-size: 13.5px;
-  line-height: 1.45;
-  color: oklch(0.74 0.008 74);
-}
-
 
 .hero__actions {
   display: flex;
@@ -176,5 +143,4 @@
   @include m.pill-ghost;
   @include bp.mobile { display: none; }
 }
-
 

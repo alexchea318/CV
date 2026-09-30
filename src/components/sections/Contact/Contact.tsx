@@ -45,10 +45,12 @@ export function Contact() {
                 <div className={styles.contact__bottom}>
                     <div className={styles.contact__left}>
                         <span>© {getCurrentYear()} {t(footer.left)}</span>
-                        <span className={styles.contact__status}>
-                            <span className={styles.contact__dot} aria-hidden/>
-                            {t(hero.openStatus)}
-                        </span>
+                        {hero.openStatus[lang] && (
+                            <span className={styles.contact__status}>
+                                <span className={styles.contact__dot} aria-hidden/>
+                                {hero.openStatus[lang]}
+                            </span>
+                        )}
                     </div>
                     <a href="#top" data-cursor className={styles.contact__totop}>
                         {t(contact.toTop)} ↑︎

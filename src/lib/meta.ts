@@ -4,7 +4,7 @@ import {SITE_URL} from "@/lib/config";
 import type {Locale} from "@/lib/i18n";
 import {withTenure} from "@/lib/tenure";
 
-const PATHS: Record<Locale, string> = {ru: "/", en: "/en/"};
+const PATHS: Record<Locale, string> = {en: "/", ru: "/ru/"};
 
 /** Full name in the given locale, assembled from the hero copy. */
 export function personName(lang: Locale): string {
@@ -26,7 +26,7 @@ export function siteMetadata(lang: Locale): Metadata {
         description,
         alternates: {
             canonical: PATHS[lang],
-            languages: {ru: PATHS.ru, en: PATHS.en},
+            languages: {en: PATHS.en, ru: PATHS.ru, "x-default": PATHS.en},
         },
         openGraph: {title, description, type: "profile", images: [meta.ogImage]},
         twitter: {card: "summary_large_image"},

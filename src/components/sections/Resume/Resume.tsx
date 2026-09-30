@@ -5,7 +5,6 @@ import {resume} from "@/content/site";
 import {monthYear} from "@/lib/date";
 import {withTenure} from "@/lib/tenure";
 import {SheetHead} from "./parts/SheetHead";
-import {Impact} from "./parts/Impact";
 import {Experience} from "./parts/Experience";
 import styles from "./resume.module.scss";
 
@@ -26,11 +25,6 @@ export function Resume() {
                 <div className={styles.row}>
                     <h3 className={styles.row__label}>{t(resume.summaryLabel)}</h3>
                     <p className={styles.row__text}>{withTenure(t(resume.summary), lang)}</p>
-                </div>
-
-                <div className={styles.row}>
-                    <h3 className={styles.row__label}>{t(resume.impactLabel)}</h3>
-                    <Impact/>
                 </div>
 
                 <div className={styles.row}>
