@@ -46,7 +46,7 @@ export function personJsonLd(lang: Locale) {
             "@type": "PostalAddress",
             // The English page speaks to remote roles only: country, no city.
             ...(locality ? {addressLocality: locality} : {}),
-            addressCountry: meta.country,
+            addressCountry: meta.country[lang],
         },
     };
 }

@@ -50,7 +50,7 @@ export const meta = {
     } satisfies I18n,
     ogImage: "/img/me.jpg",
     locality: {ru: "Санкт-Петербург", en: null} satisfies { ru: string; en: string | null },
-    country: "RU",
+    country: {ru: "RU", en: "GE"} satisfies I18n,
 };
 
 /* ============================================================
@@ -283,7 +283,7 @@ const CONTACT_LINKS: ContactLink[] = [
 const SHEET_LINKS: ContactLink[] = [
     {kind: "email", value: links.email, href: `mailto:${links.email}`, print: links.email},
     {kind: "Telegram", value: "Telegram", href: links.telegram, print: "t.me/alexchea318"},
-    {kind: "LinkedIn", value: "LinkedIn", href: links.linkedin},
+    {kind: "LinkedIn", value: "LinkedIn", href: links.linkedin, print: "linkedin.com/in/alexander-chechenev"},
     {kind: "VK", value: "VK", href: links.vk, ruOnly: true, print: "vk.me/schechenev"},
 ];
 
