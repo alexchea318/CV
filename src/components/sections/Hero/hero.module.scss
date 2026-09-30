@@ -54,14 +54,7 @@
     color: oklch(0.5 0.008 68);
   }
 
-  // On a phone the three facts stack, and stacked lines need no separators.
-  @include bp.mobile {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-
-    > *:not(:last-child)::after { content: none; }
-  }
+  @include bp.mobile { gap: 4px 12px; }
 }
 .hero__live {
   display: flex;
@@ -103,6 +96,8 @@
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--accent-soft);
+  // A narrow screen breaks the role into two even lines, not one word alone.
+  text-wrap: balance;
   animation: axc-rise 0.8s var(--ease) 0.3s both;
 }
 

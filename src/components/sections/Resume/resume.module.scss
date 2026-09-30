@@ -63,6 +63,7 @@
 .sheet__role {
   font-size: 16px;
   font-weight: 600;
+  text-wrap: balance;
   color: var(--paper-accent);
 }
 /* Blocks of the fact line are separated by a middle dot drawn in CSS; the

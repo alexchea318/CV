@@ -33,7 +33,7 @@ export const hero = {
     // {tenure} is filled from February 2022 at render time — see lib/tenure.
     tagline: {
         ru: "{tenure} в разработке, с 2023 года создаю LLM-продукты для production. Веду разработку во всех 7 сервисах enterprise RAG: от поиска и оценки качества до gateway и интерфейса.",
-        en: "{tenure} in software engineering, building LLM products for production since 2023. I lead development across all 7 services of an enterprise RAG platform, from search and evaluation to gateway and interface.",
+        en: "{tenure} in software engineering, building LLM products for production since 2023. I lead development across all 7 services of an enterprise RAG platform, from search and evaluation to gateway and interface.",
     } satisfies I18n,
     ctaResume: {ru: "Смотреть резюме ↓︎", en: "View CV ↓︎"} satisfies I18n,
 };
@@ -74,7 +74,7 @@ export const resume = {
     summaryLabel: {ru: "Кратко", en: "Summary"} satisfies I18n,
     summary: {
         ru: "{tenure} в разработке, с 2023 года создаю LLM-продукты. Веду разработку во всех 7 сервисах enterprise RAG-платформы: делаю сквозные фичи от техплана до релиза. 3 внедрения on-prem с точностью ответов 89–96% по оценке LLM-as-a-Judge.",
-        en: "{tenure} in software engineering, building LLM products since 2023. I lead development across all 7 services of an enterprise RAG platform, shipping cross-service features from technical plan to release. 3 on‑prem deployments at 89–96% answer accuracy, measured by LLM-as-a-Judge.",
+        en: "{tenure} in software engineering, building LLM products since 2023. I lead development across all 7 services of an enterprise RAG platform, shipping cross-service features from technical plan to release. 3 on‑prem deployments at 89–96% answer accuracy, measured by LLM-as-a-Judge.",
     } satisfies I18n,
 
     experienceLabel: {ru: "Опыт", en: "Experience"} satisfies I18n,
