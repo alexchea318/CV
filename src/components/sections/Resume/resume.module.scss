@@ -24,6 +24,8 @@
    Paper on a night page: the contrast is the point — the hero sells, this is
    the document a recruiter came to read. */
 .sheet {
+  // Positioned, so it paints over the hero glow that spills past the hero.
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: clamp(30px, 3.6vw, 46px);
