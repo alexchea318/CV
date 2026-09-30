@@ -27,7 +27,9 @@ try {
     await waitForServer(`http://localhost:${PORT}/`);
     const page = await browser.newPage();
     for (const [path, out] of PAGES) {
-        await page.goto(`http://localhost:${PORT}${path}`, {waitUntil: "networkidle0"});
+        // A 404 or 500 would still print, as a PDF of the error page.
+        const res = await page.goto(`http://localhost:${PORT}${path}`, {waitUntil: "networkidle0"});
+        if (!res?.ok()) throw new Error(`pdf: ${path} answered ${res?.status()}`);
         await page.evaluate(() => document.fonts.ready);
         await page.pdf({path: out, format: "A4", printBackground: true, preferCSSPageSize: true});
         console.log(`pdf: ${out}`);
